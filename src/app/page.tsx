@@ -1,4 +1,7 @@
 import Header from "@/components/header";
+//import { Horses } from "@/components/horses";
+
+//const imageLink = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/'
 
 export default function Home() {
   return (
@@ -12,17 +15,8 @@ export default function Home() {
           <p>of every single horse in this game.</p>
           <p>I have linked the SSO Database in the header.</p>
         </section>
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing.
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-          <li>i want sso horses to show up here</li>
-          <li>trying to think of how to accomplish that</li>
-          <li>and what else i might want</li>
-        </ol>
+        {/*<Horses />*/}
+        {/*<img src={imageLink + 'akhal-teke/gen1-1.webp'} alt="hier"/>*/}
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
