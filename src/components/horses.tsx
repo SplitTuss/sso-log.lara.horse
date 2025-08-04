@@ -15,8 +15,6 @@ export function Horses() {
                 <ul>
                   {generation.colors.map((color, index) => (
                     <li key={index}>
-                      {color.name}
-
                       <img
                         src={color.imageUrl}
                         alt={`${horse.breed}-${generation.id}-${color.name}`}
