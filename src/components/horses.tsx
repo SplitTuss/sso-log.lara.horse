@@ -12,7 +12,7 @@ export function Horses() {
               <li key={index}>
                 {generation.id}
 
-                <ul>
+                <ul className="flex">
                   {generation.colors.map((color, index) => (
                     <li key={index}>
                       <img
