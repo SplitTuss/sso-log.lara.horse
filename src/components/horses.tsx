@@ -1,13 +1,38 @@
-import { HORSE_DATA } from "./horseData";
+import { HORSE_DATA } from './horseData';
 
 export function Horses() {
   return (
     <ul>
       {HORSE_DATA.map((horse, index) => (
-        <li key={index}>{horse.breed}</li>
+        <li key={index}>
+          <div>{horse.breed}</div>
+
+          <ul>
+            {horse.generations.map((generation, index) => (
+              <li key={index}>
+                {generation.id}
+
+                <ul>
+                  {generation.colors.map((color, index) => (
+                    <li key={index}>
+                      {color.name}
+
+                      <img
+                        src={color.imageUrl}
+                        alt={`${horse.breed}-${generation.id}-${color.name}`}
+                      />
+
+                      {/* todo: map over the owners here */}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </li>
       ))}
     </ul>
-  )
+  );
 }
 
 /*
