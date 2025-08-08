@@ -1,4 +1,5 @@
 import { HORSE_DATA } from '../data/horseData';
+import { Input } from './Input';
 
 export function Horses() {
   return (
@@ -14,14 +15,14 @@ export function Horses() {
 
                 <ul className="flex flex-row flex-wrap gap-10">
                   {generation.colors.map((color, index) => (
-                    <li key={index} className="size-30 border-4 flex justify-center">
+                    <li key={index} className="size-40 border-4 flex-col">
                       <img
-                        className="h-15"
+                        className="h-20 mx-auto py-2"
                         src={color.imageUrl}
                         alt={`${horse.breed}-${generation.id}-${color.name}`}
                       />
 
-                      {/* todo: map over the owners here */}
+                      <Input placeholder="add horse name" />
                     </li>
                   ))}
                 </ul>
