@@ -5,18 +5,18 @@ export function Horses() {
     <ul>
       {HORSE_DATA.map((horse, index) => (
         <li key={index}>
-          <div className="text-violet-600">{horse.breed}</div>
+          <div className="text-primary">{horse.breed}</div>
 
           <ul>
             {horse.generations.map((generation, index) => (
               <li key={index}>
-                <div className="text-violet-800">{generation.id}</div>
+                <div className="text-primary">{generation.id}</div>
 
-                <ul className="flex flex-col sm:flex-row">
+                <ul className="flex flex-row flex-wrap gap-10">
                   {generation.colors.map((color, index) => (
-                    <li key={index} className=" columns-2 gap-2">
+                    <li key={index} className="size-30 border-4 flex justify-center">
                       <img
-                        className="box-border size-15"
+                        className="h-15"
                         src={color.imageUrl}
                         alt={`${horse.breed}-${generation.id}-${color.name}`}
                       />
