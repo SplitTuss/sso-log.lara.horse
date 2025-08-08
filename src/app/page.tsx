@@ -1,5 +1,5 @@
-import Header from '@/components/header';
-import { Horses } from '@/components/horses';
+import Header from '@/components/Header';
+import { Horses } from '@/components/Horses';
 
 //const imageLink = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/'
 
