@@ -5,10 +5,6 @@ type HorseData = Array<{
     colors: Array<{
       name: string;
       imageUrl: string;
-      ownedBy?: Array<{
-        horseName: string;
-        ownerName: string;
-      }>;
     }>;
   }>;
 }>;
@@ -62,12 +58,6 @@ export const HORSE_DATA: HorseData = [
           {
             name: 'akhal-teke',
             imageUrl: IMAGE_URL_PREFIX + 'akhal-teke/gen3-7.webp',
-            ownedBy: [
-              {
-                horseName: 'Tuxedoplay',
-                ownerName: 'Julie',
-              },
-            ],
           },
           {
             name: 'akhal-teke',
