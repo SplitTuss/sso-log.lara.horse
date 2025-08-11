@@ -26,6 +26,12 @@ export function Horses() {
                         <Input placeholder="add horse name" />
                         <Button size="xs">+</Button>
                       </div>
+                      <div className="flex flex-row items-center justify-between">
+                        <span>horse name</span>
+                        <Button variant="destructive" size="xs">
+                          -
+                        </Button>
+                      </div>
                     </li>
                   ))}
                 </ul>

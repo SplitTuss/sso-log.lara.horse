@@ -14,7 +14,6 @@ export default function Home() {
             <p>I will be forever grateful to Abbie Starwatcher,</p>
             <p>who has from the beginning volunteered (I think) her time to take photos</p>
             <p>of every single horse in this game.</p>
-            <p>I have linked the SSO Database in the header.</p>
           </section>
           <Horses />
           {/*<img src={imageLink + 'akhal-teke/gen1-1.webp'} alt="hier" />*/}
