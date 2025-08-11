@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { HORSE_DATA } from '../data/horseData';
 import { Button } from './Button';
 import { Input } from './Input';
@@ -6,6 +7,8 @@ import { useDb } from '@/hooks/useDb';
 export function Horses() {
   const { addData, removeData } = useDb();
 
+  const [horseName, setHorseName] = useState('');
+
   // TODO: allow the user to select this somehow
   const ownerName = 'john-doe';
 
@@ -13,7 +16,7 @@ export function Horses() {
     addData({
       id: `${key}-${ownerName}`,
       ownerName,
-      horseName: 'seabiscuit',
+      horseName,
     });
   };
 
@@ -40,7 +43,10 @@ export function Horses() {
                       <li key={key} className="size-40 border-4 flex-col">
                         <img className="h-20 mx-auto py-2" src={color.imageUrl} alt={key} />
                         <div className="flex flex-row items-center">
-                          <Input placeholder="add horse name" />
+                          <Input
+                            placeholder="add horse name"
+                            onChange={(event) => setHorseName(event.target.value)}
+                          />
                           <Button size="xs" onClick={() => handleAdd(key)}>
                             +
                           </Button>
