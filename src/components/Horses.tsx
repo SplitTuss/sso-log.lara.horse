@@ -1,4 +1,5 @@
 import { HORSE_DATA } from '../data/horseData';
+import { Button } from './Button';
 import { Input } from './Input';
 
 export function Horses() {
@@ -21,8 +22,10 @@ export function Horses() {
                         src={color.imageUrl}
                         alt={`${horse.breed}-${generation.id}-${color.name}`}
                       />
-
-                      <Input placeholder="add horse name" />
+                      <div className="flex flex-row items-center">
+                        <Input placeholder="add horse name" />
+                        <Button size="xs">+</Button>
+                      </div>
                     </li>
                   ))}
                 </ul>
