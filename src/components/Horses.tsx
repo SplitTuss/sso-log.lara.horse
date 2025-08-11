@@ -1,8 +1,26 @@
 import { HORSE_DATA } from '../data/horseData';
 import { Button } from './Button';
 import { Input } from './Input';
+import { useDb } from '@/hooks/useDb';
 
 export function Horses() {
+  const { addData, removeData } = useDb();
+
+  // TODO: allow the user to select this somehow
+  const ownerName = 'john-doe';
+
+  const handleAdd = (key: string) => {
+    addData({
+      id: `${key}-${ownerName}`,
+      ownerName,
+      horseName: 'seabiscuit',
+    });
+  };
+
+  const handleRemove = (key: string) => {
+    removeData(`${key}-${ownerName}`);
+  };
+
   return (
     <ul>
       {HORSE_DATA.map((horse, index) => (
@@ -15,25 +33,27 @@ export function Horses() {
                 <div className="text-primary">{generation.id}</div>
 
                 <ul className="flex flex-row flex-wrap gap-10">
-                  {generation.colors.map((color, index) => (
-                    <li key={index} className="size-40 border-4 flex-col">
-                      <img
-                        className="h-20 mx-auto py-2"
-                        src={color.imageUrl}
-                        alt={`${horse.breed}-${generation.id}-${color.name}`}
-                      />
-                      <div className="flex flex-row items-center">
-                        <Input placeholder="add horse name" />
-                        <Button size="xs">+</Button>
-                      </div>
-                      <div className="flex flex-row items-center justify-between">
-                        <span>horse name</span>
-                        <Button variant="destructive" size="xs">
-                          -
-                        </Button>
-                      </div>
-                    </li>
-                  ))}
+                  {generation.colors.map((color) => {
+                    const key = `${horse.breed}-${generation.id}-${color.name}`;
+
+                    return (
+                      <li key={key} className="size-40 border-4 flex-col">
+                        <img className="h-20 mx-auto py-2" src={color.imageUrl} alt={key} />
+                        <div className="flex flex-row items-center">
+                          <Input placeholder="add horse name" />
+                          <Button size="xs" onClick={() => handleAdd(key)}>
+                            +
+                          </Button>
+                        </div>
+                        <div className="flex flex-row items-center justify-between">
+                          <span>horse name</span>
+                          <Button variant="destructive" size="xs" onClick={() => handleRemove(key)}>
+                            -
+                          </Button>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
               </li>
             ))}
