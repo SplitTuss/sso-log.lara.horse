@@ -1,29 +1,7 @@
-import { useState } from 'react';
 import { HORSE_DATA } from '../data/horseData';
-import { Button } from './Button';
-import { Input } from './Input';
-import { useDb } from '@/hooks/useDb';
+import { EditHorsePopup } from './EditHorsePopup';
 
 export function Horses() {
-  const { addData, removeData } = useDb();
-
-  const [horseName, setHorseName] = useState('');
-
-  // TODO: allow the user to select this somehow
-  const ownerName = 'john-doe';
-
-  const handleAdd = (key: string) => {
-    addData({
-      id: `${key}-${ownerName}`,
-      ownerName,
-      horseName,
-    });
-  };
-
-  const handleRemove = (key: string) => {
-    removeData(`${key}-${ownerName}`);
-  };
-
   return (
     <ul>
       {HORSE_DATA.map((horse, index) => (
@@ -36,27 +14,14 @@ export function Horses() {
                 <div className="text-primary">{generation.id}</div>
 
                 <ul className="flex flex-row flex-wrap gap-10">
-                  {generation.colors.map((color) => {
+                  {generation.colors.map((color, index) => {
                     const key = `${horse.breed}-${generation.id}-${color.name}`;
 
                     return (
-                      <li key={key} className="size-40 border-4 flex-col">
+                      <li key={`${key}-${index}`} className="size-40 border-4 flex-col">
                         <img className="h-20 mx-auto py-2" src={color.imageUrl} alt={key} />
-                        <div className="flex flex-row items-center">
-                          <Input
-                            placeholder="add horse name"
-                            onChange={(event) => setHorseName(event.target.value)}
-                          />
-                          <Button size="xs" onClick={() => handleAdd(key)}>
-                            +
-                          </Button>
-                        </div>
-                        <div className="flex flex-row items-center justify-between">
-                          <span>horse name</span>
-                          <Button variant="destructive" size="xs" onClick={() => handleRemove(key)}>
-                            -
-                          </Button>
-                        </div>
+
+                        <EditHorsePopup dbKey={key} />
                       </li>
                     );
                   })}
@@ -69,26 +34,3 @@ export function Horses() {
     </ul>
   );
 }
-
-/*
-export function Horses() {
-  return HORSE_DATA.map((horse, index) => (
-    <section key={index}>
-      <h2 className="text-purple-400">{horse.breed}</h2>
-      <div className="grid grid-cols-4 items-center justify-center">
-        {horse.images.map((horseImage, index) => (
-          <img
-            key={index}
-            src={horseImage.url}
-            alt={horseImage.alt}
-            width={180}
-            height={38}
-            className="mx-auto"
-          />
-        ))}
-      </div>
-    </section>
-  ))
-}
-
-export default Horses;*/
