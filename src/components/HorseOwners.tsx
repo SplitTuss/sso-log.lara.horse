@@ -5,11 +5,11 @@ import { Button } from './Button';
 import { Input } from './Input';
 import { useDb } from '@/hooks/useDb';
 
-interface EditHorsePopupProps {
+interface HorseOwnersProps {
   horseId: string;
 }
 
-export const EditHorsePopup = ({ horseId }: EditHorsePopupProps) => {
+export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const { addData, removeData, getAllByHorseId } = useDb();
 
   const [horseNameInput, setHorseNameInput] = useState('');

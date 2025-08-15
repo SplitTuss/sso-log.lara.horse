@@ -1,5 +1,5 @@
 import { HORSE_DATA } from '../data/horseData';
-import { EditHorsePopup } from './EditHorsePopup';
+import { HorseOwners } from './HorseOwners';
 
 export function Horses() {
   return (
@@ -21,7 +21,7 @@ export function Horses() {
                       <li key={horseId} className="size-40 border-4 flex-col">
                         <img className="h-20 mx-auto py-2" src={color.imageUrl} alt={horseId} />
 
-                        <EditHorsePopup horseId={horseId} />
+                        <HorseOwners horseId={horseId} />
                       </li>
                     );
                   })}
