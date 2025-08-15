@@ -33,13 +33,19 @@ export const EditHorsePopup = ({ horseId }: EditHorsePopupProps) => {
   // TODO: allow the user to select this somehow
   const ownerName = 'john-doe';
 
-  const handleAdd = () => {
-    addData({
+  const handleAdd = async () => {
+    await addData({
       id: uuidv4(),
       ownerName,
       horseName: horseNameInput,
       horseId,
     });
+    await handleLoadOwners();
+  };
+
+  const handleDelete = async (id: string) => {
+    await removeData(id);
+    await handleLoadOwners();
   };
 
   return (
@@ -65,7 +71,7 @@ export const EditHorsePopup = ({ horseId }: EditHorsePopupProps) => {
             <li key={horseOwner.id}>
               <div className="flex flex-row items-center justify-between">
                 <span>{horseOwner.horseName}</span>
-                <Button variant="destructive" size="xs" onClick={() => removeData(horseOwner.id)}>
+                <Button variant="destructive" size="xs" onClick={() => handleDelete(horseOwner.id)}>
                   -
                 </Button>
               </div>
