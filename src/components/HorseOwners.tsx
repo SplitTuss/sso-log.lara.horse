@@ -13,22 +13,20 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const { addData, removeData, getAllByHorseId } = useDb();
 
   const [horseNameInput, setHorseNameInput] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [horseOwners, setHorseOwners] = useState<Array<any>>([]);
+  const [horseOwners, setHorseOwners] = useState<Array<any> | null>(null);
 
   const handleLoadOwners = useCallback(async () => {
-    const result = await getAllByHorseId(horseId);
-    if (Array.isArray(result)) {
-      setHorseOwners(result);
-    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result: any = await getAllByHorseId(horseId);
+    setHorseOwners(result ?? []);
   }, [horseId, getAllByHorseId]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (horseOwners === null) {
       handleLoadOwners();
     }
-  }, [isOpen, handleLoadOwners]);
+  }, [horseOwners, handleLoadOwners]);
 
   // TODO: allow the user to select this somehow
   const ownerName = 'john-doe';
@@ -49,7 +47,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog>
       <DialogTrigger asChild>
         <Button>edit</Button>
       </DialogTrigger>
@@ -67,7 +65,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
           </Button>
         </div>
         <ul>
-          {horseOwners.map((horseOwner) => (
+          {(horseOwners ?? []).map((horseOwner) => (
             <li key={horseOwner.id}>
               <div className="flex flex-row items-center justify-between">
                 <span>{horseOwner.horseName}</span>
