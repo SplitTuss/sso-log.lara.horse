@@ -19,7 +19,9 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const handleLoadOwners = useCallback(async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const result: any = await getAllByHorseId(horseId);
-    setHorseOwners(result ?? []);
+    if (Array.isArray(result)) {
+      setHorseOwners(result);
+    }
   }, [horseId, getAllByHorseId]);
 
   useEffect(() => {
