@@ -49,36 +49,50 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button>edit</Button>
-      </DialogTrigger>
+    <div>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button>edit</Button>
+        </DialogTrigger>
 
-      <DialogContent>
-        <DialogTitle>title</DialogTitle>
-        <div className="flex flex-row items-center">
-          <Input
-            placeholder="add horse name"
-            value={horseNameInput}
-            onChange={(event) => setHorseNameInput(event.target.value)}
-          />
-          <Button size="xs" onClick={handleAdd}>
-            +
-          </Button>
-        </div>
-        <ul>
-          {(horseOwners ?? []).map((horseOwner) => (
-            <li key={horseOwner.id}>
-              <div className="flex flex-row items-center justify-between">
-                <span>{horseOwner.horseName}</span>
-                <Button variant="destructive" size="xs" onClick={() => handleDelete(horseOwner.id)}>
-                  -
-                </Button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </DialogContent>
-    </Dialog>
+        <DialogContent>
+          <DialogTitle>title</DialogTitle>
+          <div className="flex flex-row items-center">
+            <Input
+              placeholder="add horse name"
+              value={horseNameInput}
+              onChange={(event) => setHorseNameInput(event.target.value)}
+            />
+            <Button size="xs" onClick={handleAdd}>
+              +
+            </Button>
+          </div>
+          <ul>
+            {(horseOwners ?? []).map((horseOwner) => (
+              <li key={horseOwner.id}>
+                <div className="flex flex-row items-center justify-between">
+                  <span>{horseOwner.horseName}</span>
+                  <Button
+                    variant="destructive"
+                    size="xs"
+                    onClick={() => handleDelete(horseOwner.id)}
+                  >
+                    -
+                  </Button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </DialogContent>
+      </Dialog>
+
+      <ul>
+        {(horseOwners ?? []).map((horseOwner) => (
+          <li key={horseOwner.id}>
+            <span>{horseOwner.horseName}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
