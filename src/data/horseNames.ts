@@ -1,3 +1,8 @@
+// ============================================================
+// List of names derived from:
+// https://docs.google.com/spreadsheets/d/1cJpg3esi3a_J-q7wCbhJioGvATmaQD_u_dZB4DvEG_E/edit?gid=0#gid=0
+// ============================================================
+
 type HorseNames = {
   first: Array<string>;
   second: Array<string>;
