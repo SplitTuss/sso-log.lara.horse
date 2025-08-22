@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Check, ChevronsUpDown } from 'lucide-react';
 
-import { HORSE_NAMES } from '@/data/horseNames';
 import { cn } from '@/utils';
 import { Button } from './Button';
 import {
@@ -14,7 +13,11 @@ import {
 } from './Command';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
-export function HorseNameSelector() {
+interface HorseNameSelectorProps {
+  names: Array<string>;
+}
+
+export function HorseNameSelector({ names }: HorseNameSelectorProps) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState<null | string>(null);
 
@@ -34,7 +37,7 @@ export function HorseNameSelector() {
           <CommandList>
             <CommandEmpty>No names found.</CommandEmpty>
             <CommandGroup>
-              {HORSE_NAMES.first.map((name, index) => (
+              {names.map((name, index) => (
                 <CommandItem
                   key={index}
                   value={name}
