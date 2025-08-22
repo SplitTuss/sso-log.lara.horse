@@ -52,7 +52,9 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button>edit</Button>
+          <div className="flex justify-center">
+            <Button size="sm">edit</Button>
+          </div>
         </DialogTrigger>
 
         <DialogContent>
@@ -63,6 +65,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
               value={horseNameInput}
               onChange={(event) => setHorseNameInput(event.target.value)}
             />
+
             <Button size="xs" onClick={handleAdd}>
               +
             </Button>
@@ -85,14 +88,15 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
           </ul>
         </DialogContent>
       </Dialog>
-
-      <ul>
-        {(horseOwners ?? []).map((horseOwner) => (
-          <li key={horseOwner.id}>
-            <span>{horseOwner.horseName}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="m-2 p-2 bg-accent w-40 h-30 rounded-xl overflow-scroll">
+        <ul className="text-center">
+          {(horseOwners ?? []).map((horseOwner) => (
+            <li key={horseOwner.id}>
+              <span>{horseOwner.horseName}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
