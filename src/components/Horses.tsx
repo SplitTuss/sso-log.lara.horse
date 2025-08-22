@@ -18,7 +18,7 @@ export function Horses() {
                     const horseId = `${horse.breed}-gen${generation.id}-color${index}`;
 
                     return (
-                      <li key={horseId} className="size-40 border-4 flex-col">
+                      <li key={horseId} className="border-4 flex-col rounded-xl">
                         <img className="h-20 mx-auto py-2" src={color.imageUrl} alt={horseId} />
 
                         <HorseOwners horseId={horseId} />
