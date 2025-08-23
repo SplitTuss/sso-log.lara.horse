@@ -15,14 +15,15 @@ import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
 interface HorseNameSelectorProps {
   names: Array<string>;
+  value: string | null;
+  onChange: (value: string | null) => void;
 }
 
-export function HorseNameSelector({ names }: HorseNameSelectorProps) {
+export function HorseNameSelector({ names, value, onChange }: HorseNameSelectorProps) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<null | string>(null);
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover modal={true} open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline">
           {typeof value === 'string' ? value : 'Select name'}
@@ -42,7 +43,7 @@ export function HorseNameSelector({ names }: HorseNameSelectorProps) {
                   key={index}
                   value={name}
                   onSelect={(newValue) => {
-                    setValue(newValue === value ? null : newValue);
+                    onChange(newValue === value ? null : newValue);
                     setOpen(false);
                   }}
                 >
