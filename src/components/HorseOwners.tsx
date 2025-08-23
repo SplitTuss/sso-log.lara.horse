@@ -2,8 +2,9 @@ import { useEffect, useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
 import { Button } from './Button';
-import { Input } from './Input';
 import { useDb } from '@/hooks/useDb';
+import { HORSE_NAMES } from '@/data/horseNames';
+import { HorseNameSelector } from '@/components/HorseNameSelector';
 
 interface HorseOwnersProps {
   horseId: string;
@@ -12,7 +13,8 @@ interface HorseOwnersProps {
 export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const { addData, removeData, getAllByHorseId } = useDb();
 
-  const [horseNameInput, setHorseNameInput] = useState('');
+  const [horseNameFirstInput, setHorseNameFirstInput] = useState<string | null>(null);
+  const [horseNameSecondInput, setHorseNameSecondInput] = useState<string | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [horseOwners, setHorseOwners] = useState<Array<any> | null>(null);
 
@@ -34,13 +36,20 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const ownerName = 'john-doe';
 
   const handleAdd = async () => {
+    if (!horseNameFirstInput || horseNameSecondInput === null) {
+      alert('Please select a horse name');
+      return;
+    }
+
     await addData({
       id: uuidv4(),
       ownerName,
-      horseName: horseNameInput,
+      horseName: horseNameFirstInput + horseNameSecondInput,
       horseId,
     });
     await handleLoadOwners();
+
+    handleClearInputs();
   };
 
   const handleDelete = async (id: string) => {
@@ -48,9 +57,18 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
     await handleLoadOwners();
   };
 
+  const handleClearInputs = () => {
+    setHorseNameFirstInput(null);
+    setHorseNameSecondInput(null);
+  };
+
   return (
     <div>
-      <Dialog>
+      <Dialog
+        onOpenChange={(isOpen) => {
+          if (!isOpen) handleClearInputs();
+        }}
+      >
         <DialogTrigger asChild>
           <div className="flex justify-center">
             <Button size="sm">edit</Button>
@@ -60,10 +78,15 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         <DialogContent>
           <DialogTitle>title</DialogTitle>
           <div className="flex flex-row items-center">
-            <Input
-              placeholder="add horse name"
-              value={horseNameInput}
-              onChange={(event) => setHorseNameInput(event.target.value)}
+            <HorseNameSelector
+              names={HORSE_NAMES.first}
+              value={horseNameFirstInput}
+              onChange={setHorseNameFirstInput}
+            />
+            <HorseNameSelector
+              names={HORSE_NAMES.second}
+              value={horseNameSecondInput}
+              onChange={setHorseNameSecondInput}
             />
 
             <Button size="xs" onClick={handleAdd}>
