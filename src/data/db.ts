@@ -1,5 +1,6 @@
 const DB_NAME = 'ssoLog';
 export const STORE_NAME = 'horseOwners';
+export const OBJECT_TYPE_INDEX = 'objectTypeIndex';
 export const HORSE_ID_INDEX = 'horseIdIndex';
 export const ACCOUNT_ID_INDEX = 'accountIdIndex';
 
@@ -14,6 +15,7 @@ export const initDB = () => {
       if (!db.objectStoreNames.contains(STORE_NAME)) {
         const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
         // create additional indexes
+        store.createIndex(OBJECT_TYPE_INDEX, 'type', { unique: false, multiEntry: false });
         store.createIndex(HORSE_ID_INDEX, 'horseId', { unique: false, multiEntry: false });
         store.createIndex(ACCOUNT_ID_INDEX, 'accountId', { unique: false, multiEntry: false });
       }

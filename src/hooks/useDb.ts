@@ -1,5 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
-import { initDB, STORE_NAME, HORSE_ID_INDEX, ACCOUNT_ID_INDEX } from '../data/db';
+import {
+  initDB,
+  STORE_NAME,
+  HORSE_ID_INDEX,
+  ACCOUNT_ID_INDEX,
+  OBJECT_TYPE_INDEX,
+} from '../data/db';
 
 export const useDb = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -73,5 +79,21 @@ export const useDb = () => {
     [db],
   );
 
-  return { db, error, addData, removeData, getAllByHorseId, getAllByAccountId };
+  const getAllByObjectType = useCallback(
+    (objectType: string) => {
+      if (!db) return;
+      const transaction = db.transaction(STORE_NAME, 'readonly');
+      const store = transaction.objectStore(STORE_NAME);
+      const objectTypeIndex = store.index(OBJECT_TYPE_INDEX);
+
+      const request = objectTypeIndex.getAll(IDBKeyRange.only(objectType));
+      return new Promise((resolve, reject) => {
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+      });
+    },
+    [db],
+  );
+
+  return { db, error, addData, removeData, getAllByHorseId, getAllByAccountId, getAllByObjectType };
 };
