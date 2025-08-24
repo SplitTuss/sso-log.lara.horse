@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { initDB, STORE_NAME, HORSE_ID_INDEX } from '../data/db';
+import { initDB, STORE_NAME, HORSE_ID_INDEX, ACCOUNT_ID_INDEX } from '../data/db';
 
 export const useDb = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -9,22 +9,6 @@ export const useDb = () => {
   useEffect(() => {
     initDB().then(setDb).catch(setError);
   }, []);
-
-  const getAllByHorseId = useCallback(
-    (horseId: string) => {
-      if (!db) return;
-      const transaction = db.transaction(STORE_NAME, 'readonly');
-      const store = transaction.objectStore(STORE_NAME);
-      const horseIdIndex = store.index(HORSE_ID_INDEX);
-
-      const request = horseIdIndex.getAll(IDBKeyRange.only(horseId));
-      return new Promise((resolve, reject) => {
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-      });
-    },
-    [db],
-  );
 
   const addData = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,5 +41,37 @@ export const useDb = () => {
     [db],
   );
 
-  return { db, error, addData, removeData, getAllByHorseId };
+  const getAllByHorseId = useCallback(
+    (horseId: string) => {
+      if (!db) return;
+      const transaction = db.transaction(STORE_NAME, 'readonly');
+      const store = transaction.objectStore(STORE_NAME);
+      const horseIdIndex = store.index(HORSE_ID_INDEX);
+
+      const request = horseIdIndex.getAll(IDBKeyRange.only(horseId));
+      return new Promise((resolve, reject) => {
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+      });
+    },
+    [db],
+  );
+
+  const getAllByAccountId = useCallback(
+    (accountId: string) => {
+      if (!db) return;
+      const transaction = db.transaction(STORE_NAME, 'readonly');
+      const store = transaction.objectStore(STORE_NAME);
+      const accountIdIndex = store.index(ACCOUNT_ID_INDEX);
+
+      const request = accountIdIndex.getAll(IDBKeyRange.only(accountId));
+      return new Promise((resolve, reject) => {
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+      });
+    },
+    [db],
+  );
+
+  return { db, error, addData, removeData, getAllByHorseId, getAllByAccountId };
 };

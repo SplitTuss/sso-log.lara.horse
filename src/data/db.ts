@@ -1,6 +1,7 @@
 const DB_NAME = 'ssoLog';
 export const STORE_NAME = 'horseOwners';
 export const HORSE_ID_INDEX = 'horseIdIndex';
+export const ACCOUNT_ID_INDEX = 'accountIdIndex';
 
 export const initDB = () => {
   return new Promise((resolve, reject) => {
@@ -9,9 +10,12 @@ export const initDB = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     request.onupgradeneeded = (event: any) => {
       const db = event.target?.result;
+
       if (!db.objectStoreNames.contains(STORE_NAME)) {
-        const store = db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+        const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+        // create additional indexes
         store.createIndex(HORSE_ID_INDEX, 'horseId', { unique: false, multiEntry: false });
+        store.createIndex(ACCOUNT_ID_INDEX, 'accountId', { unique: false, multiEntry: false });
       }
     };
 
