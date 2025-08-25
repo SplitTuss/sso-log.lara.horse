@@ -16,6 +16,7 @@ import { Button } from './Button';
 export function Accounts() {
   const { addAccount, removeData, getAllAccounts } = useDb();
 
+  const [isOpen, setIsOpen] = useState(false);
   const [accountNameInput, setAccountNameInput] = useState('');
   const [color, setColor] = useState('#FF00FF');
   const [accountList, setAccountList] = useState<Array<DBAccount> | null>(null);
@@ -46,6 +47,7 @@ export function Accounts() {
     await handleLoadAccounts();
 
     handleClearInputs();
+    setIsOpen(false);
   };
 
   const handleClearInputs = () => {
@@ -55,8 +57,10 @@ export function Accounts() {
   return (
     <div>
       <Dialog
-        onOpenChange={(isOpen) => {
-          if (!isOpen) handleClearInputs();
+        open={isOpen}
+        onOpenChange={(open) => {
+          if (!open) handleClearInputs();
+          setIsOpen(open);
         }}
       >
         <DialogTrigger asChild>
@@ -89,7 +93,8 @@ export function Accounts() {
       <ul>
         {accountList?.map((account, index) => (
           <li key={index}>
-            {account.name} <Button size="sm">edit</Button>
+            <span style={{ color: account.color }}>{account.name}</span>
+            <Button size="sm">edit</Button>
             <Button size="xs" variant="destructive" onClick={() => removeData(account.id)}>
               -
             </Button>
