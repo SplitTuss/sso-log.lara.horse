@@ -35,8 +35,8 @@ export function Accounts() {
   }, [accountList, handleLoadAccounts]);
 
   const handleAdd = async () => {
-    if (!accountNameInput || !color) {
-      alert('Please type in a name and select a color');
+    if (!accountNameInput.trim()) {
+      alert('Please type in a name');
       return;
     }
 
