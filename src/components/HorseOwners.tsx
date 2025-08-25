@@ -1,8 +1,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
 import { Button } from './Button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './Select';
 import { useDb } from '@/hooks/useDb';
-import type { DBHorseOwner } from '@/data/db';
+import type { DBHorseOwner, DBAccount } from '@/data/db';
 import { HORSE_NAMES } from '@/data/horseNames';
 import { HorseNameSelector } from '@/components/HorseNameSelector';
 
@@ -11,11 +12,20 @@ interface HorseOwnersProps {
 }
 
 export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
-  const { addHorseOwner, removeData, getAllByHorseId } = useDb();
+  const { addHorseOwner, removeData, getAllByHorseId, getAllAccounts } = useDb();
 
+  const [availableAccounts, setAvailableAccounts] = useState<Array<DBAccount> | null>(null);
+  const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
   const [horseNameFirstInput, setHorseNameFirstInput] = useState<string | null>(null);
   const [horseNameSecondInput, setHorseNameSecondInput] = useState<string | null>(null);
   const [horseOwners, setHorseOwners] = useState<Array<DBHorseOwner> | null>(null);
+
+  const handleLoadAccounts = useCallback(async () => {
+    const result = await getAllAccounts();
+    if (Array.isArray(result)) {
+      setAvailableAccounts(result);
+    }
+  }, [getAllAccounts]);
 
   const handleLoadOwners = useCallback(async () => {
     const result = await getAllByHorseId(horseId);
@@ -30,21 +40,24 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
     }
   }, [horseOwners, handleLoadOwners]);
 
-  // TODO: allow the user to select this somehow
-  const accountId = 'john-doe';
-
   const handleAdd = async () => {
+    if (!selectedAccount) {
+      alert('Please select an account');
+      return;
+    }
     if (!horseNameFirstInput || horseNameSecondInput === null) {
       alert('Please select a horse name');
       return;
     }
 
+    const accountColor = availableAccounts?.find((a) => a.id === selectedAccount)?.color ?? 'red';
+
     await addHorseOwner({
       horseId,
-      accountId,
       horseFirstName: horseNameFirstInput,
       horseSecondName: horseNameSecondInput,
-      accountColor: 'red',
+      accountId: selectedAccount,
+      accountColor,
     });
     await handleLoadOwners();
 
@@ -57,6 +70,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   };
 
   const handleClearInputs = () => {
+    setSelectedAccount(null);
     setHorseNameFirstInput(null);
     setHorseNameSecondInput(null);
   };
@@ -65,7 +79,10 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
     <div>
       <Dialog
         onOpenChange={(isOpen) => {
+          // clear inputs when closing the dialog
           if (!isOpen) handleClearInputs();
+          // load fresh account list when opening dialog
+          else handleLoadAccounts();
         }}
       >
         <DialogTrigger asChild>
@@ -77,6 +94,20 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         <DialogContent>
           <DialogTitle>add horse name</DialogTitle>
           <div className="flex flex-row items-center">
+            <Select onValueChange={setSelectedAccount}>
+              <SelectTrigger>
+                <SelectValue placeholder="Account" />
+              </SelectTrigger>
+
+              <SelectContent>
+                {availableAccounts?.map((account) => (
+                  <SelectItem key={account.id} value={account.id}>
+                    {account.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
             <HorseNameSelector
               names={HORSE_NAMES.first}
               value={horseNameFirstInput}
