@@ -1,10 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import {
   initDB,
-  STORE_NAME,
-  HORSE_ID_INDEX,
-  ACCOUNT_ID_INDEX,
-  OBJECT_TYPE_INDEX,
+  createItem,
+  removeById,
+  getByIndex,
+  DB_INDEX,
+  DB_OBJECT_TYPE,
+  type DBAccount,
+  type DBHorseOwner,
+  type CreateDBAccountData,
+  type CreateDBHorseOwner,
 } from '../data/db';
 
 export const useDb = () => {
@@ -16,48 +21,41 @@ export const useDb = () => {
     initDB().then(setDb).catch(setError);
   }, []);
 
-  const addData = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async (data: any) => {
-      if (!db) return;
-      const transaction = db.transaction(STORE_NAME, 'readwrite');
-      const store = transaction.objectStore(STORE_NAME);
+  const addAccount = useCallback(
+    async (input: Omit<CreateDBAccountData, typeof DB_INDEX.OBJECT_TYPE.key>) => {
+      const data = {
+        [DB_INDEX.OBJECT_TYPE.key]: DB_OBJECT_TYPE.ACCOUNT,
+        ...input,
+      };
+      return createItem<DBAccount>({ db, data });
+    },
+    [db],
+  );
 
-      const request = store.add(data);
-      return new Promise((resolve, reject) => {
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-      });
+  const addHorseOwner = useCallback(
+    async (input: Omit<CreateDBHorseOwner, typeof DB_INDEX.OBJECT_TYPE.key>) => {
+      const data = {
+        [DB_INDEX.OBJECT_TYPE.key]: DB_OBJECT_TYPE.HORSE_OWNER,
+        ...input,
+      };
+      return createItem<DBHorseOwner>({ db, data });
     },
     [db],
   );
 
   const removeData = useCallback(
-    async (key: string) => {
-      if (!db) return;
-      const transaction = db.transaction(STORE_NAME, 'readwrite');
-      const store = transaction.objectStore(STORE_NAME);
-
-      const request = store.delete(key);
-      return new Promise((resolve, reject) => {
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-      });
+    async (id: string) => {
+      return removeById({ db, id });
     },
     [db],
   );
 
   const getAllByHorseId = useCallback(
     (horseId: string) => {
-      if (!db) return;
-      const transaction = db.transaction(STORE_NAME, 'readonly');
-      const store = transaction.objectStore(STORE_NAME);
-      const horseIdIndex = store.index(HORSE_ID_INDEX);
-
-      const request = horseIdIndex.getAll(IDBKeyRange.only(horseId));
-      return new Promise((resolve, reject) => {
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
+      return getByIndex<DBHorseOwner>({
+        db,
+        indexName: DB_INDEX.HORSE_ID.name,
+        value: horseId,
       });
     },
     [db],
@@ -65,35 +63,31 @@ export const useDb = () => {
 
   const getAllByAccountId = useCallback(
     (accountId: string) => {
-      if (!db) return;
-      const transaction = db.transaction(STORE_NAME, 'readonly');
-      const store = transaction.objectStore(STORE_NAME);
-      const accountIdIndex = store.index(ACCOUNT_ID_INDEX);
-
-      const request = accountIdIndex.getAll(IDBKeyRange.only(accountId));
-      return new Promise((resolve, reject) => {
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
+      return getByIndex<DBAccount>({
+        db,
+        indexName: DB_INDEX.ACCOUNT_ID.name,
+        value: accountId,
       });
     },
     [db],
   );
 
-  const getAllByObjectType = useCallback(
-    (objectType: string) => {
-      if (!db) return;
-      const transaction = db.transaction(STORE_NAME, 'readonly');
-      const store = transaction.objectStore(STORE_NAME);
-      const objectTypeIndex = store.index(OBJECT_TYPE_INDEX);
+  const getAllAccounts = useCallback(() => {
+    return getByIndex<DBAccount>({
+      db,
+      indexName: DB_INDEX.OBJECT_TYPE.name,
+      value: DB_OBJECT_TYPE.ACCOUNT,
+    });
+  }, [db]);
 
-      const request = objectTypeIndex.getAll(IDBKeyRange.only(objectType));
-      return new Promise((resolve, reject) => {
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-      });
-    },
-    [db],
-  );
-
-  return { db, error, addData, removeData, getAllByHorseId, getAllByAccountId, getAllByObjectType };
+  return {
+    db,
+    error,
+    addAccount,
+    addHorseOwner,
+    removeData,
+    getAllByHorseId,
+    getAllByAccountId,
+    getAllAccounts,
+  };
 };

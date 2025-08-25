@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import { Horses } from '@/components/Horses';
+import { Accounts } from '@/components/Accounts';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
             the beginning volunteered (I think) her time to take photos of every single horse in
             this game.
           </div>
+          <Accounts />
           <Horses />
         </main>
       </div>

@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
 import { Button } from './Button';
 import { useDb } from '@/hooks/useDb';
+import type { DBHorseOwner } from '@/data/db';
 import { HORSE_NAMES } from '@/data/horseNames';
 import { HorseNameSelector } from '@/components/HorseNameSelector';
 
@@ -11,16 +11,14 @@ interface HorseOwnersProps {
 }
 
 export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
-  const { addData, removeData, getAllByHorseId } = useDb();
+  const { addHorseOwner, removeData, getAllByHorseId } = useDb();
 
   const [horseNameFirstInput, setHorseNameFirstInput] = useState<string | null>(null);
   const [horseNameSecondInput, setHorseNameSecondInput] = useState<string | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [horseOwners, setHorseOwners] = useState<Array<any> | null>(null);
+  const [horseOwners, setHorseOwners] = useState<Array<DBHorseOwner> | null>(null);
 
   const handleLoadOwners = useCallback(async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result: any = await getAllByHorseId(horseId);
+    const result = await getAllByHorseId(horseId);
     if (Array.isArray(result)) {
       setHorseOwners(result);
     }
@@ -33,7 +31,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   }, [horseOwners, handleLoadOwners]);
 
   // TODO: allow the user to select this somehow
-  const ownerName = 'john-doe';
+  const accountId = 'john-doe';
 
   const handleAdd = async () => {
     if (!horseNameFirstInput || horseNameSecondInput === null) {
@@ -41,11 +39,12 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
       return;
     }
 
-    await addData({
-      id: uuidv4(),
-      ownerName,
-      horseName: horseNameFirstInput + horseNameSecondInput,
+    await addHorseOwner({
       horseId,
+      accountId,
+      horseFirstName: horseNameFirstInput,
+      horseSecondName: horseNameSecondInput,
+      accountColor: 'red',
     });
     await handleLoadOwners();
 
@@ -76,7 +75,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         </DialogTrigger>
 
         <DialogContent>
-          <DialogTitle>title</DialogTitle>
+          <DialogTitle>add horse name</DialogTitle>
           <div className="flex flex-row items-center">
             <HorseNameSelector
               names={HORSE_NAMES.first}
@@ -89,7 +88,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
               onChange={setHorseNameSecondInput}
             />
 
-            <Button size="xs" onClick={handleAdd}>
+            <Button size="xs" onClick={handleAdd} className="bg-green-600 hover:bg-green-400">
               +
             </Button>
           </div>
@@ -97,7 +96,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
             {(horseOwners ?? []).map((horseOwner) => (
               <li key={horseOwner.id}>
                 <div className="flex flex-row items-center justify-between">
-                  <span>{horseOwner.horseName}</span>
+                  <span>{horseOwner.horseFirstName + horseOwner.horseSecondName}</span>
                   <Button
                     variant="destructive"
                     size="xs"
@@ -115,7 +114,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         <ul className="text-center">
           {(horseOwners ?? []).map((horseOwner) => (
             <li key={horseOwner.id}>
-              <span>{horseOwner.horseName}</span>
+              <span>{horseOwner.horseFirstName + horseOwner.horseSecondName}</span>
             </li>
           ))}
         </ul>
