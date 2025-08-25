@@ -14,9 +14,10 @@ import { Input } from './Input';
 import { Button } from './Button';
 
 export function Accounts() {
-  const { addAccount, removeData, getAllAccounts } = useDb();
+  const { addAccount, updateAccount, removeData, getAllAccounts } = useDb();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [editingAccount, setEditingAccount] = useState<string | null>(null);
   const [accountNameInput, setAccountNameInput] = useState('');
   const [color, setColor] = useState('#FF00FF');
   const [accountList, setAccountList] = useState<Array<DBAccount> | null>(null);
@@ -40,14 +41,29 @@ export function Accounts() {
       return;
     }
 
-    await addAccount({
-      name: accountNameInput,
-      color,
-    });
-    await handleLoadAccounts();
+    if (editingAccount) {
+      await updateAccount({
+        id: editingAccount,
+        name: accountNameInput,
+        color,
+      });
+    } else {
+      await addAccount({
+        name: accountNameInput,
+        color,
+      });
+    }
 
+    await handleLoadAccounts();
     handleClearInputs();
     setIsOpen(false);
+  };
+
+  const handleEditAccount = async (account: DBAccount) => {
+    setEditingAccount(account.id);
+    setAccountNameInput(account.name);
+    setColor(account.color);
+    setIsOpen(true);
   };
 
   const handleRemoveAccount = async (id: string) => {
@@ -57,6 +73,7 @@ export function Accounts() {
 
   const handleClearInputs = () => {
     setAccountNameInput('');
+    setEditingAccount(null);
   };
 
   return (
@@ -99,7 +116,9 @@ export function Accounts() {
         {accountList?.map((account, index) => (
           <li key={index}>
             <span style={{ color: account.color }}>{account.name}</span>
-            <Button size="sm">edit</Button>
+            <Button size="sm" onClick={() => handleEditAccount(account)}>
+              edit
+            </Button>
             <Button size="xs" variant="destructive" onClick={() => handleRemoveAccount(account.id)}>
               -
             </Button>

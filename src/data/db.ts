@@ -81,13 +81,13 @@ export const initDB = () => {
   });
 };
 
-export type CreateDBAccountData = Omit<DBAccount, typeof PRIMARY_KEY>;
+export type CreateDBAccount = Omit<DBAccount, typeof PRIMARY_KEY>;
 export type CreateDBHorseOwner = Omit<DBHorseOwner, typeof PRIMARY_KEY>;
 
 interface createItemArgs {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   db: any;
-  data: CreateDBAccountData | CreateDBHorseOwner;
+  data: CreateDBAccount | CreateDBHorseOwner;
 }
 
 export const createItem = <Type>({ db, data }: createItemArgs): Promise<Type> | undefined => {
@@ -99,6 +99,24 @@ export const createItem = <Type>({ db, data }: createItemArgs): Promise<Type> | 
     id: uuidV4(),
     ...data,
   });
+  return new Promise((resolve, reject) => {
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+};
+
+interface UpdateItemArgs {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  db: any;
+  data: DBAccount | DBHorseOwner;
+}
+
+export const updateItem = <Type>({ db, data }: UpdateItemArgs): Promise<Type> | undefined => {
+  if (!db) return;
+  const transaction = db.transaction(STORE_NAME, 'readwrite');
+  const store = transaction.objectStore(STORE_NAME);
+
+  const request = store.put(data);
   return new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error);

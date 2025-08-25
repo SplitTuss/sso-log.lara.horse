@@ -2,13 +2,14 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   initDB,
   createItem,
+  updateItem,
   removeById,
   getByIndex,
   DB_INDEX,
   DB_OBJECT_TYPE,
   type DBAccount,
   type DBHorseOwner,
-  type CreateDBAccountData,
+  type CreateDBAccount,
   type CreateDBHorseOwner,
 } from '../data/db';
 
@@ -22,12 +23,23 @@ export const useDb = () => {
   }, []);
 
   const addAccount = useCallback(
-    async (input: Omit<CreateDBAccountData, typeof DB_INDEX.OBJECT_TYPE.key>) => {
+    async (input: Omit<CreateDBAccount, typeof DB_INDEX.OBJECT_TYPE.key>) => {
       const data = {
         [DB_INDEX.OBJECT_TYPE.key]: DB_OBJECT_TYPE.ACCOUNT,
         ...input,
       };
       return createItem<DBAccount>({ db, data });
+    },
+    [db],
+  );
+
+  const updateAccount = useCallback(
+    async (input: Omit<DBAccount, typeof DB_INDEX.OBJECT_TYPE.key>) => {
+      const data = {
+        [DB_INDEX.OBJECT_TYPE.key]: DB_OBJECT_TYPE.ACCOUNT,
+        ...input,
+      };
+      return updateItem<DBAccount>({ db, data });
     },
     [db],
   );
@@ -84,6 +96,7 @@ export const useDb = () => {
     db,
     error,
     addAccount,
+    updateAccount,
     addHorseOwner,
     removeData,
     getAllByHorseId,
