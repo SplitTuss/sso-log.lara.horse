@@ -50,6 +50,11 @@ export function Accounts() {
     setIsOpen(false);
   };
 
+  const handleRemoveAccount = async (id: string) => {
+    await removeData(id);
+    await handleLoadAccounts();
+  };
+
   const handleClearInputs = () => {
     setAccountNameInput('');
   };
@@ -95,7 +100,7 @@ export function Accounts() {
           <li key={index}>
             <span style={{ color: account.color }}>{account.name}</span>
             <Button size="sm">edit</Button>
-            <Button size="xs" variant="destructive" onClick={() => removeData(account.id)}>
+            <Button size="xs" variant="destructive" onClick={() => handleRemoveAccount(account.id)}>
               -
             </Button>
           </li>
