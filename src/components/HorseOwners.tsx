@@ -104,7 +104,9 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
             {currentOwners.map((horseOwner) => (
               <li key={horseOwner.id}>
                 <div className="flex flex-row items-center justify-between">
-                  <span>{horseOwner.horseFirstName + horseOwner.horseSecondName}</span>
+                  <span style={{ color: horseOwner.accountColor }}>
+                    {horseOwner.horseFirstName + horseOwner.horseSecondName}
+                  </span>
                   <Button
                     variant="destructive"
                     size="xs"
