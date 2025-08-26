@@ -6,6 +6,7 @@ import {
   removeById,
   getByIndex,
   exportData,
+  importData,
   DB_INDEX,
   DB_OBJECT_TYPE,
   type DBAccount,
@@ -29,6 +30,7 @@ interface DbContextType {
   removeData: (id: string) => Promise<boolean | undefined>;
   refetchData: () => Promise<void>;
   exportToFile: () => Promise<void>;
+  importFromFile: (file: string) => Promise<void>;
 }
 
 const DbContext = createContext<DbContextType>({
@@ -43,6 +45,7 @@ const DbContext = createContext<DbContextType>({
   removeData: () => Promise.resolve(undefined),
   refetchData: () => Promise.resolve(undefined),
   exportToFile: () => Promise.resolve(undefined),
+  importFromFile: () => Promise.resolve(undefined),
 });
 
 export const useDb = () => {
@@ -144,6 +147,11 @@ export const DbProvider = ({ children }: DbProviderProps) => {
     [db],
   );
 
+  const importFromFile: DbContextType['importFromFile'] = useCallback(
+    async (file) => importData({ db, file }),
+    [db],
+  );
+
   return (
     <DbContext.Provider
       value={{
@@ -158,6 +166,7 @@ export const DbProvider = ({ children }: DbProviderProps) => {
         removeData,
         refetchData: handleLoadData,
         exportToFile,
+        importFromFile,
       }}
     >
       {children}
