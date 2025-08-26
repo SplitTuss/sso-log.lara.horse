@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import '../globals.css';
 
+import { DbProvider } from '@/data/DbProvider';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function RootLayout({ Component, pageProps }: any) {
   return (
@@ -12,7 +14,9 @@ export default function RootLayout({ Component, pageProps }: any) {
       </Head>
 
       <main>
-        <Component {...pageProps} />
+        <DbProvider>
+          <Component {...pageProps} />
+        </DbProvider>
       </main>
     </>
   );

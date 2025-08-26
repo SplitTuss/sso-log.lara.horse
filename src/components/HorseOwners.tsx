@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
 import { Button } from './Button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './Select';
-import { useDb } from '@/hooks/useDb';
+import { useDb } from '@/data/DbProvider';
 import type { DBHorseOwner, DBAccount } from '@/data/db';
 import { HORSE_NAMES } from '@/data/horseNames';
 import { HorseNameSelector } from '@/components/HorseNameSelector';

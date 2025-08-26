@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './Dialog';
-import { useDb } from '@/hooks/useDb';
+import { useDb } from '@/data/DbProvider';
 import type { DBAccount } from '@/data/db';
 import { Input } from './Input';
 import { Button } from './Button';
