@@ -47,6 +47,8 @@ export function Accounts() {
         name: accountNameInput,
         color,
       });
+
+      // TODO: when editing, ensure all horseOwner relationships have their color updated
     } else {
       await addAccount({
         name: accountNameInput,
@@ -59,16 +61,18 @@ export function Accounts() {
     setIsOpen(false);
   };
 
+  const handleRemove = async (id: string) => {
+    await removeData(id);
+    await handleLoadAccounts();
+
+    // TODO: when deleting, ensure all horseOwner relationships are deleted
+  };
+
   const handleEditAccount = async (account: DBAccount) => {
     setEditingAccount(account.id);
     setAccountNameInput(account.name);
     setColor(account.color);
     setIsOpen(true);
-  };
-
-  const handleRemoveAccount = async (id: string) => {
-    await removeData(id);
-    await handleLoadAccounts();
   };
 
   const handleClearInputs = () => {
@@ -119,7 +123,7 @@ export function Accounts() {
             <Button size="sm" onClick={() => handleEditAccount(account)}>
               edit
             </Button>
-            <Button size="xs" variant="destructive" onClick={() => handleRemoveAccount(account.id)}>
+            <Button size="xs" variant="destructive" onClick={() => handleRemove(account.id)}>
               -
             </Button>
           </li>
