@@ -15,7 +15,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const { addHorseOwner, removeData, getAllByHorseId, getAllAccounts } = useDb();
 
   const [availableAccounts, setAvailableAccounts] = useState<Array<DBAccount> | null>(null);
-  const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
+  const [selectedAccount, setSelectedAccount] = useState('');
   const [horseNameFirstInput, setHorseNameFirstInput] = useState<string | null>(null);
   const [horseNameSecondInput, setHorseNameSecondInput] = useState<string | null>(null);
   const [horseOwners, setHorseOwners] = useState<Array<DBHorseOwner> | null>(null);
@@ -70,7 +70,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   };
 
   const handleClearInputs = () => {
-    setSelectedAccount(null);
+    setSelectedAccount('');
     setHorseNameFirstInput(null);
     setHorseNameSecondInput(null);
   };
@@ -94,7 +94,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         <DialogContent>
           <DialogTitle>add horse name</DialogTitle>
           <div className="flex flex-row items-center">
-            <Select onValueChange={setSelectedAccount}>
+            <Select value={selectedAccount} onValueChange={setSelectedAccount}>
               <SelectTrigger>
                 <SelectValue placeholder="Account" />
               </SelectTrigger>
