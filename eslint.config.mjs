@@ -21,6 +21,13 @@ const eslintConfig = [
       'prettier/prettier': 'error',
       // add custom rule overrides here
       '@next/next/no-img-element': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   prettierConfig,
