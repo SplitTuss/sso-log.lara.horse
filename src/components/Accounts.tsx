@@ -14,7 +14,7 @@ import { Input } from './Input';
 import { Button } from './Button';
 
 export function Accounts() {
-  const { addAccount, updateAccount, removeData, getAllAccounts } = useDb();
+  const { addAccount, updateAccount, removeData, getAllAccounts, getAllByAccountId } = useDb();
 
   const [isOpen, setIsOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState<string | null>(null);
@@ -62,10 +62,13 @@ export function Accounts() {
   };
 
   const handleRemove = async (id: string) => {
-    await removeData(id);
-    await handleLoadAccounts();
+    const [success, accountHorses] = await Promise.all([removeData(id), getAllByAccountId(id)]);
 
-    // TODO: when deleting, ensure all horseOwner relationships are deleted
+    if (success && accountHorses) {
+      await Promise.all(accountHorses.map((horse) => removeData(horse.id)));
+    }
+
+    await handleLoadAccounts();
   };
 
   const handleEditAccount = async (account: DBAccount) => {
