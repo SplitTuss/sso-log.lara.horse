@@ -19,27 +19,27 @@ interface DbContextType {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   db: any;
   error: Error | null;
+  accounts: Array<DBAccount> | null;
+  horseOwners: Array<DBHorseOwner> | null;
   addAccount: (input: OmitObjectType<CreateDBAccount>) => Promise<DBAccount | undefined>;
   updateAccount: (input: OmitObjectType<DBAccount>) => Promise<DBAccount | undefined>;
   addHorseOwner: (input: OmitObjectType<CreateDBHorseOwner>) => Promise<DBHorseOwner | undefined>;
   updateHorseOwner: (input: OmitObjectType<DBHorseOwner>) => Promise<DBHorseOwner | undefined>;
   removeData: (id: string) => Promise<boolean | undefined>;
-  getAllByHorseId: (horseId: string) => Promise<Array<DBHorseOwner>> | undefined;
-  getAllByAccountId: (accountId: string) => Promise<Array<DBHorseOwner>> | undefined;
-  getAllAccounts: () => Promise<Array<DBAccount>> | undefined;
+  refetchData: () => Promise<void>;
 }
 
 const DbContext = createContext<DbContextType>({
   db: null,
   error: null,
+  accounts: null,
+  horseOwners: null,
   addAccount: () => Promise.resolve(undefined),
   updateAccount: () => Promise.resolve(undefined),
   addHorseOwner: () => Promise.resolve(undefined),
   updateHorseOwner: () => Promise.resolve(undefined),
   removeData: () => Promise.resolve(undefined),
-  getAllByHorseId: () => undefined,
-  getAllByAccountId: () => undefined,
-  getAllAccounts: () => undefined,
+  refetchData: () => Promise.resolve(undefined),
 });
 
 export const useDb = () => {
@@ -58,6 +58,30 @@ export const DbProvider = ({ children }: DbProviderProps) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [db, setDb] = useState<any>(null);
   const [error, setError] = useState<Error | null>(null);
+  const [accounts, setAccounts] = useState<Array<DBAccount> | null>(null);
+  const [horseOwners, setHorseOwners] = useState<Array<DBHorseOwner> | null>(null);
+
+  const handleLoadData = useCallback(async () => {
+    const [accountsResult, horseOwnersResult] = await Promise.all([
+      getByIndex<DBAccount>({
+        db,
+        indexName: DB_INDEX.OBJECT_TYPE.name,
+        value: DB_OBJECT_TYPE.ACCOUNT,
+      }),
+      getByIndex<DBHorseOwner>({
+        db,
+        indexName: DB_INDEX.OBJECT_TYPE.name,
+        value: DB_OBJECT_TYPE.HORSE_OWNER,
+      }),
+    ]);
+
+    if (Array.isArray(accountsResult)) setAccounts(accountsResult);
+    if (Array.isArray(horseOwnersResult)) setHorseOwners(horseOwnersResult);
+  }, [db]);
+
+  useEffect(() => {
+    if (!accounts && !horseOwners) handleLoadData();
+  }, [accounts, horseOwners, handleLoadData]);
 
   useEffect(() => {
     initDB().then(setDb).catch(setError);
@@ -114,49 +138,19 @@ export const DbProvider = ({ children }: DbProviderProps) => {
     [db],
   );
 
-  const getAllByHorseId: DbContextType['getAllByHorseId'] = useCallback(
-    (horseId) => {
-      return getByIndex<DBHorseOwner>({
-        db,
-        indexName: DB_INDEX.HORSE_ID.name,
-        value: horseId,
-      });
-    },
-    [db],
-  );
-
-  const getAllByAccountId: DbContextType['getAllByAccountId'] = useCallback(
-    (accountId) => {
-      return getByIndex<DBHorseOwner>({
-        db,
-        indexName: DB_INDEX.ACCOUNT_ID.name,
-        value: accountId,
-      });
-    },
-    [db],
-  );
-
-  const getAllAccounts: DbContextType['getAllAccounts'] = useCallback(() => {
-    return getByIndex<DBAccount>({
-      db,
-      indexName: DB_INDEX.OBJECT_TYPE.name,
-      value: DB_OBJECT_TYPE.ACCOUNT,
-    });
-  }, [db]);
-
   return (
     <DbContext.Provider
       value={{
         db,
         error,
+        accounts,
+        horseOwners,
         addAccount,
         updateAccount,
         addHorseOwner,
         updateHorseOwner,
         removeData,
-        getAllByHorseId,
-        getAllByAccountId,
-        getAllAccounts,
+        refetchData: handleLoadData,
       }}
     >
       {children}

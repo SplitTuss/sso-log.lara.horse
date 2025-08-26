@@ -1,9 +1,8 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
 import { Button } from './Button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './Select';
 import { useDb } from '@/data/DbProvider';
-import type { DBHorseOwner, DBAccount } from '@/data/db';
 import { HORSE_NAMES } from '@/data/horseNames';
 import { HorseNameSelector } from '@/components/HorseNameSelector';
 
@@ -12,33 +11,13 @@ interface HorseOwnersProps {
 }
 
 export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
-  const { addHorseOwner, removeData, getAllByHorseId, getAllAccounts } = useDb();
+  const { accounts, horseOwners, addHorseOwner, removeData, refetchData } = useDb();
 
-  const [availableAccounts, setAvailableAccounts] = useState<Array<DBAccount> | null>(null);
+  const currentOwners = (horseOwners ?? []).filter((owner) => owner.horseId === horseId);
+
   const [selectedAccount, setSelectedAccount] = useState('');
   const [horseNameFirstInput, setHorseNameFirstInput] = useState<string | null>(null);
   const [horseNameSecondInput, setHorseNameSecondInput] = useState<string | null>(null);
-  const [horseOwners, setHorseOwners] = useState<Array<DBHorseOwner> | null>(null);
-
-  const handleLoadAccounts = useCallback(async () => {
-    const result = await getAllAccounts();
-    if (Array.isArray(result)) {
-      setAvailableAccounts(result);
-    }
-  }, [getAllAccounts]);
-
-  const handleLoadOwners = useCallback(async () => {
-    const result = await getAllByHorseId(horseId);
-    if (Array.isArray(result)) {
-      setHorseOwners(result);
-    }
-  }, [horseId, getAllByHorseId]);
-
-  useEffect(() => {
-    if (horseOwners === null) {
-      handleLoadOwners();
-    }
-  }, [horseOwners, handleLoadOwners]);
 
   const handleAdd = async () => {
     if (!selectedAccount) {
@@ -50,7 +29,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
       return;
     }
 
-    const accountColor = availableAccounts?.find((a) => a.id === selectedAccount)?.color ?? 'red';
+    const accountColor = accounts?.find((a) => a.id === selectedAccount)?.color ?? 'purple';
 
     await addHorseOwner({
       horseId,
@@ -59,14 +38,14 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
       accountId: selectedAccount,
       accountColor,
     });
-    await handleLoadOwners();
+    await refetchData();
 
     handleClearInputs();
   };
 
   const handleDelete = async (id: string) => {
     await removeData(id);
-    await handleLoadOwners();
+    await refetchData();
   };
 
   const handleClearInputs = () => {
@@ -81,8 +60,6 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         onOpenChange={(isOpen) => {
           // clear inputs when closing the dialog
           if (!isOpen) handleClearInputs();
-          // load fresh account list when opening dialog
-          else handleLoadAccounts();
         }}
       >
         <DialogTrigger asChild>
@@ -100,7 +77,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
               </SelectTrigger>
 
               <SelectContent>
-                {availableAccounts?.map((account) => (
+                {accounts?.map((account) => (
                   <SelectItem key={account.id} value={account.id}>
                     {account.name}
                   </SelectItem>
@@ -124,7 +101,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
             </Button>
           </div>
           <ul>
-            {(horseOwners ?? []).map((horseOwner) => (
+            {currentOwners.map((horseOwner) => (
               <li key={horseOwner.id}>
                 <div className="flex flex-row items-center justify-between">
                   <span>{horseOwner.horseFirstName + horseOwner.horseSecondName}</span>
@@ -143,7 +120,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
       </Dialog>
       <div className="m-2 p-2 bg-accent w-40 h-30 rounded-xl overflow-scroll">
         <ul className="text-center">
-          {(horseOwners ?? []).map((horseOwner) => (
+          {currentOwners.map((horseOwner) => (
             <li key={horseOwner.id}>
               <span style={{ color: horseOwner.accountColor }}>
                 {horseOwner.horseFirstName + horseOwner.horseSecondName}

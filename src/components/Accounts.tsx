@@ -14,26 +14,12 @@ import { Input } from './Input';
 import { Button } from './Button';
 
 export function Accounts() {
-  const { addAccount, updateAccount, updateHorseOwner, removeData, getAllAccounts, getAllByAccountId } = useDb();
+  const { accounts, horseOwners, addAccount, updateAccount, updateHorseOwner, removeData, refetchData } = useDb();
 
   const [isOpen, setIsOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState<string | null>(null);
   const [accountNameInput, setAccountNameInput] = useState('');
   const [color, setColor] = useState('#FF00FF');
-  const [accountList, setAccountList] = useState<Array<DBAccount> | null>(null);
-
-  const handleLoadAccounts = useCallback(async () => {
-    const result = await getAllAccounts();
-    if (Array.isArray(result)) {
-      setAccountList(result);
-    }
-  }, [getAllAccounts]);
-
-  useEffect(() => {
-    if (accountList === null) {
-      handleLoadAccounts();
-    }
-  }, [accountList, handleLoadAccounts]);
 
   const handleAdd = async () => {
     if (!accountNameInput.trim()) {
@@ -42,14 +28,13 @@ export function Accounts() {
     }
 
     if (editingAccount) {
-      const [_, accountHorses] = await Promise.all([
-        updateAccount({
-          id: editingAccount,
-          name: accountNameInput,
-          color,
-        }),
-        getAllByAccountId(editingAccount),
-      ]);
+      await updateAccount({
+        id: editingAccount,
+        name: accountNameInput,
+        color,
+      });
+
+      const accountHorses = horseOwners?.filter((owner) => owner.accountId === editingAccount);
 
       if (accountHorses) {
         await Promise.all(accountHorses.map((horse) =>
@@ -63,19 +48,21 @@ export function Accounts() {
       });
     }
 
-    await handleLoadAccounts();
+    await refetchData();
     handleClearInputs();
     setIsOpen(false);
   };
 
   const handleRemove = async (id: string) => {
-    const [success, accountHorses] = await Promise.all([removeData(id), getAllByAccountId(id)]);
+    const success = await removeData(id);
+
+    const accountHorses = horseOwners?.filter((owner) => owner.accountId === id);
 
     if (success && accountHorses) {
       await Promise.all(accountHorses.map((horse) => removeData(horse.id)));
     }
 
-    await handleLoadAccounts();
+    await refetchData();
   };
 
   const handleEditAccount = async (account: DBAccount) => {
@@ -127,7 +114,7 @@ export function Accounts() {
       </Dialog>
 
       <ul>
-        {accountList?.map((account, index) => (
+        {accounts?.map((account, index) => (
           <li key={index}>
             <span style={{ color: account.color }}>{account.name}</span>
             <Button size="sm" onClick={() => handleEditAccount(account)}>
