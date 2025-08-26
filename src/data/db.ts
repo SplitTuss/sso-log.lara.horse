@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid';
 // ====================================
 // DB constants and dictionaries
 // ====================================
+const DB_VERSION = 2;
 const DB_NAME = 'ssoLog' as const;
 export const STORE_NAME = 'horseOwners' as const;
 
@@ -54,19 +55,23 @@ export type DBHorseOwner = {
 // ====================================
 export const initDB = () => {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME);
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
 
     request.onupgradeneeded = (event) => {
       const target = event.target as IDBRequest;
       const db = target?.result;
+      const store = target?.transaction?.objectStore(STORE_NAME);
 
+      // create store if needed
       if (!db?.objectStoreNames?.contains(STORE_NAME)) {
-        const store = db.createObjectStore(STORE_NAME, { keyPath: PRIMARY_KEY });
-        // create additional indexes
-        Object.values(DB_INDEX).forEach(({ name, key }) => {
-          store.createIndex(name, key, { unique: false, multiEntry: false });
-        });
+        db?.createObjectStore(STORE_NAME, { keyPath: PRIMARY_KEY });
       }
+      // create additional indexes as needed
+      Object.values(DB_INDEX).forEach(({ name, key }) => {
+        if (!store?.indexNames.contains(name)) {
+          store?.createIndex(name, key, { unique: false, multiEntry: false });
+        }
+      });
     };
 
     request.onsuccess = (event) => {
