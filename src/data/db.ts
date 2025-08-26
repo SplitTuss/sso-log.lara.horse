@@ -209,3 +209,27 @@ export const exportData = ({ db }: ExportDataArgs): Promise<void> | undefined =>
     console.error('Error during export:', error);
   }
 };
+
+interface ImportDataArgs {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  db: any;
+  /** JSON string of the data to import */
+  file: string;
+}
+
+export const importData = async ({ db, file }: ImportDataArgs) => {
+  if (!db) return;
+
+  try {
+    const data = JSON.parse(file);
+
+    const transaction = db.transaction([STORE_NAME], 'readwrite');
+    const objectStore = transaction.objectStore(STORE_NAME);
+
+    for (const item of data) {
+      await objectStore.put(item);
+    }
+  } catch (error) {
+    console.error('Error during export:', error);
+  }
+};
