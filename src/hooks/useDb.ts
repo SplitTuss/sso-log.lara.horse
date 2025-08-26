@@ -75,7 +75,7 @@ export const useDb = () => {
 
   const getAllByAccountId = useCallback(
     (accountId: string) => {
-      return getByIndex<DBAccount>({
+      return getByIndex<DBHorseOwner>({
         db,
         indexName: DB_INDEX.ACCOUNT_ID.name,
         value: accountId,
