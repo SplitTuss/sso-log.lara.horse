@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useState } from 'react';
 import { ChromePicker } from 'react-color';
 import {
   Dialog,
@@ -14,7 +14,15 @@ import { Input } from './Input';
 import { Button } from './Button';
 
 export function Accounts() {
-  const { accounts, horseOwners, addAccount, updateAccount, updateHorseOwner, removeData, refetchData } = useDb();
+  const {
+    accounts,
+    horseOwners,
+    addAccount,
+    updateAccount,
+    updateHorseOwner,
+    removeData,
+    refetchData,
+  } = useDb();
 
   const [isOpen, setIsOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState<string | null>(null);
@@ -37,9 +45,9 @@ export function Accounts() {
       const accountHorses = horseOwners?.filter((owner) => owner.accountId === editingAccount);
 
       if (accountHorses) {
-        await Promise.all(accountHorses.map((horse) =>
-          updateHorseOwner({ ...horse, accountColor: color }),
-        ));
+        await Promise.all(
+          accountHorses.map((horse) => updateHorseOwner({ ...horse, accountColor: color })),
+        );
       }
     } else {
       await addAccount({
