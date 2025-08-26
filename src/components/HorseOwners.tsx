@@ -18,6 +18,9 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const [selectedAccount, setSelectedAccount] = useState('');
   const [horseNameFirstInput, setHorseNameFirstInput] = useState<string | null>(null);
   const [horseNameSecondInput, setHorseNameSecondInput] = useState<string | null>(null);
+  const [isAccountSelectOpen, setIsAccountSelectOpen] = useState(false);
+  const [isFirstNameSelectOpen, setIsFirstNameSelectOpen] = useState(false);
+  const [isSecondNameSelectOpen, setIsSecondNameSelectOpen] = useState(false);
 
   const handleAdd = async () => {
     if (!selectedAccount) {
@@ -54,6 +57,13 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
     setHorseNameSecondInput(null);
   };
 
+  const handleEscapePressed = (e: KeyboardEvent) => {
+    // ensure the dialog stays open when pressing `esc` key with a "Select" open
+    if (isAccountSelectOpen || isFirstNameSelectOpen || isSecondNameSelectOpen) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div>
       <Dialog
@@ -68,15 +78,25 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
           </div>
         </DialogTrigger>
 
-        <DialogContent>
+        <DialogContent onEscapeKeyDown={handleEscapePressed}>
           <DialogTitle>add horse name</DialogTitle>
           <div className="flex flex-row items-center">
-            <Select value={selectedAccount} onValueChange={setSelectedAccount}>
+            <Select
+              value={selectedAccount}
+              onValueChange={setSelectedAccount}
+              open={isAccountSelectOpen}
+              onOpenChange={setIsAccountSelectOpen}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Account" />
               </SelectTrigger>
 
-              <SelectContent>
+              <SelectContent
+                onEscapeKeyDown={(e) => {
+                  e.preventDefault();
+                  setIsAccountSelectOpen(false);
+                }}
+              >
                 {accounts?.map((account) => (
                   <SelectItem key={account.id} value={account.id}>
                     {account.name}
@@ -89,11 +109,13 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
               names={HORSE_NAMES.first}
               value={horseNameFirstInput}
               onChange={setHorseNameFirstInput}
+              onOpenChange={setIsFirstNameSelectOpen}
             />
             <HorseNameSelector
               names={HORSE_NAMES.second}
               value={horseNameSecondInput}
               onChange={setHorseNameSecondInput}
+              onOpenChange={setIsSecondNameSelectOpen}
             />
 
             <Button size="xs" onClick={handleAdd} className="bg-green-600 hover:bg-green-400">

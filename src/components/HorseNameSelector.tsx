@@ -17,13 +17,24 @@ interface HorseNameSelectorProps {
   names: Array<string>;
   value: string | null;
   onChange: (value: string | null) => void;
+  onOpenChange: (isOpen: boolean) => void;
 }
 
-export function HorseNameSelector({ names, value, onChange }: HorseNameSelectorProps) {
+export function HorseNameSelector({
+  names,
+  value,
+  onChange,
+  onOpenChange,
+}: HorseNameSelectorProps) {
   const [open, setOpen] = useState(false);
 
+  const handleOpenChange = (isOpen: boolean) => {
+    setOpen(isOpen);
+    onOpenChange(isOpen);
+  };
+
   return (
-    <Popover modal={true} open={open} onOpenChange={setOpen}>
+    <Popover modal={true} open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <Button variant="outline">
           {typeof value === 'string' ? value : 'Select name'}
@@ -32,7 +43,13 @@ export function HorseNameSelector({ names, value, onChange }: HorseNameSelectorP
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent
+        className="w-[200px] p-0"
+        onEscapeKeyDown={(e) => {
+          e.preventDefault();
+          handleOpenChange(false);
+        }}
+      >
         <Command>
           <CommandInput placeholder="Search name..." />
           <CommandList>
