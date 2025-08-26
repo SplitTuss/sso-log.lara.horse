@@ -145,7 +145,9 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         <ul className="text-center">
           {(horseOwners ?? []).map((horseOwner) => (
             <li key={horseOwner.id}>
-              <span>{horseOwner.horseFirstName + horseOwner.horseSecondName}</span>
+              <span style={{ color: horseOwner.accountColor }}>
+                {horseOwner.horseFirstName + horseOwner.horseSecondName}
+              </span>
             </li>
           ))}
         </ul>
