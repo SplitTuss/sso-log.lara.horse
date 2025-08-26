@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid';
 // ====================================
 // DB constants and dictionaries
 // ====================================
+const EXPORT_FILE_NAME = 'sso-log-export.json';
 const DB_VERSION = 2;
 const DB_NAME = 'ssoLog' as const;
 export const STORE_NAME = 'horseOwners' as const;
@@ -168,4 +169,43 @@ export const getByIndex = <Type>({
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error);
   });
+};
+
+interface ExportDataArgs {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  db: any;
+}
+
+export const exportData = ({ db }: ExportDataArgs): Promise<void> | undefined => {
+  if (!db) return;
+
+  try {
+    const transaction = db.transaction([STORE_NAME], 'readonly');
+    const objectStore = transaction.objectStore(STORE_NAME);
+    const getAllRequest = objectStore.getAll();
+
+    return new Promise((resolve, reject) => {
+      getAllRequest.onsuccess = () => {
+        const data = getAllRequest.result;
+        const jsonString = JSON.stringify(data, null, 2);
+
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = EXPORT_FILE_NAME;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        resolve();
+      };
+
+      getAllRequest.onerror = (error: Error) => reject(error);
+    });
+  } catch (error) {
+    console.error('Error during export:', error);
+  }
 };
