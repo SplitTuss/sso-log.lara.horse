@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
+import { ExportButton } from '@/components/ExportButton';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
             the beginning volunteered (I think) her time to take photos of every single horse in
             this game.
           </div>
+          <ExportButton />
           <Accounts />
           <Horses />
         </main>
