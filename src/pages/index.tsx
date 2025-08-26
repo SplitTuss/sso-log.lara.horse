@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
 import { ExportButton } from '@/components/ExportButton';
+import { ImportButton } from '@/components/ImportButton';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
             this game.
           </div>
           <ExportButton />
+          <ImportButton />
           <Accounts />
           <Horses />
         </main>
