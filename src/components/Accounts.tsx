@@ -14,7 +14,7 @@ import { Input } from './Input';
 import { Button } from './Button';
 
 export function Accounts() {
-  const { addAccount, updateAccount, removeData, getAllAccounts, getAllByAccountId } = useDb();
+  const { addAccount, updateAccount, updateHorseOwner, removeData, getAllAccounts, getAllByAccountId } = useDb();
 
   const [isOpen, setIsOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState<string | null>(null);
@@ -42,13 +42,20 @@ export function Accounts() {
     }
 
     if (editingAccount) {
-      await updateAccount({
-        id: editingAccount,
-        name: accountNameInput,
-        color,
-      });
+      const [_, accountHorses] = await Promise.all([
+        updateAccount({
+          id: editingAccount,
+          name: accountNameInput,
+          color,
+        }),
+        getAllByAccountId(editingAccount),
+      ]);
 
-      // TODO: when editing, ensure all horseOwner relationships have their color updated
+      if (accountHorses) {
+        await Promise.all(accountHorses.map((horse) =>
+          updateHorseOwner({ ...horse, accountColor: color }),
+        ));
+      }
     } else {
       await addAccount({
         name: accountNameInput,
