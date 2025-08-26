@@ -55,6 +55,17 @@ export const useDb = () => {
     [db],
   );
 
+  const updateHorseOwner = useCallback(
+    async (input: Omit<DBHorseOwner, typeof DB_INDEX.OBJECT_TYPE.key>) => {
+      const data = {
+        [DB_INDEX.OBJECT_TYPE.key]: DB_OBJECT_TYPE.HORSE_OWNER,
+        ...input,
+      };
+      return updateItem<DBHorseOwner>({ db, data });
+    },
+    [db],
+  );
+
   const removeData = useCallback(
     async (id: string) => {
       return removeById({ db, id });
@@ -98,6 +109,7 @@ export const useDb = () => {
     addAccount,
     updateAccount,
     addHorseOwner,
+    updateHorseOwner,
     removeData,
     getAllByHorseId,
     getAllByAccountId,
