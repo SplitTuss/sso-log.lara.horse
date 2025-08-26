@@ -5,6 +5,7 @@ import {
   updateItem,
   removeById,
   getByIndex,
+  exportData,
   DB_INDEX,
   DB_OBJECT_TYPE,
   type DBAccount,
@@ -27,6 +28,7 @@ interface DbContextType {
   updateHorseOwner: (input: OmitObjectType<DBHorseOwner>) => Promise<DBHorseOwner | undefined>;
   removeData: (id: string) => Promise<boolean | undefined>;
   refetchData: () => Promise<void>;
+  exportToFile: () => Promise<void>;
 }
 
 const DbContext = createContext<DbContextType>({
@@ -40,6 +42,7 @@ const DbContext = createContext<DbContextType>({
   updateHorseOwner: () => Promise.resolve(undefined),
   removeData: () => Promise.resolve(undefined),
   refetchData: () => Promise.resolve(undefined),
+  exportToFile: () => Promise.resolve(undefined),
 });
 
 export const useDb = () => {
@@ -132,9 +135,12 @@ export const DbProvider = ({ children }: DbProviderProps) => {
   );
 
   const removeData: DbContextType['removeData'] = useCallback(
-    async (id) => {
-      return removeById({ db, id });
-    },
+    async (id) => removeById({ db, id }),
+    [db],
+  );
+
+  const exportToFile: DbContextType['exportToFile'] = useCallback(
+    async () => exportData({ db }),
     [db],
   );
 
@@ -151,6 +157,7 @@ export const DbProvider = ({ children }: DbProviderProps) => {
         updateHorseOwner,
         removeData,
         refetchData: handleLoadData,
+        exportToFile,
       }}
     >
       {children}
