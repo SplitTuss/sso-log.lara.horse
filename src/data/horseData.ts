@@ -953,60 +953,101 @@ export const HORSE_DATA: HorseData = [
       {
         id: 3,
         colors: [
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/adura.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/aldrach.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/alvirah.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/antheia.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/ayla.webp' },
+          //festival related:
+
+          //winter 2018
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/brinicle.webp' },
+
+          //june 2019
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/barkhart.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/barkhart2.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/birkir.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/bolt.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/brinicle.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/bronte.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/calder.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/calliope.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/dorcha.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/duskgrim.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/earik.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/ephyra.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/erinys.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/faramawr.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/fawncy.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/hanami.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/heidrun.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/hemera.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/hjortensia.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/kampos.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/katur.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/keima.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/laverna.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/lebkuchen.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/luna.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/monarch.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/nemain.webp' },
+          //halloween 2019
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/pepita.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/woodear.webp' },
+          //winter 2019
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/heidrun.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/fawncy.webp' },
+
+          //march 2020
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/ayla.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/umbra.webp' },
+          //june 2020
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/kampos.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/tellina.webp' },
+          //september 2020
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/dorcha.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/solas.webp' },
+          //halloween 2020
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/tombhoof.webp' },
+          //winter 2020??????
+
+          //march 2021
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/erinys.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/petra.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/phoebe.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/prisma.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/proteus.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/ryume.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/sedna.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/serenus.webp' },
+          //august 2021
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/aldrach.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/faramawr.webp' },
+          //halloween 2021
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/duskgrim.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/songsorrow.webp' },
+          //winter 2021
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/shadowshield.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/snowdancer.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/solas.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/songsorrow.webp' },
+
+          //march 2022
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/birkir.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/hanami.webp' },
+          //june 2022
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/proteus.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/sedna.webp' },
+          //august 2022
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/antheia.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/hemera.webp' },
+          //halloween 2022
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/laverna.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/nemain.webp' },
+          //winter 2022
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/katur.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/sylvian unicorn.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/tellina.webp' },
+
+          //march 2023
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/calder.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/ephyra.webp' },
+          //rainbow festival 2023
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/prisma.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/tenebri.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/tombhoof.webp' },
+          //halloween 2023
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/alvirah.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/adura.webp' },
+          //winter 2023
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/lebkuchen.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/vetle.webp' },
+
+          //february 2024
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/phoebe.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/tynan.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/umbra.webp' },
+          //rainbow festival 2024
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/bronte.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/serenus.webp' },
+          //halloween 2024
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/bolt.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/calliope.webp' },
+          //winter 2024
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/earik.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/hjortensia.webp' },
+
+          //february 2025
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/keima.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/ryume.webp' },
+          //june 2025
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/luna.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/monarch.webp' },
+          //halloween2025?
+          //winter 2025?
+
+          //other magic horses:
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/vega.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/zony.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/vetle.webp' },
-          { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/gen3/woodear.webp' },
         ],
       },
     ],
