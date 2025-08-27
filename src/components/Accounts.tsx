@@ -101,15 +101,14 @@ export function Accounts() {
             </div>
           </DialogTrigger>
 
-          <DialogContent>
+          <DialogContent className="sm:max-w-sm">
             <DialogHeader>
               <DialogTitle className="text-center">add a new account</DialogTitle>
               <DialogDescription className="text-center">
                 type in the name and pick a color
               </DialogDescription>
             </DialogHeader>
-            <div className="flex flex-row items-center">
-              <ChromePicker disableAlpha color={color} onChange={({ hex }) => setColor(hex)} />
+            <div className="flex flex-row items-center gap-4">
               <Input
                 placeholder="Enter name"
                 value={accountNameInput}
@@ -119,6 +118,12 @@ export function Accounts() {
                 +
               </Button>
             </div>
+            <ChromePicker
+              className="mx-auto"
+              disableAlpha
+              color={color}
+              onChange={({ hex }) => setColor(hex)}
+            />
           </DialogContent>
         </Dialog>
 
