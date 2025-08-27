@@ -79,70 +79,68 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         </DialogTrigger>
 
         <DialogContent onEscapeKeyDown={handleEscapePressed}>
-          <DialogTitle>add horse name</DialogTitle>
-          <div className="flex flex-row items-center">
-            <Select
-              value={selectedAccount}
-              onValueChange={setSelectedAccount}
-              open={isAccountSelectOpen}
-              onOpenChange={setIsAccountSelectOpen}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Account" />
-              </SelectTrigger>
-
-              <SelectContent
-                onEscapeKeyDown={(e) => {
-                  e.preventDefault();
-                  setIsAccountSelectOpen(false);
-                }}
+          <DialogTitle className="text-center">add or remove a name</DialogTitle>
+          <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row">
+              <Select
+                value={selectedAccount}
+                onValueChange={setSelectedAccount}
+                open={isAccountSelectOpen}
+                onOpenChange={setIsAccountSelectOpen}
               >
-                {accounts?.map((account) => (
-                  <SelectItem key={account.id} value={account.id}>
-                    {account.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+                <SelectTrigger className="mr-6">
+                  <SelectValue placeholder="Account" />
+                </SelectTrigger>
 
-            <HorseNameSelector
-              names={HORSE_NAMES.first}
-              value={horseNameFirstInput}
-              onChange={setHorseNameFirstInput}
-              onOpenChange={setIsFirstNameSelectOpen}
-            />
-            <HorseNameSelector
-              names={HORSE_NAMES.second}
-              value={horseNameSecondInput}
-              onChange={setHorseNameSecondInput}
-              onOpenChange={setIsSecondNameSelectOpen}
-            />
+                <SelectContent
+                  onEscapeKeyDown={(e) => {
+                    e.preventDefault();
+                    setIsAccountSelectOpen(false);
+                  }}
+                >
+                  {accounts?.map((account) => (
+                    <SelectItem key={account.id} value={account.id}>
+                      {account.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
+              <HorseNameSelector
+                names={HORSE_NAMES.first}
+                value={horseNameFirstInput}
+                onChange={setHorseNameFirstInput}
+                onOpenChange={setIsFirstNameSelectOpen}
+              />
+              <HorseNameSelector
+                names={HORSE_NAMES.second}
+                value={horseNameSecondInput}
+                onChange={setHorseNameSecondInput}
+                onOpenChange={setIsSecondNameSelectOpen}
+              />
+            </div>
             <Button size="xs" onClick={handleAdd} className="bg-green-600 hover:bg-green-400">
               +
             </Button>
           </div>
-          <ul>
+          <ul className="flex flex-col gap-1">
             {currentOwners.map((horseOwner) => (
-              <li key={horseOwner.id}>
-                <div className="flex flex-row items-center justify-between">
-                  <span style={{ color: horseOwner.accountColor }}>
-                    {horseOwner.horseFirstName + horseOwner.horseSecondName}
-                  </span>
-                  <Button
-                    variant="destructive"
-                    size="xs"
-                    onClick={() => handleDelete(horseOwner.id)}
-                  >
-                    -
-                  </Button>
-                </div>
+              <li
+                key={horseOwner.id}
+                className="flex flex-row items-center justify-between bg-accent rounded-sm py-1 px-2"
+              >
+                <span style={{ color: horseOwner.accountColor }}>
+                  {horseOwner.horseFirstName + horseOwner.horseSecondName}
+                </span>
+                <Button variant="destructive" size="xs" onClick={() => handleDelete(horseOwner.id)}>
+                  -
+                </Button>
               </li>
             ))}
           </ul>
         </DialogContent>
       </Dialog>
-      <div className="m-2 p-2 bg-accent w-40 h-30 rounded-xl overflow-scroll">
+      <div className="m-2 p-2 bg-accent w-40 h-20 rounded-xl overflow-scroll">
         <ul className="text-center">
           {currentOwners.map((horseOwner) => (
             <li key={horseOwner.id}>
