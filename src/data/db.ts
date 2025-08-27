@@ -221,13 +221,19 @@ export const importData = async ({ db, file }: ImportDataArgs) => {
   if (!db) return;
 
   try {
-    const data = JSON.parse(file);
+    const dataArray = JSON.parse(file);
+    if (!Array.isArray(dataArray)) {
+      throw new Error('JSON data should be an array');
+    }
 
     const transaction = db.transaction([STORE_NAME], 'readwrite');
     const objectStore = transaction.objectStore(STORE_NAME);
 
-    for (const item of data) {
-      await objectStore.put(item);
+    // first delete all the existing data
+    await objectStore.clear();
+    // then add all the data from the file
+    for (const dataObj of dataArray) {
+      await objectStore.put(dataObj);
     }
   } catch (error) {
     console.error('Error during export:', error);
