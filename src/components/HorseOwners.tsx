@@ -140,7 +140,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
           </ul>
         </DialogContent>
       </Dialog>
-      <div className="m-2 p-2 bg-accent w-40 h-20 rounded-xl overflow-scroll">
+      <div className="m-2 p-2 bg-accent w-36 h-20 rounded-xl overflow-scroll">
         <ul className="text-center">
           {currentOwners.map((horseOwner) => (
             <li key={horseOwner.id}>

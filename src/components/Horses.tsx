@@ -21,7 +21,7 @@ export function Horses({ searchInput }: HorsesProps) {
               <li key={index}>
                 <div className="text-primary pb-2">{generation.id}. generation</div>
 
-                <ul className="flex flex-row flex-wrap gap-6">
+                <ul className="flex flex-row flex-wrap gap-4 sm:gap-6">
                   {generation.colors.map((color, index) => {
                     const horseId = `${horse.breed}-gen${generation.id}-color${index}`;
 
