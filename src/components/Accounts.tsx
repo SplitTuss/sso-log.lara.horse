@@ -86,54 +86,61 @@ export function Accounts() {
   };
 
   return (
-    <div>
-      <Dialog
-        open={isOpen}
-        onOpenChange={(open) => {
-          if (!open) handleClearInputs();
-          setIsOpen(open);
-        }}
-      >
-        <DialogTrigger asChild>
-          <div className="flex justify-center">
-            <Button size="lg">add account</Button>
-          </div>
-        </DialogTrigger>
+    <div className="flex flex-row justify-end">
+      <div className="w-md border-primary border-1 rounded-xl p-4 my-4">
+        <Dialog
+          open={isOpen}
+          onOpenChange={(open) => {
+            if (!open) handleClearInputs();
+            setIsOpen(open);
+          }}
+        >
+          <DialogTrigger asChild>
+            <div className="flex justify-center mb-4">
+              <Button size="lg">add account</Button>
+            </div>
+          </DialogTrigger>
 
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle className="text-center">add a new account</DialogTitle>
-            <DialogDescription className="text-center">
-              type in the name and pick a color
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex flex-row items-center">
-            <ChromePicker disableAlpha color={color} onChange={({ hex }) => setColor(hex)} />
-            <Input
-              placeholder="Enter name"
-              value={accountNameInput}
-              onChange={(e) => setAccountNameInput(e.target.value)}
-            />
-            <Button size="xs" className="bg-green-600 hover:bg-green-400" onClick={handleAdd}>
-              +
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle className="text-center">add a new account</DialogTitle>
+              <DialogDescription className="text-center">
+                type in the name and pick a color
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex flex-row items-center">
+              <ChromePicker disableAlpha color={color} onChange={({ hex }) => setColor(hex)} />
+              <Input
+                placeholder="Enter name"
+                value={accountNameInput}
+                onChange={(e) => setAccountNameInput(e.target.value)}
+              />
+              <Button size="xs" className="bg-green-600 hover:bg-green-400" onClick={handleAdd}>
+                +
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
 
-      <ul>
-        {accounts?.map((account, index) => (
-          <li key={index}>
-            <span style={{ color: account.color }}>{account.name}</span>
-            <Button size="sm" onClick={() => handleEditAccount(account)}>
-              edit
-            </Button>
-            <Button size="xs" variant="destructive" onClick={() => handleRemove(account.id)}>
-              -
-            </Button>
-          </li>
-        ))}
-      </ul>
+        <ul className="flex flex-col gap-1">
+          {accounts?.map((account, index) => (
+            <li
+              key={index}
+              className="flex flex-row items-center justify-between bg-accent rounded-sm py-1 px-2"
+            >
+              <span style={{ color: account.color }}>{account.name}</span>
+              <div className="flex flex-row items-center gap-2">
+                <Button size="sm" onClick={() => handleEditAccount(account)}>
+                  edit
+                </Button>
+                <Button size="xs" variant="destructive" onClick={() => handleRemove(account.id)}>
+                  -
+                </Button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
