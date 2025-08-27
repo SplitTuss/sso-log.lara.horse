@@ -1,10 +1,18 @@
 import { HORSE_DATA } from '../data/horseData';
 import { HorseOwners } from './HorseOwners';
 
-export function Horses() {
+interface HorsesProps {
+  searchInput: string;
+}
+
+export function Horses({ searchInput }: HorsesProps) {
+  const filteredHorses = HORSE_DATA.filter((horse) =>
+    horse.breed.toLowerCase().includes(searchInput.toLowerCase()),
+  );
+
   return (
     <ul className="flex flex-col gap-6">
-      {HORSE_DATA.map((horse, index) => (
+      {filteredHorses.map((horse, index) => (
         <li key={index}>
           <div className="text-primary text-2xl">{horse.breed}</div>
 

@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import Header from '@/components/Header';
 import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
+import { SearchBar } from '@/components/SearchBar';
 import { ExportButton } from '@/components/ExportButton';
 import { ImportButton } from '@/components/ImportButton';
 
 export default function Home() {
+  const [searchInput, setSearchInput] = useState('');
+
   return (
     <>
       <Header />
@@ -17,7 +21,9 @@ export default function Home() {
 
         <Accounts />
 
-        <Horses />
+        <SearchBar onSearchChange={setSearchInput} />
+
+        <Horses searchInput={searchInput} />
       </div>
 
       <footer>
