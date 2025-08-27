@@ -775,7 +775,7 @@ export const HORSE_NAMES: HorseNames = {
     'bird',
     'birth',
     'biscuit',
-    'blase',
+    'blaze',
     'blight',
     'block',
     'blood',
