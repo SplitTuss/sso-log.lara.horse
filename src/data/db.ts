@@ -61,12 +61,13 @@ export const initDB = () => {
     request.onupgradeneeded = (event) => {
       const target = event.target as IDBRequest;
       const db = target?.result;
-      const store = target?.transaction?.objectStore(STORE_NAME);
 
       // create store if needed
       if (!db?.objectStoreNames?.contains(STORE_NAME)) {
         db?.createObjectStore(STORE_NAME, { keyPath: PRIMARY_KEY });
       }
+
+      const store = target?.transaction?.objectStore(STORE_NAME);
       // create additional indexes as needed
       Object.values(DB_INDEX).forEach(({ name, key }) => {
         if (!store?.indexNames.contains(name)) {
