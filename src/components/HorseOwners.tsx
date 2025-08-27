@@ -81,14 +81,14 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         <DialogContent onEscapeKeyDown={handleEscapePressed}>
           <DialogTitle className="text-center">add or remove a name</DialogTitle>
           <div className="flex flex-row items-center justify-between">
-            <div className="flex flex-row">
+            <div className="flex flex-col sm:flex-row">
               <Select
                 value={selectedAccount}
                 onValueChange={setSelectedAccount}
                 open={isAccountSelectOpen}
                 onOpenChange={setIsAccountSelectOpen}
               >
-                <SelectTrigger className="mr-6">
+                <SelectTrigger className="sm:mr-6">
                   <SelectValue placeholder="Account" />
                 </SelectTrigger>
 
