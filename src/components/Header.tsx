@@ -2,28 +2,28 @@ import { Button } from './Button';
 
 export function Header() {
   return (
-    <>
-      <ol className="bg-primary flex items-center justify-center">
-        <li className="p-10 text-white">
-          <a href="https://lara.horse">
-            <Button variant="secondary">lara.horse</Button>
-          </a>
-        </li>
-        <li className="p-10 bg-secondary text-white">
-          <a href="https://horses.lara.horse">
-            <Button>real horses</Button>
-          </a>
-        </li>
-        <li className="p-10 text-white">
-          <a href="https://laracraft.io">laracraft.io</a>
-        </li>
-        <li className="p-10 text-white">
-          <a href="https://ssodb.bplaced.net/db/en/horses.html">StarStableDatabase</a>
-        </li>
-        {/* <li className="p-10 text-purple-900">sso-log.lara.horse</li>
-      <li className="p-10 text-purple-900">I-GRMN.laracraft.io</li> */}
-      </ol>
-    </>
+    <ol className="bg-primary flex items-center justify-center gap-6 py-4">
+      <li>
+        <a href="https://lara.horse">
+          <Button variant="secondary">lara.horse</Button>
+        </a>
+      </li>
+      <li className="hidden sm:block">
+        <a href="https://horses.lara.horse">
+          <Button variant="secondary">real horses</Button>
+        </a>
+      </li>
+      <li className="hidden sm:block">
+        <a href="https://laracraft.io">
+          <Button variant="secondary">laracraft.io</Button>
+        </a>
+      </li>
+      <li>
+        <a href="https://ssodb.bplaced.net/db/en/horses.html">
+          <Button variant="secondary">StarStableDatabase</Button>
+        </a>
+      </li>
+    </ol>
   );
 }
 
