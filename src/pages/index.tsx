@@ -10,7 +10,7 @@ export default function Home() {
       <Header />
 
       <div className="max-w-6xl px-2 mx-auto">
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-around pt-4">
           <ExportButton />
           <ImportButton />
         </div>
