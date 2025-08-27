@@ -8,19 +8,22 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col row-start-2 items-center sm:items-start">
-          <div className="flex justify-center">
-            The images are not mine! I will be forever grateful to Abbie Starwatcher, who has from
-            the beginning volunteered (I think) her time to take photos of every single horse in
-            this game.
-          </div>
+
+      <div className="max-w-6xl px-2 mx-auto">
+        <div className="flex flex-row">
           <ExportButton />
           <ImportButton />
-          <Accounts />
-          <Horses />
-        </main>
+        </div>
+
+        <Accounts />
+
+        <Horses />
       </div>
+
+      <footer>
+        The images are not mine! I will be forever grateful to Abbie Starwatcher, who has from the
+        beginning volunteered (I think) her time to take photos of every single horse in this game.
+      </footer>
     </>
   );
 }
