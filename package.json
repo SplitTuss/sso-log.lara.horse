@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "yarn run build",
+    "predeploy": "yarn generate-pwa-icons && yarn run build",
     "deploy": "gh-pages -d out --nojekyll",
-    "generate-pwa-icons": "pwa-asset-generator public/logo.svg public/icons --background '#0a0a0a'"
+    "generate-pwa-icons": "pwa-asset-generator public/logo.svg public/icons --background '#0a0a0a' --favicon"
   },
   "resolutions": {
     "next": "15.3.5"
