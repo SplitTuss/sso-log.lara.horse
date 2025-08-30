@@ -1,4 +1,4 @@
-type HorseData = Array<{
+export type HorseData = Array<{
   breed: string;
   generations: Array<{
     id: number;
