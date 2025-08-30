@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { HorseOwners } from './HorseOwners';
 import { HorseData } from '@/data/horseData';
+import { cn } from '@/utils';
 
 interface HorseGenProps {
   breed: string;
@@ -8,7 +9,7 @@ interface HorseGenProps {
 }
 
 export function HorseGeneration({ generation, breed }: HorseGenProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -16,8 +17,10 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
 
   return (
     <li>
-      <div className="text-primary pb-2">{generation.id}. generation</div>
-      <ul className="flex flex-row flex-wrap gap-4 sm:gap-6">
+      <div className="text-primary pb-2 cursor-pointer" onClick={toggleExpand}>
+        {generation.id}. generation
+      </div>
+      <ul className={cn('flex flex-row flex-wrap gap-4 sm:gap-6', !isExpanded && 'hidden')}>
         {generation.colors.map((color, index) => {
           const horseId = `${breed}-gen${generation.id}-color${index}`;
 
