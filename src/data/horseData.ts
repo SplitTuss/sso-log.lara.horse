@@ -1071,6 +1071,20 @@ export const HORSE_DATA: HorseData = [
     ],
   },
   {
+    breed: 'Morab',
+    generations: [
+      {
+        id: 1,
+        colors: [
+          { imageUrl: IMAGE_URL_PREFIX + 'morab/gen1-1.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'morab/gen1-2.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'morab/gen1-3.webp' },
+          { imageUrl: IMAGE_URL_PREFIX + 'morab/gen1-4.webp' },
+        ],
+      },
+    ],
+  },
+  {
     breed: 'Morgan',
     generations: [
       {
