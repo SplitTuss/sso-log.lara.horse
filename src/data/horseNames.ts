@@ -1253,7 +1253,7 @@ export const HORSE_NAMES: HorseNames = {
     'part',
     'party',
     'path',
-    'peek',
+    'peak',
     'pearl',
     'pegasus',
     'penguin',
