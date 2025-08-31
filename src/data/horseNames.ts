@@ -1336,6 +1336,7 @@ export const HORSE_NAMES: HorseNames = {
     'royal',
     'ruby',
     'ruler',
+    'runner',
     'ry',
     's',
     'sa',
