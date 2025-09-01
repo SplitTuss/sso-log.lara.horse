@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { HorseGeneration } from './HorseGeneration';
 import { HorseData } from '@/data/horseData';
 import { cn } from '@/utils';
@@ -16,24 +17,17 @@ export function HorseBreed({ breed }: HorseBreedProps) {
 
   return (
     <li>
-      <div className="flex flex-row text-primary text-2xl cursor-pointer" onClick={toggleExpand}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+      <div
+        className="flex flex-row items-center text-primary text-2xl bg-accent p-2 mb-2 rounded-xl cursor-pointer"
+        onClick={toggleExpand}
+      >
+        <ChevronDown
+          size={30}
           className={cn(
-            'lucide lucide-chevron-down-icon lucide-chevron-down',
+            'transition-transform rotate-0 mr-2',
             !isExpanded && 'transition-transform rotate-180',
           )}
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
+        />
         {breed.breed}
       </div>
       <ul className={cn('flex flex-col gap-6', !isExpanded && 'hidden')}>

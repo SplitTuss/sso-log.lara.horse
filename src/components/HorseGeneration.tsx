@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { HorseOwners } from './HorseOwners';
 import { HorseData } from '@/data/horseData';
 import { cn } from '@/utils';
@@ -17,32 +18,30 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
 
   return (
     <li>
-      <div className="flex flex-row text-primary pb-2 cursor-pointer" onClick={toggleExpand}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+      <div
+        className="flex flex-row items-center border-primary border-1 rounded-xl text-primary p-1 mb-2 cursor-pointer"
+        onClick={toggleExpand}
+      >
+        <ChevronDown
+          size={22}
           className={cn(
-            'lucide lucide-chevron-down-icon lucide-chevron-down',
+            'transition-transform rotate-0 mr-1',
             !isExpanded && 'transition-transform rotate-180',
           )}
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
+        />
         {generation.id}. generation
       </div>
-      <ul className={cn('flex flex-row flex-wrap gap-4 sm:gap-6', !isExpanded && 'hidden')}>
+      <ul
+        className={cn(
+          'flex flex-row flex-wrap item justify-between gap-y-2 sm:justify-start sm:gap-6',
+          !isExpanded && 'hidden',
+        )}
+      >
         {generation.colors.map((color, index) => {
           const horseId = `${breed}-gen${generation.id}-color${index}`;
 
           return (
-            <li key={horseId} className="border-2 flex-col rounded-xl">
+            <li key={horseId} className="border-2 flex-col rounded-xl basis-[49%] sm:basis-0">
               <img className="h-25 mx-auto py-2" src={color.imageUrl} alt={horseId} />
 
               <HorseOwners horseId={horseId} />
