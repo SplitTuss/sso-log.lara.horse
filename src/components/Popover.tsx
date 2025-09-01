@@ -13,7 +13,6 @@ function PopoverTrigger({ ...props }: React.ComponentProps<typeof PopoverPrimiti
       data-slot="popover-trigger"
       className={`
         data-[state=open]:border-ring data-[state=open]:ring-ring/50 data-[state=open]:ring-[3px]
-        focus-visible:ring-0 focus-visible:border-1 focus-visible:border-input
       `}
       {...props}
     />
