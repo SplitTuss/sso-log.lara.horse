@@ -20,15 +20,18 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
       <div className="flex flex-row text-primary pb-2 cursor-pointer" onClick={toggleExpand}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          className="lucide lucide-chevron-down-icon lucide-chevron-down"
+          className={cn(
+            'lucide lucide-chevron-down-icon lucide-chevron-down',
+            !isExpanded && 'transition-transform transition-property: rotate-180',
+          )}
         >
           <path d="m6 9 6 6 6-6" />
         </svg>
@@ -39,7 +42,7 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
           const horseId = `${breed}-gen${generation.id}-color${index}`;
 
           return (
-            <li key={horseId} className="border-4 flex-col rounded-xl">
+            <li key={horseId} className="border-2 flex-col rounded-xl">
               <img className="h-25 mx-auto py-2" src={color.imageUrl} alt={horseId} />
 
               <HorseOwners horseId={horseId} />
