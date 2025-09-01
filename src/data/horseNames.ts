@@ -932,7 +932,7 @@ export const HORSE_NAMES: HorseNames = {
     'duchess',
     'duck',
     'duke',
-    'djsk',
+    'dusk',
     'dust',
     'dy',
     'e',
