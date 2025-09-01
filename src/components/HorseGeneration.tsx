@@ -30,7 +30,7 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
           stroke-linejoin="round"
           className={cn(
             'lucide lucide-chevron-down-icon lucide-chevron-down',
-            !isExpanded && 'transition-transform transition-property: rotate-180',
+            !isExpanded && 'transition-transform rotate-180',
           )}
         >
           <path d="m6 9 6 6 6-6" />

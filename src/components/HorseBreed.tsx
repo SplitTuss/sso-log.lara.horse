@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { HorseGeneration } from './HorseGeneration';
 import { HorseData } from '@/data/horseData';
 import { cn } from '@/utils';
-import { Expand } from 'lucide-react';
 
 interface HorseBreedProps {
   breed: HorseData[number];
@@ -30,7 +29,7 @@ export function HorseBreed({ breed }: HorseBreedProps) {
           stroke-linejoin="round"
           className={cn(
             'lucide lucide-chevron-down-icon lucide-chevron-down',
-            !isExpanded && 'transition-transform transition-property: rotate-180',
+            !isExpanded && 'transition-transform rotate-180',
           )}
         >
           <path d="m6 9 6 6 6-6" />
