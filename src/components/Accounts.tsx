@@ -108,22 +108,24 @@ export function Accounts() {
                 type in the name and pick a color
               </DialogDescription>
             </DialogHeader>
-            <div className="flex flex-row items-center gap-4">
-              <Input
-                placeholder="Enter name"
-                value={accountNameInput}
-                onChange={(e) => setAccountNameInput(e.target.value)}
+            <form onSubmit={handleAdd}>
+              <div className="flex flex-row items-center gap-4">
+                <Input
+                  placeholder="Enter name"
+                  value={accountNameInput}
+                  onChange={(e) => setAccountNameInput(e.target.value)}
+                />
+                <Button size="xs" className="bg-green-600 hover:bg-green-400" onClick={handleAdd}>
+                  +
+                </Button>
+              </div>
+              <ChromePicker
+                className="mx-auto"
+                disableAlpha
+                color={color}
+                onChange={({ hex }) => setColor(hex)}
               />
-              <Button size="xs" className="bg-green-600 hover:bg-green-400" onClick={handleAdd}>
-                +
-              </Button>
-            </div>
-            <ChromePicker
-              className="mx-auto"
-              disableAlpha
-              color={color}
-              onChange={({ hex }) => setColor(hex)}
-            />
+            </form>
           </DialogContent>
         </Dialog>
 

@@ -80,7 +80,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
 
         <DialogContent onEscapeKeyDown={handleEscapePressed}>
           <DialogTitle className="text-center">add or remove a name</DialogTitle>
-          <div className="flex flex-row items-center justify-between">
+          <form className="flex flex-row items-center justify-between" onSubmit={handleAdd}>
             <div className="flex flex-col sm:flex-row sm:gap-2">
               <Select
                 value={selectedAccount}
@@ -122,7 +122,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
             <Button size="xs" onClick={handleAdd} className="bg-green-600 hover:bg-green-400">
               +
             </Button>
-          </div>
+          </form>
           <ul className="flex flex-col gap-1">
             {currentOwners.map((horseOwner) => (
               <li
