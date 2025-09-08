@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { Check, ChevronsUpDown } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 import { cn } from '@/utils';
-import { Button } from './Button';
 import {
   Command,
   CommandEmpty,
@@ -12,6 +11,7 @@ import {
   CommandList,
 } from './Command';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
+import { Input } from './Input';
 
 interface HorseNameSelectorProps {
   names: Array<string>;
@@ -33,14 +33,23 @@ export function HorseNameSelector({
     onOpenChange(isOpen);
   };
 
+  const handleTriggerKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleOpenChange(true);
+    }
+  };
+
   return (
     <Popover modal={true} open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
-        <Button variant="outline">
-          {typeof value === 'string' ? value : 'Select name'}
-
-          <ChevronsUpDown className="opacity-50" />
-        </Button>
+        <Input
+          readOnly
+          placeholder="select name"
+          value={value ?? undefined}
+          type="input"
+          onKeyDown={handleTriggerKeyPress}
+        />
       </PopoverTrigger>
 
       <PopoverContent

@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
 import { Button } from './Button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './Select';
+import { Select, SelectContent, SelectItem, SelectTrigger } from './Select';
 import { useDb } from '@/data/DbProvider';
 import { HORSE_NAMES } from '@/data/horseNames';
 import { HorseNameSelector } from '@/components/HorseNameSelector';
+import { Input } from './Input';
 
 interface HorseOwnersProps {
   horseId: string;
@@ -22,7 +23,11 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const [isFirstNameSelectOpen, setIsFirstNameSelectOpen] = useState(false);
   const [isSecondNameSelectOpen, setIsSecondNameSelectOpen] = useState(false);
 
-  const handleAdd = async () => {
+  const selectedAccountName = accounts?.find((account) => account.id === selectedAccount)?.name;
+
+  const handleAdd = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     if (!selectedAccount) {
       alert('Please select an account');
       return;
@@ -32,7 +37,8 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
       return;
     }
 
-    const accountColor = accounts?.find((a) => a.id === selectedAccount)?.color ?? 'purple';
+    const foundAccount = accounts?.find((account) => account.id === selectedAccount);
+    const accountColor = foundAccount?.color ?? 'purple';
 
     await addHorseOwner({
       horseId,
@@ -88,8 +94,8 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
                 open={isAccountSelectOpen}
                 onOpenChange={setIsAccountSelectOpen}
               >
-                <SelectTrigger className="sm:mr-4">
-                  <SelectValue placeholder="Account" />
+                <SelectTrigger asChild>
+                  <Input readOnly placeholder="Account" value={selectedAccountName} type="input" />
                 </SelectTrigger>
 
                 <SelectContent
@@ -119,7 +125,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
                 onOpenChange={setIsSecondNameSelectOpen}
               />
             </div>
-            <Button size="xs" onClick={handleAdd} className="bg-green-600 hover:bg-green-400">
+            <Button type="submit" size="xs" className="bg-green-600 hover:bg-green-400">
               +
             </Button>
           </form>
