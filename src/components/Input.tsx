@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { cn } from '@/utils';
 
-function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
-  return (
+function Input({ children, className, type, ...props }: React.ComponentProps<'input'>) {
+  const renderInput = () => (
     <input
       type={type}
       data-slot="input"
@@ -15,6 +15,17 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
       )}
       {...props}
     />
+  );
+
+  if (!children) {
+    return renderInput();
+  }
+
+  return (
+    <div className="relative">
+      {renderInput()}
+      <div className="absolute top-0 right-0">{children}</div>
+    </div>
   );
 }
 
