@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
+import { UserSearchIcon } from 'lucide-react';
 import { Button } from './Button';
+import { Input } from './Input';
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger } from './Select';
 import { useDb } from '@/data/DbProvider';
 import { HORSE_NAMES } from '@/data/horseNames';
 import { HorseNameSelector } from '@/components/HorseNameSelector';
-import { Input } from './Input';
 
 interface HorseOwnersProps {
   horseId: string;
@@ -87,7 +88,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
         <DialogContent onEscapeKeyDown={handleEscapePressed}>
           <DialogTitle className="text-center">add or remove a name</DialogTitle>
           <form className="flex flex-row items-center justify-between" onSubmit={handleAdd}>
-            <div className="flex flex-col sm:flex-row sm:gap-2">
+            <div className="flex flex-col sm:flex-row sm:gap-2 gap-1">
               <Select
                 value={selectedAccount}
                 onValueChange={setSelectedAccount}
@@ -95,7 +96,14 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
                 onOpenChange={setIsAccountSelectOpen}
               >
                 <SelectTrigger asChild>
-                  <Input readOnly placeholder="Account" value={selectedAccountName} type="input" />
+                  <Input
+                    readOnly
+                    placeholder="select account"
+                    value={selectedAccountName}
+                    type="input"
+                  >
+                    <UserSearchIcon className="text-muted-foreground mt-2 mr-1.5" size={20} />
+                  </Input>
                 </SelectTrigger>
 
                 <SelectContent
@@ -125,7 +133,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
                 onOpenChange={setIsSecondNameSelectOpen}
               />
             </div>
-            <Button type="submit" size="xs" className="bg-green-600 hover:bg-green-400">
+            <Button type="submit" size="xs" className="bg-green-600 hover:bg-green-400 mx-2">
               +
             </Button>
           </form>

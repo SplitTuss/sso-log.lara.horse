@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Check } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 
 import { cn } from '@/utils';
 import {
@@ -49,7 +49,9 @@ export function HorseNameSelector({
           value={value ?? undefined}
           type="input"
           onKeyDown={handleTriggerKeyPress}
-        />
+        >
+          <ChevronDown className="text-muted-foreground mt-2 mr-1.25" size={20} />
+        </Input>
       </PopoverTrigger>
 
       <PopoverContent
