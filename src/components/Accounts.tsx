@@ -109,7 +109,7 @@ export function Accounts() {
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleAdd}>
-              <div className="flex flex-row items-center gap-4">
+              <div className="flex flex-row items-center pb-4 gap-4">
                 <Input
                   placeholder="Enter name"
                   value={accountNameInput}
