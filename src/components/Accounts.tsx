@@ -115,7 +115,7 @@ export function Accounts() {
                   value={accountNameInput}
                   onChange={(e) => setAccountNameInput(e.target.value)}
                 />
-                <Button size="xs" className="bg-green-600 hover:bg-green-400" onClick={handleAdd}>
+                <Button type="submit" size="xs" className="bg-green-600 hover:bg-green-400">
                   +
                 </Button>
               </div>
