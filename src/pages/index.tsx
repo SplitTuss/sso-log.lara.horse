@@ -3,9 +3,6 @@ import Header from '@/components/Header';
 import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
 import { SearchBar } from '@/components/SearchBar';
-import { ExportButton } from '@/components/ExportButton';
-import { ImportButton } from '@/components/ImportButton';
-
 export default function Home() {
   const [searchInput, setSearchInput] = useState('');
 
@@ -14,11 +11,6 @@ export default function Home() {
       <Header />
 
       <div className="max-w-6xl px-2 mx-auto">
-        <div className="flex flex-row justify-around pt-4">
-          <ExportButton />
-          <ImportButton />
-        </div>
-
         <Accounts />
 
         <SearchBar onSearchChange={setSearchInput} />
