@@ -1,8 +1,16 @@
 import { useState } from 'react';
-import { UserSearchIcon } from 'lucide-react';
+import { UserSearchIcon, Trash2Icon } from 'lucide-react';
 import { Button } from './Button';
 import { Input } from './Input';
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './Dialog';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './Dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger } from './Select';
 import { useDb } from '@/data/DbProvider';
 import { HORSE_NAMES } from '@/data/horseNames';
@@ -146,9 +154,36 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
                 <span style={{ color: horseOwner.accountColor }}>
                   {horseOwner.horseFirstName + horseOwner.horseSecondName}
                 </span>
-                <Button variant="destructive" size="xs" onClick={() => handleDelete(horseOwner.id)}>
-                  -
-                </Button>
+                <Dialog>
+                  <DialogTrigger>
+                    <Button variant="destructive" size="xs">
+                      -
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle className="text-center">Are you sure?</DialogTitle>
+                      <DialogDescription className="text-center">
+                        This will delete your horse and remove its data from your database.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex flex-row justify-between">
+                      <DialogClose>
+                        <Button size="lg">cancel</Button>
+                      </DialogClose>
+                      <DialogClose>
+                        <Button
+                          className="items-center justify-between"
+                          variant="destructive"
+                          onClick={() => handleDelete(horseOwner.id)}
+                        >
+                          do it!
+                          <Trash2Icon className="text-muted-foreground" size={30} />
+                        </Button>
+                      </DialogClose>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </li>
             ))}
           </ul>

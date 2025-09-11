@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { ChromePicker } from 'react-color';
+import { Trash2Icon } from 'lucide-react';
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -12,6 +14,8 @@ import { useDb } from '@/data/DbProvider';
 import type { DBAccount } from '@/data/db';
 import { Input } from './Input';
 import { Button } from './Button';
+import { ImportButton } from './ImportButton';
+import { ExportButton } from './ExportButton';
 
 export function Accounts() {
   const {
@@ -95,11 +99,18 @@ export function Accounts() {
             setIsOpen(open);
           }}
         >
-          <DialogTrigger asChild>
-            <div className="flex justify-center mb-4">
-              <Button size="lg">add account</Button>
+          <div className="flex flex-row justify-around pt-2 pb-2">
+            <DialogTrigger asChild>
+              <div className="">
+                <Button size="lg">add account</Button>
+              </div>
+            </DialogTrigger>
+            <div className="flex flex-row items-center gap-1">
+              <ExportButton />
+
+              <ImportButton />
             </div>
-          </DialogTrigger>
+          </div>
 
           <DialogContent className="sm:max-w-sm">
             <DialogHeader>
@@ -140,9 +151,38 @@ export function Accounts() {
                 <Button size="sm" onClick={() => handleEditAccount(account)}>
                   edit
                 </Button>
-                <Button size="xs" variant="destructive" onClick={() => handleRemove(account.id)}>
-                  -
-                </Button>
+
+                <Dialog>
+                  <DialogTrigger>
+                    <Button size="xs" variant="destructive">
+                      -
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle className="text-center">Are you absolutely sure?</DialogTitle>
+                      <DialogDescription className="text-center">
+                        This will permanently delete your account and remove your data from your
+                        database.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex flex-row justify-between">
+                      <DialogClose>
+                        <Button size="lg">cancel</Button>
+                      </DialogClose>
+                      <DialogClose>
+                        <Button
+                          className="items-center justify-between"
+                          variant="destructive"
+                          onClick={() => handleRemove(account.id)}
+                        >
+                          do it!
+                          <Trash2Icon className="text-muted-foreground" size={30} />
+                        </Button>
+                      </DialogClose>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </li>
           ))}
