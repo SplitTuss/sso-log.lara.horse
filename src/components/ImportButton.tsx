@@ -1,6 +1,7 @@
 import { useRef, type ChangeEvent } from 'react';
 import { useDb } from '@/data/DbProvider';
 import { Button } from '@/components/Button';
+import { FolderUp } from 'lucide-react';
 
 export const ImportButton = () => {
   const { importFromFile, refetchData } = useDb();
@@ -38,7 +39,9 @@ export const ImportButton = () => {
         onChange={handleFileUpload}
       />
 
-      <Button onClick={() => inputRef.current?.click()}>Import Data</Button>
+      <Button onClick={() => inputRef.current?.click()}>
+        <FolderUp className="text-accent-foreground mt-1/2 mr-1/2" />
+      </Button>
     </>
   );
 };
