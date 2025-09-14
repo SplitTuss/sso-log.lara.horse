@@ -25,7 +25,7 @@ export const ConfirmDialog = ({
 }: ConfirmDialogProps) => {
   return (
     <Dialog>
-      <DialogTrigger>{triggerButton}</DialogTrigger>
+      <DialogTrigger asChild>{triggerButton}</DialogTrigger>
 
       <DialogContent>
         <DialogHeader>
