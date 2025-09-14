@@ -2,6 +2,7 @@ import { useRef, type ChangeEvent } from 'react';
 import { useDb } from '@/data/DbProvider';
 import { Button } from '@/components/Button';
 import { FolderUp } from 'lucide-react';
+import { ConfirmDialog } from './ConfirmDialog';
 
 export const ImportButton = () => {
   const { importFromFile, refetchData } = useDb();
@@ -39,9 +40,16 @@ export const ImportButton = () => {
         onChange={handleFileUpload}
       />
 
-      <Button onClick={() => inputRef.current?.click()}>
-        <FolderUp className="text-accent-foreground mt-1/2 mr-1/2" />
-      </Button>
+      <ConfirmDialog
+        triggerButton={
+          <Button>
+            <FolderUp className="text-accent-foreground mt-1/2 mr-1/2" />
+          </Button>
+        }
+        title="Import"
+        description="import new table, save your shit before you do this because it will overwrite your table."
+        confirmButton={<Button onClick={() => inputRef.current?.click()}>sure</Button>}
+      />
     </>
   );
 };

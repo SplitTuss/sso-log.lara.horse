@@ -3,7 +3,6 @@ import { ChromePicker } from 'react-color';
 import { Trash2Icon } from 'lucide-react';
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -16,6 +15,7 @@ import { Input } from './Input';
 import { Button } from './Button';
 import { ImportButton } from './ImportButton';
 import { ExportButton } from './ExportButton';
+import { ConfirmDialog } from './ConfirmDialog';
 
 export function Accounts() {
   const {
@@ -152,37 +152,26 @@ export function Accounts() {
                   edit
                 </Button>
 
-                <Dialog>
-                  <DialogTrigger>
+                <ConfirmDialog
+                  triggerButton={
                     <Button size="xs" variant="destructive">
                       -
                     </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle className="text-center">Are you absolutely sure?</DialogTitle>
-                      <DialogDescription className="text-center">
-                        This will permanently delete your account and remove your data from your
-                        database.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="flex flex-row justify-between">
-                      <DialogClose>
-                        <Button size="lg">cancel</Button>
-                      </DialogClose>
-                      <DialogClose>
-                        <Button
-                          className="items-center justify-between"
-                          variant="destructive"
-                          onClick={() => handleRemove(account.id)}
-                        >
-                          do it!
-                          <Trash2Icon className="text-muted-foreground" size={30} />
-                        </Button>
-                      </DialogClose>
-                    </div>
-                  </DialogContent>
-                </Dialog>
+                  }
+                  title="Are you absolutely sure?"
+                  description="This will permanently delete your account and remove your data from your
+                        database."
+                  confirmButton={
+                    <Button
+                      className="items-center justify-between"
+                      variant="destructive"
+                      onClick={() => handleRemove(account.id)}
+                    >
+                      do it!
+                      <Trash2Icon className="text-muted-foreground" size={30} />
+                    </Button>
+                  }
+                />
               </div>
             </li>
           ))}
