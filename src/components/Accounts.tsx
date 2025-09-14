@@ -158,8 +158,7 @@ export function Accounts() {
                     </Button>
                   }
                   title="Are you absolutely sure?"
-                  description="This will permanently delete your account and remove your data from your
-                        database."
+                  description="This will permanently delete your account and remove your data from your database."
                   confirmButton={
                     <Button
                       className="items-center justify-between"
