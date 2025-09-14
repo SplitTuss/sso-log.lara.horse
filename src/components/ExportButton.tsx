@@ -6,7 +6,7 @@ export const ExportButton = () => {
   const { exportToFile } = useDb();
 
   return (
-    <Button onClick={exportToFile} size="sm">
+    <Button onClick={exportToFile}>
       <FolderDown className="text-accent-foreground mt-1/2 mr-1/2" />
     </Button>
   );

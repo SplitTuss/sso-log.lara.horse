@@ -92,53 +92,52 @@ export function Accounts() {
   return (
     <div className="flex flex-row justify-end">
       <div className="w-md border-primary border-1 rounded-xl p-4 my-4">
-        <Dialog
-          open={isOpen}
-          onOpenChange={(open) => {
-            if (!open) handleClearInputs();
-            setIsOpen(open);
-          }}
-        >
-          <div className="flex flex-row justify-around pt-2 pb-2">
+        <div className="flex flex-row justify-around pt-2 pb-2">
+          <Dialog
+            open={isOpen}
+            onOpenChange={(open) => {
+              if (!open) handleClearInputs();
+              setIsOpen(open);
+            }}
+          >
             <DialogTrigger asChild>
-              <div className="">
-                <Button size="lg">add account</Button>
-              </div>
+              <Button size="lg">add account</Button>
             </DialogTrigger>
-            <div className="flex flex-row items-center gap-1">
-              <ExportButton />
 
-              <ImportButton />
-            </div>
-          </div>
-
-          <DialogContent className="sm:max-w-sm">
-            <DialogHeader>
-              <DialogTitle className="text-center">add a new account</DialogTitle>
-              <DialogDescription className="text-center">
-                type in the name and pick a color
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleAdd}>
-              <div className="flex flex-row items-center pb-4 gap-4">
-                <Input
-                  placeholder="Enter name"
-                  value={accountNameInput}
-                  onChange={(e) => setAccountNameInput(e.target.value)}
+            <DialogContent className="sm:max-w-sm">
+              <DialogHeader>
+                <DialogTitle className="text-center">add a new account</DialogTitle>
+                <DialogDescription className="text-center">
+                  type in the name and pick a color
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleAdd}>
+                <div className="flex flex-row items-center pb-4 gap-4">
+                  <Input
+                    placeholder="Enter name"
+                    value={accountNameInput}
+                    onChange={(e) => setAccountNameInput(e.target.value)}
+                  />
+                  <Button type="submit" size="xs" className="bg-green-600 hover:bg-green-400">
+                    +
+                  </Button>
+                </div>
+                <ChromePicker
+                  className="mx-auto"
+                  disableAlpha
+                  color={color}
+                  onChange={({ hex }) => setColor(hex)}
                 />
-                <Button type="submit" size="xs" className="bg-green-600 hover:bg-green-400">
-                  +
-                </Button>
-              </div>
-              <ChromePicker
-                className="mx-auto"
-                disableAlpha
-                color={color}
-                onChange={({ hex }) => setColor(hex)}
-              />
-            </form>
-          </DialogContent>
-        </Dialog>
+              </form>
+            </DialogContent>
+          </Dialog>
+
+          <div className="flex flex-row items-center gap-1">
+            <ExportButton />
+
+            <ImportButton />
+          </div>
+        </div>
 
         <ul className="flex flex-col gap-1">
           {accounts?.map((account, index) => (
