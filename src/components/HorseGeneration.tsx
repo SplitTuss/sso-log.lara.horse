@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MapPinOffIcon } from 'lucide-react';
 import { HorseOwners } from './HorseOwners';
 import { HorseData } from '@/data/horseData';
 import { cn } from '@/utils';
@@ -7,6 +7,7 @@ import { cn } from '@/utils';
 interface HorseGenProps {
   breed: string;
   generation: HorseData[number]['generations'][number];
+  forSale: boolean;
 }
 
 export function HorseGeneration({ generation, breed }: HorseGenProps) {
@@ -30,6 +31,11 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
           )}
         />
         {generation.id}. generation
+        {!generation.forSale && (
+          <MapPinOffIcon className="visible ml-2" size={20}>
+            not for sale anymore
+          </MapPinOffIcon>
+        )}
       </div>
       <ul
         className={cn(

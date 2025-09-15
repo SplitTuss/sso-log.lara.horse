@@ -2,6 +2,7 @@ export type HorseData = Array<{
   breed: string;
   generations: Array<{
     id: number;
+    forSale: boolean;
     colors: Array<{
       imageUrl: string;
     }>;
@@ -16,6 +17,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'akhal-teke/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'akhal-teke/gen1-2.webp' },
@@ -23,6 +25,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'akhal-teke/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'akhal-teke/gen3-2.webp' },
@@ -41,6 +44,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'american-paint-horse/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'american-paint-horse/gen1-2.webp' },
@@ -51,6 +55,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'american-paint-horse/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'american-paint-horse/gen2-2.webp' },
@@ -61,6 +66,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'american-paint-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'american-paint-horse/gen3-2.webp' },
@@ -83,6 +89,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'american-quarter-horse/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'american-quarter-horse/gen2-2.webp' },
@@ -95,6 +102,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'american-quarter-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'american-quarter-horse/gen3-2.webp' },
@@ -116,6 +124,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'american-saddlebred/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'american-saddlebred/gen3-2.webp' },
@@ -137,6 +146,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'andalusian/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'andalusian/gen1-2.webp' },
@@ -148,6 +158,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'andalusian/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'andalusian/gen3-2.webp' },
@@ -173,6 +184,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'appaloosa/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'appaloosa/gen1-2.webp' },
@@ -180,6 +192,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'appaloosa/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'appaloosa/gen2-2.webp' },
@@ -187,6 +200,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'appaloosa/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'appaloosa/gen3-2.webp' },
@@ -208,6 +222,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'arabian/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'arabian/gen3-2.webp' },
@@ -229,6 +244,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'arabian-thoroughbred/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'arabian-thoroughbred/gen1-2.webp' },
@@ -243,6 +259,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'arabian-thoroughbred/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'arabian-thoroughbred/gen2-2.webp' },
@@ -259,6 +276,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'ardennes/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'ardennes/gen3-2.webp' },
@@ -279,6 +297,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'belgian-warmblood/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'belgian-warmblood/gen3-2.webp' },
@@ -301,6 +320,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'chincoteague-pony/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'chincoteague-pony/gen1-2.webp' },
@@ -309,6 +329,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'chincoteague-pony/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'chincoteague-pony/gen3-2.webp' },
@@ -326,6 +347,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'clydesdale/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'clydesdale/gen3-2.webp' },
@@ -343,6 +365,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'connemara/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'connemara/gen3-2.webp' },
@@ -360,6 +383,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'criollo/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'criollo/gen3-2.webp' },
@@ -379,6 +403,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'curly-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'curly-horse/gen3-2.webp' },
@@ -396,6 +421,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'danish-warmblood/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'danish-warmblood/gen1-2.webp' },
@@ -409,6 +435,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'dartmoor-pony/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'dartmoor-pony/gen3-2.webp' },
@@ -427,6 +454,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'dutch-warmblood/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'dutch-warmblood/gen1-2.webp' },
@@ -435,6 +463,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'dutch-warmblood/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'dutch-warmblood/gen3-2.webp' },
@@ -457,6 +486,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'english-thoroughbred/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'english-thoroughbred/gen1-2.webp' },
@@ -465,6 +495,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'english-thoroughbred/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'english-thoroughbred/gen2-2.webp' },
@@ -477,6 +508,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'english-thoroughbred/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'english-thoroughbred/gen3-2.webp' },
@@ -497,6 +529,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'finnhorse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'finnhorse/gen3-2.webp' },
@@ -516,6 +549,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'fjordhorse/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'fjordhorse/gen1-2.webp' },
@@ -528,6 +562,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'fjordhorse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'fjordhorse/gen3-2.webp' },
@@ -546,6 +581,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-horse/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-horse/gen1-2.webp' },
@@ -554,6 +590,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-horse/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-horse/gen2-2.webp' },
@@ -562,6 +599,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-horse/gen3-2.webp' },
@@ -579,6 +617,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-sport-horse/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-sport-horse/gen1-2.webp' },
@@ -587,6 +626,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-sport-horse/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-sport-horse/gen2-2.webp' },
@@ -598,6 +638,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-sport-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'friesian-sport-horse/gen3-2.webp' },
@@ -611,6 +652,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [{ imageUrl: IMAGE_URL_PREFIX + 'galaxy/gen3-1.webp' }],
       },
     ],
@@ -620,6 +662,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'gotland-pony/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'gotland-pony/gen3-2.webp' },
@@ -638,6 +681,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'haflinger/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'haflinger/gen2-2.webp' },
@@ -650,6 +694,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'haflinger/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'haflinger/gen3-2.webp' },
@@ -667,6 +712,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'hannoverian/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'hannoverian/gen2-2.webp' },
@@ -678,6 +724,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'hannoverian/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'hannoverian/gen3-2.webp' },
@@ -697,6 +744,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'icelandic-horse/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'icelandic-horse/gen2-2.webp' },
@@ -712,6 +760,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'icelandic-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'icelandic-horse/gen3-2.webp' },
@@ -732,6 +781,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'irish-cob/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'irish-cob/gen1-2.webp' },
@@ -743,6 +793,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'irish-cob/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'irish-cob/gen3-2.webp' },
@@ -762,6 +813,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-friesian/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-friesian/gen3-2.webp' },
@@ -779,6 +831,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-mountain-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-mountain-horse/gen3-2.webp' },
@@ -796,6 +849,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-pony/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-pony/gen1-2.webp' },
@@ -820,6 +874,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-starterpony/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-starterpony/gen3-2.webp' },
@@ -837,6 +892,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-warmblood/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-warmblood/gen3-2.webp' },
@@ -855,6 +911,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-wild-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'jorvik-wild-horse/gen3-2.webp' },
@@ -875,6 +932,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'knabstrupper/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'knabstrupper/gen3-2.webp' },
@@ -893,6 +951,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'lippizzaner/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'lippizzaner/gen2-2.webp' },
@@ -905,6 +964,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'lippizzaner/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'lippizzaner/gen3-2.webp' },
@@ -924,6 +984,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'lusitano/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'lusitano/gen3-2.webp' },
@@ -944,6 +1005,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2.1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/whinfell/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/whinfell/gen2-2.webp' },
@@ -956,6 +1018,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 2.2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/nixie/gen2-8.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'magic-horses/nixie/gen2-9.webp' },
@@ -964,6 +1027,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           //festival related:
 
@@ -1069,6 +1133,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'mawari/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'mawari/gen3-2.webp' },
@@ -1087,6 +1152,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'morab/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'morab/gen1-2.webp' },
@@ -1101,6 +1167,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'morgan/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'morgan/gen1-2.webp' },
@@ -1110,6 +1177,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'morgan/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'morgan/gen2-2.webp' },
@@ -1124,6 +1192,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'morgan/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'morgan/gen3-2.webp' },
@@ -1143,6 +1212,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'mule/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'mule/gen3-2.webp' },
@@ -1163,6 +1233,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'mustang/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'mustang/gen2-2.webp' },
@@ -1179,6 +1250,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'mustang/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'mustang/gen3-2.webp' },
@@ -1201,6 +1273,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'noriker/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'noriker/gen3-2.webp' },
@@ -1220,6 +1293,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'north-swedish-horse/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'north-swedish-horse/gen1-2.webp' },
@@ -1231,6 +1305,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'north-swedish-horse/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'north-swedish-horse/gen3-2.webp' },
@@ -1249,6 +1324,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [{ imageUrl: IMAGE_URL_PREFIX + 'north-swedish-rune-runner/gen3-1.webp' }],
       },
     ],
@@ -1258,6 +1334,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'oldenburg/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'oldenburg/gen1-2.webp' },
@@ -1271,6 +1348,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'paso-fino/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'paso-fino/gen3-2.webp' },
@@ -1290,6 +1368,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'percheron/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'percheron/gen3-2.webp' },
@@ -1307,6 +1386,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'pintabian/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'pintabian/gen2-2.webp' },
@@ -1318,6 +1398,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'pintabian/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'pintabian/gen3-2.webp' },
@@ -1334,6 +1415,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 1,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'selle-français/gen1-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'selle-français/gen1-2.webp' },
@@ -1342,6 +1424,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'selle-français/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'selle-français/gen3-2.webp' },
@@ -1362,6 +1445,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'shire/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'shire/gen2-2.webp' },
@@ -1375,6 +1459,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'shire/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'shire/gen3-2.webp' },
@@ -1395,6 +1480,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [{ imageUrl: IMAGE_URL_PREFIX + 'soul-steed/gen3-1.webp' }],
       },
     ],
@@ -1404,6 +1490,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: false,
         colors: [{ imageUrl: IMAGE_URL_PREFIX + 'spirit/gen2-1.webp' }],
       },
     ],
@@ -1413,6 +1500,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: false,
         colors: [{ imageUrl: IMAGE_URL_PREFIX + 'super-shire/gen3-1.webp' }],
       },
     ],
@@ -1422,6 +1510,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'tennessee-walker/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'tennessee-walker/gen3-2.webp' },
@@ -1441,6 +1530,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'trakehner/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'trakehner/gen3-2.webp' },
@@ -1458,6 +1548,7 @@ export const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
+        forSale: false,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'welsh-pony/gen2-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'welsh-pony/gen2-2.webp' },
@@ -1470,6 +1561,7 @@ export const HORSE_DATA: HorseData = [
       },
       {
         id: 3,
+        forSale: true,
         colors: [
           { imageUrl: IMAGE_URL_PREFIX + 'welsh-pony/gen3-1.webp' },
           { imageUrl: IMAGE_URL_PREFIX + 'welsh-pony/gen3-2.webp' },
