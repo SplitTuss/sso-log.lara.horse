@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, MapPinOffIcon } from 'lucide-react';
 import { HorseOwners } from './HorseOwners';
 import { HorseData } from '@/data/horseData';
+import { formatHorseId } from '@/data/formatHorseId';
 import { cn } from '@/utils';
 
 interface HorseGenProps {
@@ -39,7 +40,11 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
         )}
       >
         {generation.colors.map((color, index) => {
-          const horseId = `${breed}-gen${generation.id}-color${index}`;
+          const horseId = formatHorseId({
+            breed: breed,
+            generation: generation.id,
+            colorId: index,
+          });
 
           return (
             <li key={horseId} className="border-2 flex-col rounded-xl basis-[49%] sm:basis-0">
