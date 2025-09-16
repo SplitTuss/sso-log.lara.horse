@@ -15,6 +15,12 @@ export function HorseBreed({ breed }: HorseBreedProps) {
     setIsExpanded(!isExpanded);
   };
 
+  const hasNoColors = breed.generations.every((gen) => gen.colors.length === 0);
+
+  if (breed.generations.length === 0 || hasNoColors) {
+    return null;
+  }
+
   return (
     <li>
       <div

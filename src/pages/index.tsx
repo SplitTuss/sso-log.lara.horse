@@ -20,7 +20,11 @@ export default function Home() {
           <Filter onHideUnavailable={setShouldHideUnavailable} />
         </div>
 
-        <Horses searchInput={searchInput} hideUnavailable={shouldHideUnavailable} />
+        <Horses
+          searchInput={searchInput}
+          hideUnavailable={shouldHideUnavailable}
+          showHorseIds={undefined}
+        />
       </div>
 
       <footer>

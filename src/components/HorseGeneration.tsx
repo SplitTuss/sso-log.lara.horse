@@ -17,6 +17,10 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
     setIsExpanded(!isExpanded);
   };
 
+  if (generation.colors.length === 0) {
+    return null;
+  }
+
   return (
     <li>
       <div
