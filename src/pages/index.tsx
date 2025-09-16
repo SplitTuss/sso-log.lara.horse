@@ -3,8 +3,11 @@ import Header from '@/components/Header';
 import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
 import { SearchBar } from '@/components/SearchBar';
+import { Checkbox } from '@/components/Checkbox';
+
 export default function Home() {
   const [searchInput, setSearchInput] = useState('');
+  const [checked, setChecked] = useState(false);
 
   return (
     <>
@@ -12,10 +15,25 @@ export default function Home() {
 
       <div className="max-w-6xl px-2 mx-auto">
         <Accounts />
+        <div className="flex flex-row">
+          <SearchBar onSearchChange={setSearchInput} />
 
-        <SearchBar onSearchChange={setSearchInput} />
+          <div className="flex flex-row items-center gap-2">
+            Hide unavailable:
+            <Checkbox
+              checked={checked}
+              onCheckedChange={(value) => {
+                if (value === 'indeterminate') {
+                  setChecked(false);
+                } else {
+                  setChecked(value);
+                }
+              }}
+            />
+          </div>
+        </div>
 
-        <Horses searchInput={searchInput} />
+        <Horses searchInput={searchInput} hideUnavailable={checked} />
       </div>
 
       <footer>
