@@ -27,7 +27,6 @@ export default function Home() {
         <Horses
           searchInput={searchInput}
           hideUnavailable={shouldHideUnavailable}
-          showHorseIds={undefined}
           hideNotOwned={shouldHideNotOwned}
         />
       </div>

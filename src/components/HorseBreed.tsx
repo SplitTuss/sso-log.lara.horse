@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { HorseGeneration } from './HorseGeneration';
-import { HorseData } from '@/data/horseData';
+import { FormattedHorseData } from '@/data/horseData';
 import { cn } from '@/utils';
 
 interface HorseBreedProps {
-  breed: HorseData[number];
+  breed: FormattedHorseData[number];
 }
 
 export function HorseBreed({ breed }: HorseBreedProps) {

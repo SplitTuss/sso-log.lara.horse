@@ -8,9 +8,7 @@ interface FilterProps {
   onHideNotOwned: (value: boolean) => void;
 }
 
-// add onHideNotOwned next to onHideUnavailable
-
-export const Filter = ({ onHideUnavailable }: FilterProps) => {
+export const Filter = ({ onHideUnavailable, onHideNotOwned }: FilterProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -37,7 +35,7 @@ export const Filter = ({ onHideUnavailable }: FilterProps) => {
           />
         </div>
 
-        {/* <div>
+        <div>
           only show owned:
           <Checkbox
             onCheckedChange={(value) => {
@@ -48,7 +46,7 @@ export const Filter = ({ onHideUnavailable }: FilterProps) => {
               }
             }}
           />
-        </div> */}
+        </div>
       </div>
     </div>
   );
