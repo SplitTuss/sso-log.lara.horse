@@ -8,6 +8,7 @@ import { Filter } from '@/components/Filter';
 export default function Home() {
   const [searchInput, setSearchInput] = useState('');
   const [shouldHideUnavailable, setShouldHideUnavailable] = useState(false);
+  const [shouldHideNotOwned, setShouldHideNotOwned] = useState(false);
 
   return (
     <>
@@ -15,15 +16,19 @@ export default function Home() {
 
       <div className="max-w-6xl px-2 mx-auto">
         <Accounts />
-        <div className="flex flex-row">
+        <div>
           <SearchBar onSearchChange={setSearchInput} />
-          <Filter onHideUnavailable={setShouldHideUnavailable} />
+          <Filter
+            onHideUnavailable={setShouldHideUnavailable}
+            onHideNotOwned={setShouldHideNotOwned}
+          />
         </div>
 
         <Horses
           searchInput={searchInput}
           hideUnavailable={shouldHideUnavailable}
           showHorseIds={undefined}
+          hideNotOwned={shouldHideNotOwned}
         />
       </div>
 
