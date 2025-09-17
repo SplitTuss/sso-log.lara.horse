@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChromePicker } from 'react-color';
-import { Trash2Icon } from 'lucide-react';
+import { Trash2Icon, EyeIcon, EyeOffIcon } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -26,6 +26,8 @@ export function Accounts() {
     updateHorseOwner,
     removeData,
     refetchData,
+    updateAccountVisibility,
+    updateAllAccountVisibility,
   } = useDb();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -89,10 +91,19 @@ export function Accounts() {
     setEditingAccount(null);
   };
 
+  const areAnyAccountsVisible = accounts?.some(({ isVisible }) => isVisible);
+
   return (
     <div className="flex flex-row justify-end">
       <div className="w-md border-primary border-1 rounded-xl p-4 my-4">
         <div className="flex flex-row justify-around pt-2 pb-2">
+          <button
+            onClick={() => updateAllAccountVisibility(!areAnyAccountsVisible)}
+            className="cursor-pointer"
+          >
+            {areAnyAccountsVisible ? <EyeIcon /> : <EyeOffIcon />}
+          </button>
+
           <Dialog
             open={isOpen}
             onOpenChange={(open) => {
@@ -145,7 +156,15 @@ export function Accounts() {
               key={index}
               className="flex flex-row items-center justify-between bg-accent rounded-sm py-1 px-2"
             >
+              <button
+                onClick={() => updateAccountVisibility(account.id, !account.isVisible)}
+                className="cursor-pointer"
+              >
+                {account.isVisible ? <EyeIcon /> : <EyeOffIcon />}
+              </button>
+
               <span style={{ color: account.color }}>{account.name}</span>
+
               <div className="flex flex-row items-center gap-2">
                 <Button size="sm" onClick={() => handleEditAccount(account)}>
                   edit

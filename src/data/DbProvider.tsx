@@ -17,11 +17,15 @@ import {
 
 type OmitObjectType<Type> = Omit<Type, typeof DB_INDEX.OBJECT_TYPE.key>;
 
+type AccountWithVisibility = DBAccount & {
+  isVisible: boolean;
+};
+
 interface DbContextType {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   db: any;
   error: Error | null;
-  accounts: Array<DBAccount> | null;
+  accounts: Array<AccountWithVisibility> | null;
   horseOwners: Array<DBHorseOwner> | null;
   addAccount: (input: OmitObjectType<CreateDBAccount>) => Promise<DBAccount | undefined>;
   updateAccount: (input: OmitObjectType<DBAccount>) => Promise<DBAccount | undefined>;
@@ -31,6 +35,8 @@ interface DbContextType {
   refetchData: () => Promise<void>;
   exportToFile: () => Promise<void>;
   importFromFile: (file: string) => Promise<void>;
+  updateAccountVisibility: (id: string, isVisible: boolean) => void;
+  updateAllAccountVisibility: (isVisible: boolean) => void;
 }
 
 const DbContext = createContext<DbContextType>({
@@ -46,6 +52,8 @@ const DbContext = createContext<DbContextType>({
   refetchData: () => Promise.resolve(undefined),
   exportToFile: () => Promise.resolve(undefined),
   importFromFile: () => Promise.resolve(undefined),
+  updateAccountVisibility: () => {},
+  updateAllAccountVisibility: () => {},
 });
 
 export const useDb = () => {
@@ -64,7 +72,7 @@ export const DbProvider = ({ children }: DbProviderProps) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [db, setDb] = useState<any>(null);
   const [error, setError] = useState<Error | null>(null);
-  const [accounts, setAccounts] = useState<Array<DBAccount> | null>(null);
+  const [accounts, setAccounts] = useState<Array<AccountWithVisibility> | null>(null);
   const [horseOwners, setHorseOwners] = useState<Array<DBHorseOwner> | null>(null);
 
   const handleLoadData = useCallback(async () => {
@@ -81,8 +89,17 @@ export const DbProvider = ({ children }: DbProviderProps) => {
       }),
     ]);
 
-    if (Array.isArray(accountsResult)) setAccounts(accountsResult);
-    if (Array.isArray(horseOwnersResult)) setHorseOwners(horseOwnersResult);
+    if (Array.isArray(horseOwnersResult)) {
+      setHorseOwners(horseOwnersResult);
+    }
+    if (Array.isArray(accountsResult)) {
+      setAccounts(
+        accountsResult.map((account) => ({
+          ...account,
+          isVisible: true,
+        })),
+      );
+    }
   }, [db]);
 
   useEffect(() => {
@@ -152,6 +169,28 @@ export const DbProvider = ({ children }: DbProviderProps) => {
     [db],
   );
 
+  const updateAccountVisibility: DbContextType['updateAccountVisibility'] = (id, isVisible) => {
+    if (!accounts) return;
+
+    const updatedAccounts = accounts.map((oldAccount) => ({
+      ...oldAccount,
+      isVisible: id === oldAccount.id ? isVisible : oldAccount.isVisible,
+    }));
+
+    setAccounts(updatedAccounts);
+  };
+
+  const updateAllAccountVisibility: DbContextType['updateAllAccountVisibility'] = (isVisible) => {
+    if (!accounts) return;
+
+    const updatedAccounts = accounts.map((oldAccount) => ({
+      ...oldAccount,
+      isVisible: isVisible,
+    }));
+
+    setAccounts(updatedAccounts);
+  };
+
   return (
     <DbContext.Provider
       value={{
@@ -167,6 +206,8 @@ export const DbProvider = ({ children }: DbProviderProps) => {
         refetchData: handleLoadData,
         exportToFile,
         importFromFile,
+        updateAccountVisibility,
+        updateAllAccountVisibility,
       }}
     >
       {children}
