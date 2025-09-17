@@ -8,7 +8,9 @@ interface FilterProps {
   onHideNotOwned: (value: boolean) => void;
 }
 
-export const Filter = ({ onHideUnavailable, onHideNotOwned }: FilterProps) => {
+// add onHideNotOwned next to onHideUnavailable
+
+export const Filter = ({ onHideUnavailable }: FilterProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
