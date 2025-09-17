@@ -16,7 +16,12 @@ interface HorseOwnersProps {
 export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const { accounts, horseOwners, addHorseOwner, removeData, refetchData } = useDb();
 
+  const visibleAccounts = (accounts ?? [])
+    .filter(({ isVisible }) => isVisible)
+    .map((account) => account.id);
+
   const currentOwners = (horseOwners ?? []).filter((owner) => owner.horseId === horseId);
+  const visibleOwners = currentOwners.filter((owner) => visibleAccounts.includes(owner.accountId));
 
   const [selectedAccount, setSelectedAccount] = useState('');
   const [horseNameFirstInput, setHorseNameFirstInput] = useState<string | null>(null);
@@ -172,9 +177,10 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
           </ul>
         </DialogContent>
       </Dialog>
+
       <div className="m-2 p-2 bg-accent w-36 h-20 rounded-xl overflow-scroll">
         <ul className="text-center">
-          {currentOwners.map((horseOwner) => (
+          {visibleOwners.map((horseOwner) => (
             <li key={horseOwner.id}>
               <span style={{ color: horseOwner.accountColor }}>
                 {horseOwner.horseFirstName + horseOwner.horseSecondName}
