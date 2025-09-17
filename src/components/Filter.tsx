@@ -18,7 +18,7 @@ export const Filter = ({ onHideUnavailable }: FilterProps) => {
   };
 
   return (
-    <div className="text-center border-1 rounded-xl">
+    <div className="text-center">
       <button className="hover:cursor-pointer" onClick={toggleExpand}>
         <FunnelIcon className="text-muted-foreground mr-2" size={20} />
       </button>

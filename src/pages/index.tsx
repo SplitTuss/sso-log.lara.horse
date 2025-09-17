@@ -16,12 +16,12 @@ export default function Home() {
 
       <div className="max-w-6xl px-2 mx-auto">
         <Accounts />
-        <div>
-          <SearchBar onSearchChange={setSearchInput} />
+        <div className="flex flex-row">
           <Filter
             onHideUnavailable={setShouldHideUnavailable}
             onHideNotOwned={setShouldHideNotOwned}
           />
+          <SearchBar onSearchChange={setSearchInput} />
         </div>
 
         <Horses
