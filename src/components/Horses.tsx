@@ -7,9 +7,15 @@ interface HorsesProps {
   searchInput: string;
   hideUnavailable: boolean;
   hideNotOwned: boolean;
+  selectedGenerations: number[];
 }
 
-export function Horses({ searchInput, hideUnavailable, hideNotOwned }: HorsesProps) {
+export function Horses({
+  searchInput,
+  hideUnavailable,
+  hideNotOwned,
+  selectedGenerations,
+}: HorsesProps) {
   const { accounts, horseOwners } = useDb();
 
   const visibleAccounts = (accounts ?? [])
@@ -25,6 +31,10 @@ export function Horses({ searchInput, hideUnavailable, hideNotOwned }: HorsesPro
     .map((horse) => ({
       ...horse,
       generations: horse.generations
+        .filter(
+          (gen) =>
+            selectedGenerations.length === 0 || selectedGenerations.includes(Math.floor(gen.id)),
+        )
         .filter((gen) => !hideUnavailable || gen.forSale)
         .map((gen) => ({
           ...gen,

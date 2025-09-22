@@ -9,6 +9,7 @@ export default function Home() {
   const [searchInput, setSearchInput] = useState('');
   const [shouldHideUnavailable, setShouldHideUnavailable] = useState(false);
   const [shouldHideNotOwned, setShouldHideNotOwned] = useState(false);
+  const [gens, setGens] = useState<number[]>([]);
 
   return (
     <>
@@ -16,18 +17,23 @@ export default function Home() {
 
       <div className="max-w-6xl px-2 mx-auto">
         <Accounts />
-        <div className="flex flex-row">
+        <div>
+          <SearchBar onSearchChange={setSearchInput} />
+        </div>
+        <div className="flex sm:flex-row flex-col justify-center">
           <Filter
             onHideUnavailable={setShouldHideUnavailable}
             onHideNotOwned={setShouldHideNotOwned}
+            gens={gens}
+            onGensChange={setGens}
           />
-          <SearchBar onSearchChange={setSearchInput} />
         </div>
 
         <Horses
           searchInput={searchInput}
           hideUnavailable={shouldHideUnavailable}
           hideNotOwned={shouldHideNotOwned}
+          selectedGenerations={gens}
         />
       </div>
 
