@@ -4,12 +4,13 @@ import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
 import { SearchBar } from '@/components/SearchBar';
 import { Filter } from '@/components/Filter';
+import { AVAILABLE_GENERATIONS } from '@/components/GenerationDropdown';
 
 export default function Home() {
   const [searchInput, setSearchInput] = useState('');
   const [shouldHideUnavailable, setShouldHideUnavailable] = useState(false);
   const [shouldHideNotOwned, setShouldHideNotOwned] = useState(false);
-  const [gens, setGens] = useState<number[]>([]);
+  const [visibleGenerations, setVisibleGenerationsChange] = useState(AVAILABLE_GENERATIONS);
 
   return (
     <>
@@ -24,8 +25,8 @@ export default function Home() {
           <Filter
             onHideUnavailable={setShouldHideUnavailable}
             onHideNotOwned={setShouldHideNotOwned}
-            gens={gens}
-            onGensChange={setGens}
+            visibleGenerations={visibleGenerations}
+            onVisibleGenerationsChange={setVisibleGenerationsChange}
           />
         </div>
 
@@ -33,7 +34,7 @@ export default function Home() {
           searchInput={searchInput}
           hideUnavailable={shouldHideUnavailable}
           hideNotOwned={shouldHideNotOwned}
-          selectedGenerations={gens}
+          selectedGenerations={visibleGenerations}
         />
       </div>
 

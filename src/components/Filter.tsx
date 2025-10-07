@@ -1,17 +1,22 @@
 import { FunnelIcon } from 'lucide-react';
-import { Checkbox } from './Checkbox';
 import { useState } from 'react';
 import { cn } from '@/utils';
-import { MultiSelect } from './MultiSelect';
+import { Checkbox } from './Checkbox';
+import { GenerationDropdown } from './GenerationDropdown';
 
 interface FilterProps {
   onHideUnavailable: (value: boolean) => void;
   onHideNotOwned: (value: boolean) => void;
-  gens: number[];
-  onGensChange: (next: number[]) => void;
+  visibleGenerations: number[];
+  onVisibleGenerationsChange: (value: number[]) => void;
 }
 
-export const Filter = ({ onHideUnavailable, onHideNotOwned, gens, onGensChange }: FilterProps) => {
+export const Filter = ({
+  onHideUnavailable,
+  onHideNotOwned,
+  visibleGenerations,
+  onVisibleGenerationsChange,
+}: FilterProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -53,19 +58,11 @@ export const Filter = ({ onHideUnavailable, onHideNotOwned, gens, onGensChange }
             />
           </div>
         </div>
-        <div>
-          <MultiSelect
-            options={[
-              { label: 'generation 1', value: 1 },
-              { label: 'generation 2', value: 2 },
-              { label: 'generation 3', value: 3 },
-            ]}
-            value={gens}
-            onChange={onGensChange}
-            placeholder="generations"
-            className="mb-2"
-          />
-        </div>
+
+        <GenerationDropdown
+          selectedGens={visibleGenerations}
+          onChange={onVisibleGenerationsChange}
+        />
       </div>
     </div>
   );
