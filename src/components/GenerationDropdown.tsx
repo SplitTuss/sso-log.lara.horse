@@ -29,7 +29,7 @@ export function GenerationDropdown({ selectedGens, onChange }: GenerationDropdow
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="mb-1">
         <Button variant="outline">
           generations <ChevronDown />
         </Button>
