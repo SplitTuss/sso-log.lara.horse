@@ -5,7 +5,7 @@ import { ListOfSecondNames } from './ListOfSecondNames';
 import { cn } from '@/utils';
 
 export function ListOfAllNames() {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);

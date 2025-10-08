@@ -4,7 +4,7 @@ import { HORSE_NAMES } from '@/data/horseNames';
 import { cn } from '@/utils';
 
 export function ListOfSecondNames() {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
