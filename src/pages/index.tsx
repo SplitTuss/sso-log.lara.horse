@@ -4,6 +4,7 @@ import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
 import { SearchBar } from '@/components/SearchBar';
 import { Filter } from '@/components/Filter';
+import { ListOfAllNames } from '@/components/ListOfAllNames';
 import { AVAILABLE_GENERATIONS } from '@/components/GenerationDropdown';
 
 export default function Home() {
@@ -18,6 +19,9 @@ export default function Home() {
 
       <div className="max-w-6xl px-2 mx-auto">
         <Accounts />
+        <div>
+          <ListOfAllNames />
+        </div>
         <div>
           <SearchBar onSearchChange={setSearchInput} />
         </div>
