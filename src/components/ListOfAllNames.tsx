@@ -47,6 +47,27 @@ export function ListOfAllNames() {
     };
   }, [horseOwners]);
 
+  const namesList = useMemo(() => {
+    if (showOwned) {
+      return {
+        first: HORSE_NAMES.first.filter((name) => namesUsedMap.first[name]),
+        second: HORSE_NAMES.second.filter((name) => namesUsedMap.second[name]),
+      };
+    }
+
+    if (showNotOwned) {
+      return {
+        first: HORSE_NAMES.first.filter((name) => !namesUsedMap.first[name]),
+        second: HORSE_NAMES.second.filter((name) => !namesUsedMap.second[name]),
+      };
+    }
+
+    return {
+      first: HORSE_NAMES.first,
+      second: HORSE_NAMES.second,
+    };
+  }, [namesUsedMap, showNotOwned, showOwned]);
+
   return (
     <>
       <div className="flex flex-row items-center text-primary text-xl bg-accent p-2 mb-2 rounded-xl">
@@ -82,11 +103,11 @@ export function ListOfAllNames() {
         </div>
       </div>
       <div className={cn('flex flex-col mb-2', !isExpanded && 'hidden')}>
-        <ListOfNames namesUsedMap={namesUsedMap.first} title="first" nameList={HORSE_NAMES.first} />
+        <ListOfNames namesUsedMap={namesUsedMap.first} title="first" nameList={namesList.first} />
         <ListOfNames
           namesUsedMap={namesUsedMap.second}
           title="second"
-          nameList={HORSE_NAMES.second}
+          nameList={namesList.second}
         />
       </div>
     </>
