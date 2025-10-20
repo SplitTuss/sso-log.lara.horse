@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { ChevronDown, UserCheckIcon, UserMinusIcon } from 'lucide-react';
-import { ListOfFirstNames } from './ListOfFirstNames';
-import { ListOfSecondNames } from './ListOfSecondNames';
+import { ListOfNames } from './ListOfNames';
+import { HORSE_NAMES } from '@/data/horseNames';
 import { cn } from '@/utils';
 import { useDb } from '@/data/DbProvider';
 
@@ -68,9 +68,12 @@ export function ListOfAllNames() {
         </div>
       </div>
       <div className={cn('flex flex-col mb-2', !isExpanded && 'hidden')}>
-        <ListOfFirstNames namesUsedMap={namesUsedMap.first} />
-
-        <ListOfSecondNames namesUsedMap={namesUsedMap.second} />
+        <ListOfNames namesUsedMap={namesUsedMap.first} title="first" nameList={HORSE_NAMES.first} />
+        <ListOfNames
+          namesUsedMap={namesUsedMap.second}
+          title="second"
+          nameList={HORSE_NAMES.second}
+        />
       </div>
     </>
   );

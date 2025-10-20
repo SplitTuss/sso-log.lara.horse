@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { HORSE_NAMES } from '@/data/horseNames';
 import { Badge } from '@/components/Badge';
 import { cn } from '@/utils';
 import { useDb } from '@/data/DbProvider';
 
-interface ListOfFirstNamesProps {
+interface ListOfNamesProps {
   namesUsedMap: Record<string, Record<string, number>>;
+  title: string;
+  nameList: Array<string>;
 }
 
-export function ListOfFirstNames({ namesUsedMap }: ListOfFirstNamesProps) {
+export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -31,11 +32,11 @@ export function ListOfFirstNames({ namesUsedMap }: ListOfFirstNamesProps) {
             !isExpanded && 'transition-transform rotate-180',
           )}
         />
-        first
+        {title}
       </div>
 
       <ul className={cn('px-2 grid sm:grid-cols-4 grid-cols-2', !isExpanded && 'hidden')}>
-        {HORSE_NAMES.first.map((name, index) => (
+        {nameList.map((name, index) => (
           <li className="py-0.5" key={index}>
             {name}
 
