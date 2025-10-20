@@ -5,7 +5,7 @@ import { HORSE_NAMES } from '@/data/horseNames';
 import { cn } from '@/utils';
 
 interface ListOfFirstNamesProps {
-  namesUsedMap: Record<string, number>;
+  namesUsedMap: Record<string, Record<string, number>>;
 }
 
 export function ListOfFirstNames({ namesUsedMap }: ListOfFirstNamesProps) {

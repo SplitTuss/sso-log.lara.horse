@@ -15,20 +15,27 @@ export function ListOfAllNames() {
   const { horseOwners } = useDb();
 
   const namesUsedMap = useMemo(() => {
-    const firstNameCount: Record<string, number> = {};
-    const secondNameCount: Record<string, number> = {};
+    const firstNameCount: Record<string, Record<string, number>> = {};
+    const secondNameCount: Record<string, Record<string, number>> = {};
 
-    horseOwners?.forEach(({ horseFirstName, horseSecondName }) => {
-      if (firstNameCount[horseFirstName]) {
-        firstNameCount[horseFirstName]++;
-      } else {
-        firstNameCount[horseFirstName] = 1;
+    horseOwners?.forEach(({ horseFirstName, horseSecondName, accountId }) => {
+      if (!firstNameCount[horseFirstName]) {
+        firstNameCount[horseFirstName] = {};
+      }
+      if (!secondNameCount[horseSecondName]) {
+        secondNameCount[horseSecondName] = {};
       }
 
-      if (secondNameCount[horseSecondName]) {
-        secondNameCount[horseSecondName]++;
+      if (firstNameCount[horseFirstName][accountId]) {
+        firstNameCount[horseFirstName][accountId]++;
       } else {
-        secondNameCount[horseSecondName] = 1;
+        firstNameCount[horseFirstName][accountId] = 1;
+      }
+
+      if (secondNameCount[horseSecondName][accountId]) {
+        secondNameCount[horseSecondName][accountId]++;
+      } else {
+        secondNameCount[horseSecondName][accountId] = 1;
       }
     });
 
