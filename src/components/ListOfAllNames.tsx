@@ -7,6 +7,8 @@ import { useDb } from '@/data/DbProvider';
 
 export function ListOfAllNames() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showNotOwned, setShowNotOwned] = useState(false);
+  const [showOwned, setShowOwned] = useState(false);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -59,11 +61,23 @@ export function ListOfAllNames() {
           Horse Names
         </div>
         <div>
-          <button className="cursor-pointer ml-2">
-            <UserCheckIcon />
+          <button
+            className="cursor-pointer ml-2"
+            onClick={() => {
+              setShowOwned(!showOwned);
+              setShowNotOwned(false);
+            }}
+          >
+            <UserCheckIcon className={showOwned ? 'text-primary' : 'text-muted-foreground'} />
           </button>
-          <button className="cursor-pointer ml-2">
-            <UserMinusIcon />
+          <button
+            className="cursor-pointer ml-2"
+            onClick={() => {
+              setShowNotOwned(!showNotOwned);
+              setShowOwned(false);
+            }}
+          >
+            <UserMinusIcon className={showNotOwned ? 'text-primary' : 'text-muted-foreground'} />
           </button>
         </div>
       </div>
