@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Badge } from '@/components/Badge';
 import { HORSE_NAMES } from '@/data/horseNames';
 import { cn } from '@/utils';
+import { useDb } from '@/data/DbProvider';
 
 interface ListOfSecondNamesProps {
   namesUsedMap: Record<string, Record<string, number>>;
@@ -14,7 +16,7 @@ export function ListOfSecondNames({ namesUsedMap }: ListOfSecondNamesProps) {
     setIsExpanded(!isExpanded);
   };
 
-  console.log({ namesUsedMap });
+  const { accounts } = useDb();
 
   return (
     <>
@@ -36,6 +38,24 @@ export function ListOfSecondNames({ namesUsedMap }: ListOfSecondNamesProps) {
         {HORSE_NAMES.second.map((name, index) => (
           <li className="py-0.5" key={index}>
             {name}
+
+            {accounts?.map((account) => {
+              if (!account.isVisible) return;
+
+              const timesUsed = namesUsedMap?.[name]?.[account.id];
+              if (!timesUsed) return;
+
+              return (
+                <Badge
+                  key={`${account.id}-${name}`}
+                  variant="default"
+                  className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+                  style={{ backgroundColor: account.color }}
+                >
+                  {timesUsed}
+                </Badge>
+              );
+            })}
           </li>
         ))}
       </ul>
