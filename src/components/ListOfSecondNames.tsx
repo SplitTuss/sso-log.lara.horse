@@ -3,12 +3,18 @@ import { ChevronDown } from 'lucide-react';
 import { HORSE_NAMES } from '@/data/horseNames';
 import { cn } from '@/utils';
 
-export function ListOfSecondNames() {
+interface ListOfSecondNamesProps {
+  namesUsedMap: Record<string, number>;
+}
+
+export function ListOfSecondNames({ namesUsedMap }: ListOfSecondNamesProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
+
+  console.log({ namesUsedMap });
 
   return (
     <>
