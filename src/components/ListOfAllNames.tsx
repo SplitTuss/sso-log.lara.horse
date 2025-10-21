@@ -14,7 +14,7 @@ export function ListOfAllNames() {
     setIsExpanded(!isExpanded);
   };
 
-  const { horseOwners } = useDb();
+  const { horseOwners, accounts } = useDb();
 
   const namesUsedMap = useMemo(() => {
     const firstNameCount: Record<string, Record<string, number>> = {};
@@ -48,17 +48,47 @@ export function ListOfAllNames() {
   }, [horseOwners]);
 
   const namesList = useMemo(() => {
+    const accountVisibilityMap: Record<string, boolean> = {};
+
+    accounts?.forEach((acc) => {
+      accountVisibilityMap[acc.id] = acc.isVisible;
+    });
+
     if (showOwned) {
       return {
-        first: HORSE_NAMES.first.filter((name) => namesUsedMap.first[name]),
-        second: HORSE_NAMES.second.filter((name) => namesUsedMap.second[name]),
+        first: HORSE_NAMES.first.filter((name) => {
+          if (!namesUsedMap.first[name]) return false;
+
+          return Object.keys(namesUsedMap.first[name]).some(
+            (accountId) => accountVisibilityMap[accountId],
+          );
+        }),
+        second: HORSE_NAMES.second.filter((name) => {
+          if (!namesUsedMap.second[name]) return false;
+
+          return Object.keys(namesUsedMap.second[name]).some(
+            (accountId) => accountVisibilityMap[accountId],
+          );
+        }),
       };
     }
 
     if (showNotOwned) {
       return {
-        first: HORSE_NAMES.first.filter((name) => !namesUsedMap.first[name]),
-        second: HORSE_NAMES.second.filter((name) => !namesUsedMap.second[name]),
+        first: HORSE_NAMES.first.filter((name) => {
+          if (!namesUsedMap.first[name]) return true;
+
+          return Object.keys(namesUsedMap.first[name]).every(
+            (accountId) => !accountVisibilityMap[accountId],
+          );
+        }),
+        second: HORSE_NAMES.second.filter((name) => {
+          if (!namesUsedMap.second[name]) return true;
+
+          return Object.keys(namesUsedMap.second[name]).every(
+            (accountId) => !accountVisibilityMap[accountId],
+          );
+        }),
       };
     }
 
@@ -66,7 +96,7 @@ export function ListOfAllNames() {
       first: HORSE_NAMES.first,
       second: HORSE_NAMES.second,
     };
-  }, [namesUsedMap, showNotOwned, showOwned]);
+  }, [namesUsedMap, showNotOwned, showOwned, accounts]);
 
   return (
     <>
