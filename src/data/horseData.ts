@@ -1122,6 +1122,8 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'magic-horses/gen3/luna.webp' },
           { imageUrl: 'magic-horses/gen3/monarch.webp' },
           //halloween2025?
+          { imageUrl: 'magic-horses/gen3/bixbite.webp' },
+          { imageUrl: 'magic-horses/gen3/galvatair.webp' },
           //winter 2025?
 
           //other magic horses:
