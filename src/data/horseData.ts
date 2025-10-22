@@ -13,6 +13,9 @@ type HorseData<ColorType = Color> = Array<{
 
 const IMAGE_URL_PREFIX = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/';
 
+//next horses to go: gen 1 Jorvik Pony on Jan.07. (last updated oct.22)
+//last horse deleted: Icelandic horse gen2, Shire gen 2 on oct.15.
+
 /* eslint-disable prettier/prettier */
 const HORSE_DATA: HorseData = [
   {
@@ -747,7 +750,7 @@ const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
-        forSale: true,
+        forSale: false,
         colors: [
           { imageUrl: 'icelandic-horse/gen2-1.webp' },
           { imageUrl: 'icelandic-horse/gen2-2.webp' },
@@ -1450,7 +1453,7 @@ const HORSE_DATA: HorseData = [
     generations: [
       {
         id: 2,
-        forSale: true,
+        forSale: false,
         colors: [
           { imageUrl: 'shire/gen2-1.webp' },
           { imageUrl: 'shire/gen2-2.webp' },
