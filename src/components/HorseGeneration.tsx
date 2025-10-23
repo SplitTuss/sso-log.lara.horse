@@ -39,7 +39,7 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
       </div>
       <ul
         className={cn(
-          'flex flex-row flex-wrap item justify-between gap-y-2 sm:justify-start sm:gap-6',
+          'flex flex-row flex-wrap justify-between gap-y-2 sm:justify-start sm:gap-6',
           !isExpanded && 'hidden',
         )}
       >

@@ -24,7 +24,7 @@ export function HorseBreed({ breed }: HorseBreedProps) {
   return (
     <li>
       <div
-        className="flex flex-row items-center text-primary text-2xl bg-accent p-2 mb-2 rounded-xl cursor-pointer"
+        className="flex flex-row items-center text-primary text-xl bg-accent p-2 mb-2 rounded-xl cursor-pointer"
         onClick={toggleExpand}
       >
         <ChevronDown
@@ -36,7 +36,7 @@ export function HorseBreed({ breed }: HorseBreedProps) {
         />
         {breed.breed}
       </div>
-      <ul className={cn('flex flex-col gap-6', !isExpanded && 'hidden')}>
+      <ul className={cn('flex flex-col gap-4', !isExpanded && 'hidden')}>
         {breed.generations.map((generation, index) => (
           <HorseGeneration breed={breed.breed} generation={generation} key={index} />
         ))}

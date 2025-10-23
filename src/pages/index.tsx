@@ -25,7 +25,7 @@ export default function Home() {
         <div>
           <SearchBar onSearchChange={setSearchInput} />
         </div>
-        <div className="flex sm:flex-row flex-col justify-center">
+        <div className="flex sm:flex-row flex-col justify-center mb-2">
           <Filter
             onHideUnavailable={setShouldHideUnavailable}
             onHideNotOwned={setShouldHideNotOwned}

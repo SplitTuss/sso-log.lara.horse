@@ -51,7 +51,7 @@ export function Horses({
     }));
 
   return (
-    <ul className="flex flex-col gap-6">
+    <ul className="flex flex-col gap-4">
       {filteredHorses.map((breed, index) => (
         <HorseBreed key={index} breed={breed} />
       ))}

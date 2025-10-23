@@ -117,7 +117,7 @@ export function Accounts() {
 
             <DialogContent className="sm:max-w-sm">
               <DialogHeader>
-                <DialogTitle className="text-center">add a new account</DialogTitle>
+                <DialogTitle className="text-center">add new or edit account</DialogTitle>
                 <DialogDescription className="text-center">
                   type in the name and pick a color
                 </DialogDescription>

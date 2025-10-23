@@ -100,7 +100,7 @@ export function ListOfAllNames() {
 
   return (
     <>
-      <div className="flex flex-row items-center text-primary text-xl bg-accent p-2 mb-2 rounded-xl">
+      <div className="flex flex-row text-primary text-xl bg-accent p-2 mb-2 rounded-xl">
         <div className="flex flex-row text-xl cursor-pointer" onClick={toggleExpand}>
           <ChevronDown
             size={30}
@@ -111,7 +111,7 @@ export function ListOfAllNames() {
           />
           Horse Names
         </div>
-        <div>
+        <div className="flex flex-row ml-2">
           <button
             className="cursor-pointer ml-2"
             onClick={() => {

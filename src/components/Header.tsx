@@ -20,7 +20,9 @@ export function Header() {
       </li>
       <li>
         <a href="https://ssodb.bplaced.net/db/en/horses.html">
-          <Button variant="secondary">StarStableDatabase</Button>
+          <Button className="text-pink-500" variant="secondary">
+            original SSO-DB
+          </Button>
         </a>
       </li>
     </ol>
