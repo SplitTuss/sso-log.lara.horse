@@ -112,7 +112,7 @@ export function Accounts() {
             }}
           >
             <DialogTrigger asChild>
-              <Button size="lg">add account</Button>
+              <Button>add account</Button>
             </DialogTrigger>
 
             <DialogContent className="sm:max-w-sm">
@@ -154,7 +154,7 @@ export function Accounts() {
           {accounts?.map((account, index) => (
             <li
               key={index}
-              className="flex flex-row items-center justify-between bg-accent rounded-sm py-1 px-2"
+              className="flex flex-row items-center justify-between bg-accent rounded-sm py-1 px-4"
             >
               <button
                 onClick={() => updateAccountVisibility(account.id, !account.isVisible)}
