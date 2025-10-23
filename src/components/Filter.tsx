@@ -30,33 +30,31 @@ export const Filter = ({
       </button>
 
       <div className={cn('flex sm:flex-row flex-col items-center gap-2', !isExpanded && 'hidden')}>
-        <div>
-          <div>
-            hide unavailable:
-            <Checkbox
-              className="ml-1"
-              onCheckedChange={(value) => {
-                if (value === 'indeterminate') {
-                  onHideUnavailable(false);
-                } else {
-                  onHideUnavailable(value);
-                }
-              }}
-            />
-          </div>
-          <div>
-            only show owned:
-            <Checkbox
-              className="ml-1"
-              onCheckedChange={(value) => {
-                if (value === 'indeterminate') {
-                  onHideNotOwned(false);
-                } else {
-                  onHideNotOwned(value);
-                }
-              }}
-            />
-          </div>
+        <div className="flex flex-row items-center">
+          hide unavailable
+          <Checkbox
+            className="ml-1"
+            onCheckedChange={(value) => {
+              if (value === 'indeterminate') {
+                onHideUnavailable(false);
+              } else {
+                onHideUnavailable(value);
+              }
+            }}
+          />
+        </div>
+        <div className="flex flex-row items-center ml-2 mr-2">
+          only show owned
+          <Checkbox
+            className="ml-1"
+            onCheckedChange={(value) => {
+              if (value === 'indeterminate') {
+                onHideNotOwned(false);
+              } else {
+                onHideNotOwned(value);
+              }
+            }}
+          />
         </div>
 
         <GenerationDropdown

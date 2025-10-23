@@ -95,8 +95,8 @@ export function Accounts() {
 
   return (
     <div className="flex flex-row justify-end">
-      <div className="w-md border-primary border-1 rounded-xl p-4 my-4">
-        <div className="flex flex-row justify-around pt-2 pb-2">
+      <div className="w-md border-primary border-1 rounded-xl p-4 my-2">
+        <div className="flex flex-row justify-around pb-2">
           <button
             onClick={() => updateAllAccountVisibility(!areAnyAccountsVisible)}
             className="cursor-pointer"
@@ -117,7 +117,7 @@ export function Accounts() {
 
             <DialogContent className="sm:max-w-sm">
               <DialogHeader>
-                <DialogTitle className="text-center">add new or edit account</DialogTitle>
+                <DialogTitle className="text-center">add new / edit account</DialogTitle>
                 <DialogDescription className="text-center">
                   type in the name and pick a color
                 </DialogDescription>
