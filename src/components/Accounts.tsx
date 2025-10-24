@@ -99,7 +99,7 @@ export function Accounts() {
         <div className="flex flex-row justify-around pb-2">
           <button
             onClick={() => updateAllAccountVisibility(!areAnyAccountsVisible)}
-            className="cursor-pointer"
+            className="cursor-pointer text-muted-foreground"
           >
             {areAnyAccountsVisible ? <EyeIcon /> : <EyeOffIcon />}
           </button>
@@ -158,7 +158,7 @@ export function Accounts() {
             >
               <button
                 onClick={() => updateAccountVisibility(account.id, !account.isVisible)}
-                className="cursor-pointer"
+                className="cursor-pointer text-muted-foreground"
               >
                 {account.isVisible ? <EyeIcon /> : <EyeOffIcon />}
               </button>

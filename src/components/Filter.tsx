@@ -29,7 +29,12 @@ export const Filter = ({
         <FunnelIcon className="text-muted-foreground" size={20} />
       </button>
 
-      <div className={cn('flex sm:flex-row flex-col items-center gap-2', !isExpanded && 'hidden')}>
+      <div
+        className={cn(
+          'flex sm:flex-row flex-col items-center gap-2 text-muted-foreground',
+          !isExpanded && 'hidden',
+        )}
+      >
         <div className="flex flex-row items-center">
           hide unavailable
           <Checkbox
