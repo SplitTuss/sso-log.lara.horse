@@ -15,9 +15,9 @@ const PWA = {
 export default function RootLayout({ Component, pageProps }: any) {
   return (
     <>
-      <Head>
-        <GoogleAnalytics gaId="G-Z37DEL1KZH" />
+      <GoogleAnalytics gaId="G-Z37DEL1KZH" />
 
+      <Head>
         <title>{PWA.name}</title>
         <meta name="description" content={PWA.description} />
         <link rel="icon" href="/favicon-196.png" />
