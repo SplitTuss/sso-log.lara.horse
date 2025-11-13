@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import '../globals.css';
-
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { DbProvider } from '@/data/DbProvider';
+import '../globals.css';
 
 const PWA = {
   url: 'https://sso-log.lara.horse',
@@ -16,6 +16,8 @@ export default function RootLayout({ Component, pageProps }: any) {
   return (
     <>
       <Head>
+        <GoogleAnalytics gaId="G-Z37DEL1KZH" />
+
         <title>{PWA.name}</title>
         <meta name="description" content={PWA.description} />
         <link rel="icon" href="/favicon-196.png" />
