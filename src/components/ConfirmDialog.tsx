@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import { Button } from './shadcn/Button';
 import {
   Dialog,
   DialogClose,
@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-} from './Dialog';
+} from './shadcn/Dialog';
 
 interface ConfirmDialogProps {
   triggerButton: React.ReactNode;

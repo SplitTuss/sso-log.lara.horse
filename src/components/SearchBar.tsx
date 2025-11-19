@@ -1,4 +1,4 @@
-import { Input } from './Input';
+import { Input } from './shadcn/Input';
 import { SearchIcon } from 'lucide-react';
 
 interface SearchBarProps {

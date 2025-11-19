@@ -1,5 +1,5 @@
 import { useDb } from '@/data/DbProvider';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/shadcn/Button';
 import { FolderDown } from 'lucide-react';
 
 export const ExportButton = () => {

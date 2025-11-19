@@ -1,6 +1,6 @@
 import { useRef, type ChangeEvent } from 'react';
 import { useDb } from '@/data/DbProvider';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/shadcn/Button';
 import { FolderUp } from 'lucide-react';
 import { ConfirmDialog } from './ConfirmDialog';
 

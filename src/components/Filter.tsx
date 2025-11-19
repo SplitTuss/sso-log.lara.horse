@@ -1,7 +1,7 @@
 import { FunnelIcon } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/utils';
-import { Checkbox } from './Checkbox';
+import { Checkbox } from './shadcn/Checkbox';
 import { GenerationDropdown } from './GenerationDropdown';
 
 interface FilterProps {

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { UserSearchIcon, Trash2Icon } from 'lucide-react';
-import { Button } from './Button';
-import { Input } from './Input';
+import { Button } from './shadcn/Button';
+import { Input } from './shadcn/Input';
 import { ConfirmDialog } from './ConfirmDialog';
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from './Dialog';
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from './shadcn/Dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger } from './Select';
 import { useDb } from '@/data/DbProvider';
 import { HORSE_NAMES } from '@/data/horseNames';

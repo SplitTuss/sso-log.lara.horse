@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import { Button } from './shadcn/Button';
 
 export function Header() {
   return (

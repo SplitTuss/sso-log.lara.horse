@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Badge } from '@/components/Badge';
+import { Badge } from '@/components/shadcn/Badge';
 import { cn } from '@/utils';
 import { useDb } from '@/data/DbProvider';
 

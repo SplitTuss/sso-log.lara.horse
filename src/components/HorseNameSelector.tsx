@@ -9,9 +9,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from './Command';
-import { Popover, PopoverContent, PopoverTrigger } from './Popover';
-import { Input } from './Input';
+} from './shadcn/Command';
+import { Popover, PopoverContent, PopoverTrigger } from './shadcn/Popover';
+import { Input } from './shadcn/Input';
 
 interface HorseNameSelectorProps {
   names: Array<string>;

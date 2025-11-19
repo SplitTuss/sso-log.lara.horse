@@ -1,11 +1,11 @@
 import { ChevronDown } from 'lucide-react';
-import { Button } from './Button';
+import { Button } from './shadcn/Button';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from './Dropdown';
+} from './shadcn/Dropdown';
 
 export const AVAILABLE_GENERATIONS = [1, 2, 3];
 

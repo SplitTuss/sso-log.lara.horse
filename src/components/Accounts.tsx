@@ -8,11 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './Dialog';
+} from './shadcn/Dialog';
 import { useDb } from '@/data/DbProvider';
 import type { DBAccount } from '@/data/db';
-import { Input } from './Input';
-import { Button } from './Button';
+import { Input } from './shadcn/Input';
+import { Button } from './shadcn/Button';
 import { ImportButton } from './ImportButton';
 import { ExportButton } from './ExportButton';
 import { ConfirmDialog } from './ConfirmDialog';
