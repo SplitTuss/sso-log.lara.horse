@@ -322,6 +322,24 @@ const HORSE_DATA: HorseData = [
     ],
   },
   {
+    breed: 'Black Forest Horse',
+    generations: [
+      {
+        id: 3,
+        forSale: true,
+        colors: [
+          { imageUrl: 'black-forest-horse/gen3-1.webp' },
+          { imageUrl: 'black-forest-horse/gen3-2.webp' },
+          { imageUrl: 'black-forest-horse/gen3-3.webp' },
+          { imageUrl: 'black-forest-horse/gen3-4.webp' },
+          { imageUrl: 'black-forest-horse/gen3-5.webp' },
+          { imageUrl: 'black-forest-horse/gen3-6.webp' },
+          { imageUrl: 'black-forest-horse/gen3-7.webp' },
+        ],
+      },
+    ],
+  },
+  {
     breed: 'Chincoteague Pony',
     generations: [
       {
