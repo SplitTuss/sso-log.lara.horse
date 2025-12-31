@@ -15,6 +15,7 @@ const IMAGE_URL_PREFIX = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara
 
 //next horses to go: gen 1 Jorvik Pony on Jan.07. (last updated oct.22)
 //last horse deleted: Icelandic horse gen2, Shire gen 2 on oct.15.
+//last horses added: new colors for andalusian, ardennes, black forest horse, jorvik sport friesian, H&M Indiana and christmas horses sol and mana
 
 /* eslint-disable prettier/prettier */
 const HORSE_DATA: HorseData = [
@@ -181,6 +182,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'andalusian/gen3-13.png' },
           { imageUrl: 'andalusian/gen3-14.png' },
           { imageUrl: 'andalusian/gen3-15.png' },
+          { imageUrl: 'andalusian/gen3-16.png' },
         ],
       },
     ],
@@ -294,6 +296,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'ardennes/gen3-8.webp' },
           { imageUrl: 'ardennes/gen3-9.webp' },
           { imageUrl: 'ardennes/gen3-10.webp' },
+          { imageUrl: 'ardennes/gen3-11.png' },
         ],
       },
     ],
@@ -317,6 +320,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'belgian-warmblood/gen3-10.webp' },
           { imageUrl: 'belgian-warmblood/gen3-11.webp' },
           { imageUrl: 'belgian-warmblood/gen3-12.webp' },
+          { imageUrl: 'belgian-warmblood/gen3-13.webp' },
         ],
       },
     ],
@@ -335,6 +339,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'black-forest-horse/gen3-5.webp' },
           { imageUrl: 'black-forest-horse/gen3-6.webp' },
           { imageUrl: 'black-forest-horse/gen3-7.webp' },
+          { imageUrl: 'black-forest-horse/gen3-8.png' },
         ],
       },
     ],
@@ -669,6 +674,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'friesian-sport-horse/gen3-2.webp' },
           { imageUrl: 'friesian-sport-horse/gen3-3.webp' },
           { imageUrl: 'friesian-sport-horse/gen3-4.webp' },
+          { imageUrl: 'friesian-sport-horse/gen3-5.png' },
         ],
       },
     ],
@@ -1145,10 +1151,12 @@ const HORSE_DATA: HorseData = [
           //june 2025
           { imageUrl: 'magic-horses/gen3/luna.webp' },
           { imageUrl: 'magic-horses/gen3/monarch.webp' },
-          //halloween2025?
+          //halloween2025
           { imageUrl: 'magic-horses/gen3/bixbite.webp' },
           { imageUrl: 'magic-horses/gen3/galvatair.webp' },
-          //winter 2025?
+          //winter 2025
+          { imageUrl: 'magic-horses/gen3/so%CC%81l.webp' },
+          { imageUrl: 'magic-horses/gen3/ma%CC%81ni.webp' },
 
           //other magic horses:
           { imageUrl: 'magic-horses/gen3/vega.webp' },
