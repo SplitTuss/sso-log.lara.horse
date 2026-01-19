@@ -14,8 +14,8 @@ type HorseData<ColorType = Color> = Array<{
 const IMAGE_URL_PREFIX = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/';
 
 //next horses to go: gen 1 Jorvik Pony on Jan.07. (last updated oct.22)
-//last horse deleted: Icelandic horse gen2, Shire gen 2 on oct.15.
-//last horses added: new colors for andalusian, ardennes, black forest horse, jorvik sport friesian, H&M Indiana and christmas horses sol and mana
+//last horse deleted: gen 1 jorvik pony, removed Jan.07.26/ here somehow already removed
+//last horses added: connemara, Jan.18.26
 
 /* eslint-disable prettier/prettier */
 const HORSE_DATA: HorseData = [
@@ -403,6 +403,13 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'connemara/gen3-5.webp' },
           { imageUrl: 'connemara/gen3-6.webp' },
           { imageUrl: 'connemara/gen3-7.webp' },
+          { imageUrl: 'connemara/gen3-8.webp' },
+          { imageUrl: 'connemara/gen3-9.webp' },
+          { imageUrl: 'connemara/gen3-10.webp' },
+          { imageUrl: 'connemara/gen3-11.webp' },
+          { imageUrl: 'connemara/gen3-12.webp' },
+          { imageUrl: 'connemara/gen3-13.webp' },
+          { imageUrl: 'connemara/gen3-14.webp' },
         ],
       },
     ],
