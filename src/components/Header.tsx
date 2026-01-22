@@ -1,32 +1,30 @@
+import Link from 'next/link';
+
 import { Button } from './shadcn/Button';
 
-export function Header() {
+export default function Header() {
   return (
-    <ol className="bg-primary flex items-center justify-center gap-6 py-4">
-      <li>
-        <a href="https://lara.horse">
-          <Button variant="secondary">lara.horse</Button>
-        </a>
-      </li>
-      <li className="hidden sm:block">
-        <a href="https://horses.lara.horse">
-          <Button variant="secondary">real horses</Button>
-        </a>
-      </li>
-      <li className="hidden sm:block">
-        <a href="https://laracraft.io">
-          <Button variant="secondary">laracraft.io</Button>
-        </a>
-      </li>
-      <li>
-        <a href="https://ssodb.bplaced.net/db/en/horses.html">
-          <Button className="text-pink-500" variant="secondary">
+    <div className="bg-accent flex items-center justify-between ">
+      <img
+        src="/logo.svg"
+        alt="sso-log.lara.horse.io logo"
+        className="w-20 h-20 rounded-lg ml-2 sm:ml-4"
+      />
+      <div className="flex justify-center gap-6 py-4 mr-2 sm:mr-4">
+        <Link href="https://horses.lara.horse">
+          <Button variant="default">real horses</Button>
+        </Link>
+        <div className="hidden sm:block">
+          <Link href="https://laracraft.io">
+            <Button variant="default">laracraft.io</Button>
+          </Link>
+        </div>
+        <Link href="https://ssodb.bplaced.net/db/en/horses.html">
+          <Button className="text-pink-500" variant="default">
             original SSO-DB
           </Button>
-        </a>
-      </li>
-    </ol>
+        </Link>
+      </div>
+    </div>
   );
 }
-
-export default Header;

@@ -22,7 +22,7 @@ export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps)
   return (
     <>
       <div
-        className="flex flex-row items-center text-primary bg-accent p-1 mb-1 rounded-xl cursor-pointer"
+        className="flex flex-row items-center text-primary bg-accent p-1 mb-2 rounded-xl cursor-pointer"
         onClick={toggleExpand}
       >
         <ChevronDown
