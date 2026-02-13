@@ -11,17 +11,18 @@ export default function Home() {
       <div className="mx-auto max-w-xs sm:max-w-2xl text-center">
         <div className="flex justify-center font-extrabold text-primary text-3xl m-4">Welcome!</div>
 
-        <div className="flex flex-col items-center text-xl">
+        <Button className="mb-4">
+          <Link href="/horseLog" className="flex justify-center">
+            If you already know what you`re doing, click here!
+          </Link>
+        </Button>
+
+        <div className="flex flex-col items-center text-xl mb-4">
           <p>
             New here? Wondering what this page is, how to use it and why someone would have created
             it?
           </p>
-          <p>Keep reading!</p>
-          <Button className="m-2">
-            <Link href="/horseLog" className="flex justify-center">
-              If you already know what you`re doing, click here!
-            </Link>
-          </Button>
+          <p>Click your question!</p>
         </div>
 
         {FAQ_DATA.map(({ question, answer }, index) => (
