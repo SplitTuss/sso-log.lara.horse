@@ -62,10 +62,9 @@ export default function Home() {
 
           <div className="font-bold">finding horses:</div>
           <div className="text-lg mb-2">
-            To make it easier to find a specific breed, you can either type the breed you are
-            looking for into the search bar. You can also apply filters, which at this time you can
-            filter them by generations, whether or not they are still for sale and ones that you
-            own.
+            To make it easier to find a specific breed, you can type the breed you are looking for
+            into the search bar. You can also apply filters, which at this time you can filter them
+            by generations, whether or not they are still for sale and ones that you own.
           </div>
 
           <div className="font-bold text-2xl text-primary">
