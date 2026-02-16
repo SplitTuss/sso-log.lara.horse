@@ -47,7 +47,7 @@ export const ImportButton = () => {
           </Button>
         }
         title="Import"
-        description="import new table, save your shit before you do this because it will overwrite your table."
+        description="Import new table, save your data before you do this because it will overwrite your table."
         confirmButton={<Button onClick={() => inputRef.current?.click()}>sure</Button>}
       />
     </>
