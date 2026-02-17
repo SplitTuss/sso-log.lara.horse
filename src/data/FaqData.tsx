@@ -38,12 +38,18 @@ export const FAQ_DATA = [
           <div className="font-bold text-lg text-purple-400">adding horses and accounts:</div>
           <p className="mb-4">
             First, you should add an account by clicking `add account` in the right top corner.
-            <img src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/addingAccount.png" />
+            <img
+              src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/addingAccount.png"
+              alt="picture of where to add accounts"
+            />
             You can type in any name you want, so you could even call one `favorites` or `wishlist`
             to keep track of horses you might want to keep a closer eye on. Once you found the color
             that best describes your desire for that specific account, you can save it and it will
             appear in the list.
-            <img src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/addedExampleUser.png" />
+            <img
+              src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/addedExampleUser.png"
+              alt="added example account"
+            />
             You can hide accounts by clicking the eye-icon, meaning thier owned horses and their
             adjacent names won`t show up anymore.
           </p>
@@ -59,14 +65,20 @@ export const FAQ_DATA = [
             When you`ve created an account, you can start adding horses by clicking `edit` on the
             horse that you would like to add. For each horse that you add, you need to clarify which
             account you want to add it to and then you can choose the names.
-            <img src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/addingHorseName.png" />
+            <img
+              src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/addingHorseName.png"
+              alt="popup of adding horse name"
+            />
             Since we have to choose from a long list of names that are available in the game, I`ve
             added all the ones that I`m aware of at this time.
           </p>
         </div>
         <div>
           <div className="font-bold text-purple-400">finding horses:</div>
-          <img src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/filter.png" />
+          <img
+            src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/filter.png"
+            alt="picture of filters"
+          />
           To make it easier to find a specific breed, you can type the breed you are looking for
           into the search bar. You can also apply filters, which at this time you can filter them by
           whether or not they are still for sale, ones that you own and generations.
@@ -75,18 +87,23 @@ export const FAQ_DATA = [
     ),
   },
   {
-    question:
-      'If you`re still here and know the SSO website, you might be wondering `why not use their system?`',
+    question: 'If you know the SSO website, you might be wondering `why not use their system?`',
     answer: (
       <div>
+        <p className="text-red-400">
+          The main reason was that I wanted to learn coding and I saw a problem that needed a
+          solution and took it into my own hands to find this solution, by developing this page.
+        </p>
+        <p className="text-purple-600">In short: because I wanted to!</p>
+        <p>Long version:</p>
         <p>
-          Because theirs did not exist a long time ago. I have been playing this game since 2013 and
+          Their system did not exist a long time ago. I have been playing this game since 2013 and
           shortly after I started, I wanted to keep track of all of the accomplishments for my
           account, including owned horses. So I created a paperback book, into which I glued the
           printed out photos that I got from the SSO-DB.
         </p>
         <p>
-          At some point sso released new generations of horses, so the printed out and glued down
+          At some point SSO released new generations of horses, so the printed out and glued down
           images of each horse didn`t have enough space right next to the old generation, or they
           released new coat variations for one breed that had been out for a while, and again, there
           was not enough room for more printed out photos. I restarted the whole book one time, did
@@ -95,21 +112,46 @@ export const FAQ_DATA = [
         </p>
         <p>
           Now they added an overview of which horse you own on the account you`re logged into on
-          their website, which is great and all, but it`s just not as visually pleasing and the
-          overview isn`t great. Also if you have multiple accounts, you can`t see them all at once.
-        </p>
-        <p>There are many more reasons I could list here but honestly, this is the main reason.</p>
-        <p className="text-red-400">
-          The second most important reason was that I wanted to learn coding and I saw a problem
-          that needed a solution and took it into my own hands to find this solution, by developing
-          this page.
+          their website, which is great but I had a different vision. Mainly I wanted to be able to
+          see all my accounts at once.
         </p>
         <p>
           Somewhere between me deciding to learn coding and this project being open to use for you,
-          SSO added their function to their website. We had a similar idea, came up with two very
-          different solutions, but which one is more user-friendly?
+          SSO added their function to their website. We had a similar idea but came up with two very
+          different solutions.
         </p>
-        <p>I would be glad to hear your feedback and constructive ideas for improvements.</p>
+        <p>If you`re not aware what SSO`s solution to this issue was, here you go:</p>
+        <p>
+          Obviously you need to be logged into one account to see this information, where some of it
+          is very nice to know and I haven`t implemented that yet, since I was more focused on
+          seeing all my accounts` data at the same time vs. detailled information for one.
+        </p>
+        <div className="flex items-center m-2">
+          Here`s the information for each specifically chosen horse:
+          <img
+            src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/horseOverviewSso.png"
+            alt="information for chosen horse"
+            className="max-w-3/4"
+          />
+        </div>
+        <div className="flex items-center m-2">
+          You can find your horse in this dropdown, which might look different depending on your
+          device, but no way to search:
+          <img
+            src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/horseListSso.png"
+            alt="information for chosen horse"
+            className="max-w-3/4"
+          />
+        </div>
+        <div>
+          There is also the{' '}
+          <Link href="https://www.starstable.com/horses/breeds" className="underline">
+            Star Stable Horses
+          </Link>{' '}
+          collection, but they do not show all breeds and you can only see if you own at least one
+          horse for each breed and not which coat variations you own or their name. It is a great
+          add-on though and I am happy they decided to add this to their website!
+        </div>
       </div>
     ),
   },
