@@ -9,7 +9,7 @@ export const Faq = ({ answer, question }: FaqProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="bg-stone-900 rounded-xl m-4">
+    <section className="bg-zinc-950 rounded-xl border-1 m-4 p-2">
       <button
         onClick={() => setExpanded(!expanded)}
         className="font-bold text-2xl text-primary hover:cursor-pointer hover:text-purple-700"

@@ -13,15 +13,13 @@ export default function Home() {
 
         <Button className="mb-4">
           <Link href="/horseLog" className="flex justify-center">
-            If you already know what you`re doing, click here!
+            Know what you`re doing? Click me!
           </Link>
         </Button>
 
         <div className="flex flex-col items-center text-xl mb-4">
-          <p>
-            New here? Wondering what this page is, how to use it and why someone would have created
-            it?
-          </p>
+          <p>New here?</p>
+          <p>Wondering what this page is, how to use it and why someone would have created it?</p>
           <p>Click your question!</p>
         </div>
 
