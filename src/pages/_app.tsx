@@ -20,7 +20,7 @@ export default function RootLayout({ Component, pageProps }: any) {
       <Head>
         <title>{PWA.name}</title>
         <meta name="description" content={PWA.description} />
-        <link rel="icon" href="/favicon-196.png" />
+        <link rel="icon" href="/logo.svg" />
         <link rel="manifest" href="/manifest.json" />
 
         <meta
