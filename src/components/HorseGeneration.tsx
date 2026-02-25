@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { ChevronDown, MapPinOffIcon } from 'lucide-react';
+import { ChevronDown, MapPinOffIcon, PencilIcon } from 'lucide-react';
 import { HorseOwners } from './HorseOwners';
 import { FormattedHorseData } from '@/data/horseData';
 import { formatHorseId } from '@/data/formatHorseId';
 import { cn } from '@/utils';
+import { EditHorse } from './EditHorse';
 
 interface HorseGenProps {
   breed: string;
@@ -22,7 +23,7 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
   }
 
   return (
-    <li>
+    <li className="bg-[rgba(255,255,255,0.05)] rounded-xl">
       <div
         className="flex flex-row items-center border-primary border-1 rounded-xl text-primary p-1 mb-2 cursor-pointer"
         onClick={toggleExpand}
@@ -51,9 +52,16 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
           });
 
           return (
-            <li key={horseId} className="border-2 flex-col rounded-xl basis-[49%] sm:basis-0">
-              <img className="h-25 mx-auto py-2" src={color.imageUrl} alt={horseId} />
-
+            <li
+              key={horseId}
+              className="border-2 flex-col rounded-xl basis-[49%] sm:basis-0 bg-[rgba(255,255,255,0.05)]"
+            >
+              <div className="flex items-center">
+                <img className="h-25 mx-auto py-2" src={color.imageUrl} alt={horseId} />
+                <div className="flex justify-end mr-2">
+                  <EditHorse horseId={horseId} />
+                </div>
+              </div>
               <HorseOwners horseId={horseId} />
             </li>
           );
