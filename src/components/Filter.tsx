@@ -17,24 +17,15 @@ export const Filter = ({
   visibleGenerations,
   onVisibleGenerationsChange,
 }: FilterProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
-
   return (
     <div className="text-center">
-      <button className="hover:cursor-pointer" onClick={toggleExpand}>
-        <FunnelIcon className="text-muted-foreground" size={20} />
-      </button>
+      {/* <FunnelIcon className="text-muted-foreground" size={20} /> */}
+      <div className="flex sm:flex-row flex-col items-center gap-2">
+        <GenerationDropdown
+          selectedGens={visibleGenerations}
+          onChange={onVisibleGenerationsChange}
+        />
 
-      <div
-        className={cn(
-          'flex sm:flex-row flex-col items-center gap-2 text-muted-foreground',
-          !isExpanded && 'hidden',
-        )}
-      >
         <div className="flex flex-row items-center">
           hide unavailable
           <Checkbox
@@ -61,11 +52,6 @@ export const Filter = ({
             }}
           />
         </div>
-
-        <GenerationDropdown
-          selectedGens={visibleGenerations}
-          onChange={onVisibleGenerationsChange}
-        />
       </div>
     </div>
   );

@@ -18,19 +18,27 @@ export default function HorseLog() {
       <Header />
 
       <div className="max-w-6xl px-2 mx-auto">
-        <Accounts />
-        <ListOfAllNames />
-        <SearchBar onSearchChange={setSearchInput} />
-
-        <div className="flex sm:flex-row flex-col justify-center mb-2">
-          <Filter
-            onHideUnavailable={setShouldHideUnavailable}
-            onHideNotOwned={setShouldHideNotOwned}
-            visibleGenerations={visibleGenerations}
-            onVisibleGenerationsChange={setVisibleGenerationsChange}
+        <div>
+          <img
+            src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/sso-background.jpg"
+            alt="sso background"
+            className=""
           />
+          <Accounts />
+
+          <div className="absolute flex flex-row items-center bg-[rgba(255,255,255,0.4)] rounded-xl h-[100px] w-[800px] left-[350px] top-[490px] ">
+            <SearchBar onSearchChange={setSearchInput} />
+
+            <Filter
+              onHideUnavailable={setShouldHideUnavailable}
+              onHideNotOwned={setShouldHideNotOwned}
+              visibleGenerations={visibleGenerations}
+              onVisibleGenerationsChange={setVisibleGenerationsChange}
+            />
+          </div>
         </div>
 
+        <ListOfAllNames />
         <Horses
           searchInput={searchInput}
           hideUnavailable={shouldHideUnavailable}
