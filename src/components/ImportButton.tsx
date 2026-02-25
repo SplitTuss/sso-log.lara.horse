@@ -42,8 +42,8 @@ export const ImportButton = () => {
 
       <ConfirmDialog
         triggerButton={
-          <Button>
-            <FolderUp className="text-accent-foreground mt-1/2 mr-1/2" />
+          <Button variant="outline" title="import file">
+            <FolderUp className="text-accent mt-1/2 mr-1/2" />
           </Button>
         }
         title="Import"
