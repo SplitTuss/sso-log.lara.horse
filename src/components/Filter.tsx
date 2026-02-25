@@ -1,6 +1,3 @@
-import { FunnelIcon } from 'lucide-react';
-import { useState } from 'react';
-import { cn } from '@/utils';
 import { Checkbox } from './shadcn/Checkbox';
 import { GenerationDropdown } from './GenerationDropdown';
 
@@ -19,14 +16,13 @@ export const Filter = ({
 }: FilterProps) => {
   return (
     <div className="text-center">
-      {/* <FunnelIcon className="text-muted-foreground" size={20} /> */}
       <div className="flex sm:flex-row flex-col items-center gap-2">
         <GenerationDropdown
           selectedGens={visibleGenerations}
           onChange={onVisibleGenerationsChange}
         />
 
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center hover:text-primary">
           hide unavailable
           <Checkbox
             className="ml-1"
@@ -39,7 +35,7 @@ export const Filter = ({
             }}
           />
         </div>
-        <div className="flex flex-row items-center ml-2 mr-2">
+        <div className="flex flex-row items-center hover:text-primary">
           only show owned
           <Checkbox
             className="ml-1"
