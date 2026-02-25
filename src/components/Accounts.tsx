@@ -94,7 +94,7 @@ export function Accounts() {
   const areAnyAccountsVisible = accounts?.some(({ isVisible }) => isVisible);
 
   return (
-    <div className="absolute flex flex-row items-center rounded-xl top-25">
+    <div className="absolute rounded-xl top-25">
       <div className="w-md rounded-xl bg-[rgba(255,255,255,0.4)] p-4 my-2">
         <div className="flex flex-row justify-between m-2 mb-4">
           <div className="flex flex-row gap-2">

@@ -23,17 +23,17 @@ export default function HorseLog() {
           alt="sso background"
           className="rounded-lg"
         />
-        <Accounts />
-
-        <div className="relative flex flex-row text-muted-foreground gap-2 p-2 bg-[rgba(255,255,255,0.4)] rounded-xl bottom-15">
-          <SearchBar onSearchChange={setSearchInput} />
-
-          <Filter
-            onHideUnavailable={setShouldHideUnavailable}
-            onHideNotOwned={setShouldHideNotOwned}
-            visibleGenerations={visibleGenerations}
-            onVisibleGenerationsChange={setVisibleGenerationsChange}
-          />
+        <div className="flex justify-center">
+          <Accounts />
+          <div className="relative flex flex-row text-muted-foreground gap-2 p-2 bg-[rgba(255,255,255,0.4)] rounded-xl bottom-15">
+            <SearchBar onSearchChange={setSearchInput} />
+            <Filter
+              onHideUnavailable={setShouldHideUnavailable}
+              onHideNotOwned={setShouldHideNotOwned}
+              visibleGenerations={visibleGenerations}
+              onVisibleGenerationsChange={setVisibleGenerationsChange}
+            />
+          </div>
         </div>
       </div>
       <div className="max-w-6xl px-2 mx-auto">
