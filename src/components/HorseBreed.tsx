@@ -36,7 +36,7 @@ export function HorseBreed({ breed }: HorseBreedProps) {
         />
         {breed.breed}
       </div>
-      <ul className={cn('flex flex-col gap-4', !isExpanded && 'hidden')}>
+      <ul className={cn('flex flex-col gap-2', !isExpanded && 'hidden')}>
         {breed.generations.map((generation, index) => (
           <HorseGeneration breed={breed.breed} generation={generation} key={index} />
         ))}

@@ -16,7 +16,7 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
 
   return (
     <div>
-      <div className="m-2 p-2 bg-accent w-36 h-20 rounded-xl overflow-scroll">
+      <div className="m-2 p-2 bg-[rgba(255,255,255,0.03)] w-36 h-20 rounded-xl overflow-scroll">
         <ul className="text-center ">
           {visibleOwners.map((horseOwner) => (
             <li key={horseOwner.id}>

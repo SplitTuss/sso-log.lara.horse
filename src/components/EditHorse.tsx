@@ -81,8 +81,11 @@ export const EditHorse = ({ horseId }: EditHorseProps) => {
         }}
       >
         <DialogTrigger asChild>
-          <button className="hover:cursor-pointer text-muted-foreground">
-            <PencilIcon />
+          <button
+            className="absolute hover:cursor-pointer right-2 top-20 text-muted-foreground"
+            title="edit horse"
+          >
+            <PencilIcon size={14} />
           </button>
         </DialogTrigger>
 

@@ -25,7 +25,7 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
   return (
     <li className="bg-[rgba(255,255,255,0.05)] rounded-xl">
       <div
-        className="flex flex-row items-center border-primary border-1 rounded-xl text-primary p-1 mb-2 cursor-pointer"
+        className="flex flex-row items-center border-[rgba(127,34,254,0.4)] border-1 rounded-xl text-primary p-1 mb-2 cursor-pointer"
         onClick={toggleExpand}
       >
         <ChevronDown
@@ -56,11 +56,9 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
               key={horseId}
               className="border-2 flex-col rounded-xl basis-[49%] sm:basis-0 bg-[rgba(255,255,255,0.05)]"
             >
-              <div className="flex items-center">
-                <img className="h-25 mx-auto py-2" src={color.imageUrl} alt={horseId} />
-                <div className="flex justify-end mr-2">
-                  <EditHorse horseId={horseId} />
-                </div>
+              <div className="relative flex items-center">
+                <img className="h-25 max-w-[75%] mx-auto py-2" src={color.imageUrl} alt={horseId} />
+                <EditHorse horseId={horseId} />
               </div>
               <HorseOwners horseId={horseId} />
             </li>
