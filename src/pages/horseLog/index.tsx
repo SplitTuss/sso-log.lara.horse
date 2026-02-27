@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import Link from 'next/link';
+
 import Header from '@/components/Header';
 import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
 import { SearchBar } from '@/components/SearchBar';
+import { Button } from '@/components/shadcn/Button';
 import { Filter } from '@/components/Filter';
 import { AVAILABLE_GENERATIONS } from '@/components/GenerationDropdown';
 
@@ -17,10 +20,10 @@ export default function HorseLog() {
       <Header />
 
       <div className="rounded-lg mb-2 bg-[url('https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/sso-background.jpg')] bg-cover bg-center">
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col pb-2 items-center">
           <Accounts />
 
-          <div className="text-accent p-2 mb-4 bg-[rgba(255,255,255,0.4)] rounded-xl">
+          <div className="text-accent p-2 mb-2 bg-[rgba(255,255,255,0.4)] rounded-xl">
             <SearchBar onSearchChange={setSearchInput} />
             <Filter
               onHideUnavailable={setShouldHideUnavailable}
@@ -29,6 +32,9 @@ export default function HorseLog() {
               onVisibleGenerationsChange={setVisibleGenerationsChange}
             />
           </div>
+          <Button variant="outline">
+            <Link href="/names">go to names</Link>
+          </Button>
         </div>
       </div>
       <div className="max-w-6xl px-2 mx-auto">

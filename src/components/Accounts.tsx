@@ -206,21 +206,3 @@ export function Accounts() {
     </div>
   );
 }
-
-//FIGMA STYLES:
-
-// <div className="-translate-x-1/2 absolute bg-[rgba(255,255,255,0.4)] h-[314px] left-[calc(50%-22.5px)] rounded-[20px] top-[95px] w-[720px]" data-name="accounts">
-//       <div className="absolute h-[17.613px] right-[76.43px] top-[93px] w-[42.569px]">
-//         <div className="absolute inset-[-5.68%_-2.35%]">
-//           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 44.5686 19.6129">
-//             <path d={svgPaths.p2294dc00} id="Vector 7" stroke="var(--stroke-0, black)" strokeLinecap="round" strokeWidth="2" />
-//           </svg>
-//         </div>
-//       </div>
-//       <AddNewButton />
-//       <ImportButton />
-//       <ExportButton />
-//       <Arisha />
-//       <Adele />
-//       <Julie />
-//     </div>
