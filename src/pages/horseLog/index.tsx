@@ -17,15 +17,11 @@ export default function HorseLog() {
     <>
       <Header />
 
-      <div className="flex flex-col items-center">
-        <img
-          src="https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/sso-background.jpg"
-          alt="sso background"
-          className="rounded-lg"
-        />
-        <div className="flex justify-center">
+      <div className="rounded-lg mb-2 bg-[url('https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/sso-background.jpg')] bg-cover bg-center">
+        <div className="flex flex-col items-center sm:gap-4 gap-2">
           <Accounts />
-          <div className="relative flex flex-row text-muted-foreground gap-2 p-2 bg-[rgba(255,255,255,0.4)] rounded-xl bottom-15">
+
+          <div className="text-accent p-2 mb-4 bg-[rgba(255,255,255,0.4)] rounded-xl">
             <SearchBar onSearchChange={setSearchInput} />
             <Filter
               onHideUnavailable={setShouldHideUnavailable}
@@ -37,20 +33,14 @@ export default function HorseLog() {
         </div>
       </div>
       <div className="max-w-6xl px-2 mx-auto">
-        <ListOfAllNames />
         <Horses
           searchInput={searchInput}
           hideUnavailable={shouldHideUnavailable}
           hideNotOwned={shouldHideNotOwned}
           selectedGenerations={visibleGenerations}
         />
+        <ListOfAllNames />
       </div>
-
-      <footer className="flex justify-center m-2">
-        Most of the images are not mine! I will be forever grateful to Abbie Starwatcher, who has
-        from the beginning volunteered (I think) her time to take photos of every single horse in
-        this game.
-      </footer>
     </>
   );
 }

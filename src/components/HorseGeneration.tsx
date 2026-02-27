@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, MapPinOffIcon, PencilIcon } from 'lucide-react';
+import { ChevronDown, MapPinOffIcon } from 'lucide-react';
 import { HorseOwners } from './HorseOwners';
 import { FormattedHorseData } from '@/data/horseData';
 import { formatHorseId } from '@/data/formatHorseId';

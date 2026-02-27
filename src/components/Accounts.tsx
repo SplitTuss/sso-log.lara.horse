@@ -94,8 +94,8 @@ export function Accounts() {
   const areAnyAccountsVisible = accounts?.some(({ isVisible }) => isVisible);
 
   return (
-    <div className="absolute rounded-xl top-25">
-      <div className="w-md rounded-xl bg-[rgba(255,255,255,0.4)] p-4 my-2">
+    <div className="rounded-xl mt-2">
+      <div className="w-xs sm:w-md rounded-xl bg-[rgba(255,255,255,0.4)] p-4">
         <div className="flex flex-row justify-between m-2 mb-4">
           <div className="flex flex-row gap-2">
             <Dialog
@@ -159,7 +159,7 @@ export function Accounts() {
             >
               <span style={{ color: account.color }}>{account.name}</span>
 
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-row text-accent items-center gap-2">
                 <Button
                   title="edit account name and color"
                   size="sm"
@@ -179,20 +179,21 @@ export function Accounts() {
                   description="This will permanently delete your account and remove your data from your database."
                   confirmButton={
                     <Button
-                      className="items-center justify-between flex flex-row"
                       variant="destructive"
                       size="lg"
                       onClick={() => handleRemove(account.id)}
                     >
-                      do it!
-                      <Trash2Icon className="text-muted-foreground" size={30} />
+                      <div className="items-center justify-between flex flex-row">
+                        do it!
+                        <Trash2Icon className="ml-2 text-muted-foreground" size={30} />
+                      </div>
                     </Button>
                   }
                 />
 
                 <button
                   onClick={() => updateAccountVisibility(account.id, !account.isVisible)}
-                  className="cursor-pointer text-muted-foreground hover:text-primary mr-4"
+                  className="cursor-pointer text-accent hover:text-primary mr-4"
                   title="hide this account"
                 >
                   {account.isVisible ? <EyeIcon /> : <EyeOffIcon />}
@@ -205,6 +206,8 @@ export function Accounts() {
     </div>
   );
 }
+
+//FIGMA STYLES:
 
 // <div className="-translate-x-1/2 absolute bg-[rgba(255,255,255,0.4)] h-[314px] left-[calc(50%-22.5px)] rounded-[20px] top-[95px] w-[720px]" data-name="accounts">
 //       <div className="absolute h-[17.613px] right-[76.43px] top-[93px] w-[42.569px]">
