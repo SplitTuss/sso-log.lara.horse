@@ -23,7 +23,7 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
   }
 
   return (
-    <li className="bg-[rgba(255,255,255,0.05)] rounded-xl">
+    <li className="bg-[rgba(255,255,255,0.03)] rounded-xl">
       <div
         className="flex flex-row items-center border-[rgba(127,34,254,0.4)] border-1 rounded-xl text-primary p-1 mb-2 cursor-pointer"
         onClick={toggleExpand}
@@ -54,7 +54,7 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
           return (
             <li
               key={horseId}
-              className="border-2 flex-col rounded-xl basis-[49%] sm:basis-0 bg-[rgba(255,255,255,0.05)]"
+              className="border-2 flex-col rounded-xl basis-[49%] sm:basis-0 bg-[rgba(255,255,255,0.03)]"
             >
               <div className="relative flex items-center">
                 <img className="h-25 max-w-[75%] mx-auto py-2" src={color.imageUrl} alt={horseId} />
