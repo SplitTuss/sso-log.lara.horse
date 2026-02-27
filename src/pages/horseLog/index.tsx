@@ -4,7 +4,6 @@ import { Horses } from '@/components/Horses';
 import { Accounts } from '@/components/Accounts';
 import { SearchBar } from '@/components/SearchBar';
 import { Filter } from '@/components/Filter';
-import { ListOfAllNames } from '@/components/ListOfAllNames';
 import { AVAILABLE_GENERATIONS } from '@/components/GenerationDropdown';
 
 export default function HorseLog() {
@@ -18,7 +17,7 @@ export default function HorseLog() {
       <Header />
 
       <div className="rounded-lg mb-2 bg-[url('https://s3.us-east-1.amazonaws.com/images.sso-log.lara.horse/introduction/sso-background.jpg')] bg-cover bg-center">
-        <div className="flex flex-col items-center sm:gap-4 gap-2">
+        <div className="flex flex-col items-center">
           <Accounts />
 
           <div className="text-accent p-2 mb-4 bg-[rgba(255,255,255,0.4)] rounded-xl">
@@ -39,7 +38,6 @@ export default function HorseLog() {
           hideNotOwned={shouldHideNotOwned}
           selectedGenerations={visibleGenerations}
         />
-        <ListOfAllNames />
       </div>
     </>
   );

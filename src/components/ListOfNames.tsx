@@ -11,7 +11,7 @@ interface ListOfNamesProps {
 }
 
 export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -20,11 +20,12 @@ export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps)
   const { accounts } = useDb();
 
   return (
-    <>
+    <div className="rounded-xl bg-[rgba(255,255,255,0.04)] mb-2">
       <div
-        className="flex flex-row items-center text-primary bg-accent p-1 mb-2 rounded-xl cursor-pointer"
+        className="flex flex-row items-center justify-center text-primary bg-accent p-1 mb-2 rounded-xl cursor-pointer"
         onClick={toggleExpand}
       >
+        {title} names
         <ChevronDown
           size={30}
           className={cn(
@@ -32,12 +33,11 @@ export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps)
             !isExpanded && 'transition-transform rotate-180',
           )}
         />
-        {title}
       </div>
 
       <ul className={cn('px-2 grid sm:grid-cols-4 grid-cols-2', !isExpanded && 'hidden')}>
         {nameList.map((name, index) => (
-          <li className="py-0.5" key={index}>
+          <li className="pl-2 m-2 rounded-lg bg-[rgba(255,255,255,0.04)]" key={index}>
             {name}
 
             {accounts?.map((account) => {
@@ -60,6 +60,6 @@ export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps)
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

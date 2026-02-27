@@ -1,18 +1,12 @@
 import { useState, useMemo } from 'react';
-import { ChevronDown, UserCheckIcon, UserMinusIcon } from 'lucide-react';
+import { UserCheckIcon, UserMinusIcon } from 'lucide-react';
 import { ListOfNames } from './ListOfNames';
 import { HORSE_NAMES } from '@/data/horseNames';
-import { cn } from '@/utils';
 import { useDb } from '@/data/DbProvider';
 
 export function ListOfAllNames() {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [showNotOwned, setShowNotOwned] = useState(false);
   const [showOwned, setShowOwned] = useState(false);
-
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
 
   const { horseOwners, accounts } = useDb();
 
@@ -99,21 +93,13 @@ export function ListOfAllNames() {
   }, [namesUsedMap, showNotOwned, showOwned, accounts]);
 
   return (
-    <>
-      <div className="flex flex-row text-primary text-xl bg-accent p-2 mb-4 rounded-xl">
-        <div className="flex flex-row text-xl cursor-pointer" onClick={toggleExpand}>
-          <ChevronDown
-            size={30}
-            className={cn(
-              'transition-transform rotate-0 mr-2',
-              !isExpanded && 'transition-transform rotate-180',
-            )}
-          />
-          Horse Names
-        </div>
+    <div className="bg-[rgba(255,255,255,0.04)] rounded-xl m-2">
+      <div className="flex flex-row justify-center  rounded-xl">
+        <div className="text-primary p-2 text-2xl">HORSE NAMES</div>
         <div className="flex flex-row ml-2">
           <button
             className="cursor-pointer ml-2"
+            title="show only owned"
             onClick={() => {
               setShowOwned(!showOwned);
               setShowNotOwned(false);
@@ -123,6 +109,7 @@ export function ListOfAllNames() {
           </button>
           <button
             className="cursor-pointer ml-2"
+            title="hide all owned"
             onClick={() => {
               setShowNotOwned(!showNotOwned);
               setShowOwned(false);
@@ -132,7 +119,7 @@ export function ListOfAllNames() {
           </button>
         </div>
       </div>
-      <div className={cn('flex flex-col mb-2', !isExpanded && 'hidden')}>
+      <div className="m-4">
         <ListOfNames namesUsedMap={namesUsedMap.first} title="first" nameList={namesList.first} />
         <ListOfNames
           namesUsedMap={namesUsedMap.second}
@@ -140,6 +127,6 @@ export function ListOfAllNames() {
           nameList={namesList.second}
         />
       </div>
-    </>
+    </div>
   );
 }
