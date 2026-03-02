@@ -95,7 +95,7 @@ export function Accounts() {
 
   return (
     <div className="rounded-xl mt-2 mb-2">
-      <div className="w-xs sm:w-md rounded-xl bg-[rgba(255,255,255,0.4)] p-4">
+      <div className="w-xs sm:w-md rounded-xl bg-accent-foreground/40 p-4 mt-4">
         <div className="flex flex-row justify-between m-2 mb-4">
           <div className="flex flex-row gap-2">
             <Dialog
@@ -117,22 +117,22 @@ export function Accounts() {
                   </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleAdd}>
-                  <div className="flex flex-row items-center pb-4 gap-4">
+                  <div className="flex flex-col items-center pb-4 gap-4">
                     <Input
                       placeholder="Enter name"
                       value={accountNameInput}
                       onChange={(e) => setAccountNameInput(e.target.value)}
                     />
-                    <Button type="submit" size="xs" className="bg-green-600 hover:bg-green-400">
+                    <ChromePicker
+                      className="mx-auto"
+                      disableAlpha
+                      color={color}
+                      onChange={({ hex }) => setColor(hex)}
+                    />
+                    <Button type="submit" size="sm" className="bg-green-600 hover:bg-green-400">
                       +
                     </Button>
                   </div>
-                  <ChromePicker
-                    className="mx-auto"
-                    disableAlpha
-                    color={color}
-                    onChange={({ hex }) => setColor(hex)}
-                  />
                 </form>
               </DialogContent>
             </Dialog>
@@ -155,7 +155,7 @@ export function Accounts() {
           {accounts?.map((account, index) => (
             <li
               key={index}
-              className="flex flex-row items-center justify-between bg-[rgba(255,255,255,0.4)] rounded-lg py-1 px-4"
+              className="flex flex-row items-center justify-between bg-accent-foreground/40 rounded-lg py-1 px-4"
             >
               <span style={{ color: account.color }}>{account.name}</span>
 

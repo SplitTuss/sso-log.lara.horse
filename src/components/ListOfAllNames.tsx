@@ -95,7 +95,7 @@ export function ListOfAllNames() {
   return (
     <div className="bg-[rgba(255,255,255,0.04)] rounded-xl m-2">
       <div className="flex flex-row justify-center  rounded-xl">
-        <div className="text-primary p-2 text-2xl">HORSE NAMES</div>
+        <div className="text-primary p-2 mt-4 text-2xl">HORSE NAMES</div>
         <div className="flex flex-row ml-2">
           <button
             className="cursor-pointer ml-2"

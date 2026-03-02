@@ -91,8 +91,8 @@ export const EditHorse = ({ horseId }: EditHorseProps) => {
 
         <DialogContent onEscapeKeyDown={handleEscapePressed}>
           <DialogTitle className="text-center">add or remove a name</DialogTitle>
-          <form className="flex flex-row items-center justify-between" onSubmit={handleAdd}>
-            <div className="flex flex-col sm:flex-row sm:gap-2 gap-1">
+          <form className="flex flex-row items-center justify-center" onSubmit={handleAdd}>
+            <div className="flex flex-col sm:flex-row sm:gap-2 gap-2">
               <Select
                 value={selectedAccount}
                 onValueChange={setSelectedAccount}
@@ -136,10 +136,10 @@ export const EditHorse = ({ horseId }: EditHorseProps) => {
                 onChange={setHorseNameSecondInput}
                 onOpenChange={setIsSecondNameSelectOpen}
               />
+              <Button type="submit" size="sm" className="bg-green-600 hover:bg-green-400 ">
+                +
+              </Button>
             </div>
-            <Button type="submit" size="xs" className="bg-green-600 hover:bg-green-400 mx-2">
-              +
-            </Button>
           </form>
           <ul className="flex flex-col gap-1">
             {currentOwners.map((horseOwner) => (
@@ -165,8 +165,9 @@ export const EditHorse = ({ horseId }: EditHorseProps) => {
                       size="lg"
                       onClick={() => handleDelete(horseOwner.id)}
                     >
-                      do it!
-                      <Trash2Icon className="text-muted-foreground" size={30} />
+                      <div className="flex flex-row gap-2">
+                        do it! <Trash2Icon className="text-muted-foreground" size={30} />
+                      </div>
                     </Button>
                   }
                 />

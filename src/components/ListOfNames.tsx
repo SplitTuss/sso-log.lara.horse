@@ -20,9 +20,9 @@ export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps)
   const { accounts } = useDb();
 
   return (
-    <div className="rounded-xl bg-[rgba(255,255,255,0.04)] mb-2">
+    <div className="rounded-xl bg-accent/50 mb-2">
       <div
-        className="flex flex-row items-center justify-center text-primary bg-accent p-1 mb-2 rounded-xl cursor-pointer"
+        className="flex flex-row items-center justify-center text-primary bg-accent p-1 mb-2 rounded-xl hover:text-purple-500 cursor-pointer"
         onClick={toggleExpand}
       >
         {title} names
@@ -35,11 +35,10 @@ export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps)
         />
       </div>
 
-      <ul className={cn('px-2 grid sm:grid-cols-4 grid-cols-2', !isExpanded && 'hidden')}>
+      <ul className={cn('px-2 grid sm:grid-cols-3 grid-cols-2', !isExpanded && 'hidden')}>
         {nameList.map((name, index) => (
-          <li className="pl-2 m-2 rounded-lg bg-[rgba(255,255,255,0.04)]" key={index}>
-            {name}
-
+          <li className="pl-2 p-1 m-2 rounded-lg bg-accent-foreground/10" key={index}>
+            {name}{' '}
             {accounts?.map((account) => {
               if (!account.isVisible) return;
 

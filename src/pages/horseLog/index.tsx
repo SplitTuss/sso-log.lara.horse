@@ -23,8 +23,9 @@ export default function HorseLog() {
         <div className="flex flex-col pb-2 items-center">
           <Accounts />
 
-          <div className="text-accent p-2 mb-2 bg-[rgba(255,255,255,0.4)] rounded-xl">
+          <div className="text-accent flex flex-col sm:flex-row sm:gap-2 items-center p-2 mb-4 mt-4 bg-accent-foreground/40 rounded-xl">
             <SearchBar onSearchChange={setSearchInput} />
+
             <Filter
               onHideUnavailable={setShouldHideUnavailable}
               onHideNotOwned={setShouldHideNotOwned}
@@ -32,8 +33,8 @@ export default function HorseLog() {
               onVisibleGenerationsChange={setVisibleGenerationsChange}
             />
           </div>
-          <Button variant="outline">
-            <Link href="/names">go to names</Link>
+          <Button className="mb-4" variant="outline">
+            <Link href="/names">see names list</Link>
           </Button>
         </div>
       </div>
