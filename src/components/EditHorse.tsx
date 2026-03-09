@@ -101,6 +101,7 @@ export const EditHorse = ({ horseId }: EditHorseProps) => {
               >
                 <SelectTrigger asChild>
                   <Input
+                    className="placeholder:text-foreground"
                     readOnly
                     placeholder="select account"
                     value={selectedAccountName}

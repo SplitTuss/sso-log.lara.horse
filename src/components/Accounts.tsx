@@ -119,6 +119,7 @@ export function Accounts() {
                 <form onSubmit={handleAdd}>
                   <div className="flex flex-col items-center pb-4 gap-4">
                     <Input
+                      className="placeholder:text-foreground"
                       placeholder="Enter name"
                       value={accountNameInput}
                       onChange={(e) => setAccountNameInput(e.target.value)}

@@ -44,6 +44,7 @@ export function HorseNameSelector({
     <Popover modal={true} open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <Input
+          className="placeholder:text-foreground"
           readOnly
           placeholder="select name"
           value={value ?? undefined}
