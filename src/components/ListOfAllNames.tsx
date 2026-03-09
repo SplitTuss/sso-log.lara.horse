@@ -94,7 +94,7 @@ export function ListOfAllNames({ showOwned, showNotOwned }: ListOfAllNamesProps)
   }, [namesUsedMap, showNotOwned, showOwned, accounts]);
 
   return (
-    <div className="bg-[rgba(255,255,255,0.04)] rounded-xl m-2">
+    <div className="bg-accent/40 rounded-xl m-2">
       <div className="flex justify-center rounded-xl text-primary p-2 mt-4 text-2xl">
         HORSE NAMES
       </div>

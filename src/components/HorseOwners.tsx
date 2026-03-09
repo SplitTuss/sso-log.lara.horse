@@ -15,9 +15,9 @@ export const HorseOwners = ({ horseId }: HorseOwnersProps) => {
   const visibleOwners = currentOwners.filter((owner) => visibleAccounts.includes(owner.accountId));
 
   return (
-    <div>
-      <div className="m-2 p-2 bg-[rgba(255,255,255,0.03)] w-36 h-20 rounded-xl overflow-scroll">
-        <ul className="text-center ">
+    <div className="flex justify-center">
+      <div className="m-2 p-2 bg-accent/80 w-36 h-20 rounded-xl overflow-scroll">
+        <ul className="text-center">
           {visibleOwners.map((horseOwner) => (
             <li key={horseOwner.id}>
               <span style={{ color: horseOwner.accountColor }}>
