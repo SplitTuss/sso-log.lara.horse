@@ -11,6 +11,7 @@ import {
   DB_OBJECT_TYPE,
   type DBAccount,
   type DBHorseOwner,
+  type DBFavorites,
   type CreateDBAccount,
   type CreateDBHorseOwner,
 } from '../data/db';
@@ -27,6 +28,7 @@ interface DbContextType {
   error: Error | null;
   accounts: Array<AccountWithVisibility> | null;
   horseOwners: Array<DBHorseOwner> | null;
+  favorites: Array<string> | null;
   addAccount: (input: OmitObjectType<CreateDBAccount>) => Promise<DBAccount | undefined>;
   updateAccount: (input: OmitObjectType<DBAccount>) => Promise<DBAccount | undefined>;
   addHorseOwner: (input: OmitObjectType<CreateDBHorseOwner>) => Promise<DBHorseOwner | undefined>;
@@ -37,6 +39,8 @@ interface DbContextType {
   importFromFile: (file: string) => Promise<void>;
   updateAccountVisibility: (id: string, isVisible: boolean) => void;
   updateAllAccountVisibility: (isVisible: boolean) => void;
+  addFavorite: (horseId: string) => Promise<void>;
+  removeFavorite: (horseId: string) => Promise<void>;
 }
 
 const DbContext = createContext<DbContextType>({
@@ -44,6 +48,7 @@ const DbContext = createContext<DbContextType>({
   error: null,
   accounts: null,
   horseOwners: null,
+  favorites: null,
   addAccount: () => Promise.resolve(undefined),
   updateAccount: () => Promise.resolve(undefined),
   addHorseOwner: () => Promise.resolve(undefined),
@@ -54,6 +59,8 @@ const DbContext = createContext<DbContextType>({
   importFromFile: () => Promise.resolve(undefined),
   updateAccountVisibility: () => {},
   updateAllAccountVisibility: () => {},
+  addFavorite: () => Promise.resolve(undefined),
+  removeFavorite: () => Promise.resolve(undefined),
 });
 
 export const useDb = () => {
@@ -74,9 +81,10 @@ export const DbProvider = ({ children }: DbProviderProps) => {
   const [error, setError] = useState<Error | null>(null);
   const [accounts, setAccounts] = useState<Array<AccountWithVisibility> | null>(null);
   const [horseOwners, setHorseOwners] = useState<Array<DBHorseOwner> | null>(null);
+  const [favorites, setFavorites] = useState<Array<string> | null>(null);
 
   const handleLoadData = useCallback(async () => {
-    const [accountsResult, horseOwnersResult] = await Promise.all([
+    const [accountsResult, horseOwnersResult, favoritesResult] = await Promise.all([
       getByIndex<DBAccount>({
         db,
         indexName: DB_INDEX.OBJECT_TYPE.name,
@@ -86,6 +94,11 @@ export const DbProvider = ({ children }: DbProviderProps) => {
         db,
         indexName: DB_INDEX.OBJECT_TYPE.name,
         value: DB_OBJECT_TYPE.HORSE_OWNER,
+      }),
+      getByIndex<DBFavorites>({
+        db,
+        indexName: DB_INDEX.OBJECT_TYPE.name,
+        value: DB_OBJECT_TYPE.FAVORITES,
       }),
     ]);
 
@@ -100,10 +113,15 @@ export const DbProvider = ({ children }: DbProviderProps) => {
         })),
       );
     }
+
+    const foundFavorites = favoritesResult?.[0]?.horseIds ?? [];
+    setFavorites(foundFavorites);
   }, [db]);
 
   useEffect(() => {
-    if (!accounts && !horseOwners) handleLoadData();
+    if (!accounts && !horseOwners) {
+      handleLoadData();
+    }
   }, [accounts, horseOwners, handleLoadData]);
 
   useEffect(() => {
@@ -154,6 +172,38 @@ export const DbProvider = ({ children }: DbProviderProps) => {
     [db],
   );
 
+  const addFavorite: DbContextType['addFavorite'] = useCallback(
+    async (horseId) => {
+      if (!favorites || favorites.includes(horseId)) return;
+
+      const newFavorites = [...favorites, horseId];
+      setFavorites(newFavorites);
+
+      const data = {
+        [DB_INDEX.OBJECT_TYPE.key]: DB_OBJECT_TYPE.FAVORITES,
+        horseIds: newFavorites,
+      };
+      return updateItem({ db, data });
+    },
+    [db, favorites],
+  );
+
+  const removeFavorite: DbContextType['removeFavorite'] = useCallback(
+    async (horseId) => {
+      if (!favorites || !favorites.includes(horseId)) return;
+
+      const newFavorites = favorites.filter((favHorseId) => favHorseId !== horseId);
+      setFavorites(newFavorites);
+
+      const data = {
+        [DB_INDEX.OBJECT_TYPE.key]: DB_OBJECT_TYPE.FAVORITES,
+        horseIds: newFavorites,
+      };
+      return updateItem({ db, data });
+    },
+    [db, favorites],
+  );
+
   const removeData: DbContextType['removeData'] = useCallback(
     async (id) => removeById({ db, id }),
     [db],
@@ -198,6 +248,7 @@ export const DbProvider = ({ children }: DbProviderProps) => {
         error,
         accounts,
         horseOwners,
+        favorites,
         addAccount,
         updateAccount,
         addHorseOwner,
@@ -208,6 +259,8 @@ export const DbProvider = ({ children }: DbProviderProps) => {
         importFromFile,
         updateAccountVisibility,
         updateAllAccountVisibility,
+        addFavorite,
+        removeFavorite,
       }}
     >
       {children}

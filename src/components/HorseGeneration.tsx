@@ -5,6 +5,7 @@ import { FormattedHorseData } from '@/data/horseData';
 import { formatHorseId } from '@/data/formatHorseId';
 import { cn } from '@/utils';
 import { EditHorse } from './EditHorse';
+import FavoriteHorse from './FavoriteHorse';
 
 interface HorseGenProps {
   breed: string;
@@ -58,7 +59,10 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
             >
               <div className="relative flex items-center">
                 <img className="h-25 max-w-[75%] mx-auto py-2" src={color.imageUrl} alt={horseId} />
-                <EditHorse horseId={horseId} />
+                <div className="flex flex-col">
+                  <EditHorse horseId={horseId} />
+                  <FavoriteHorse horseId={horseId} />
+                </div>
               </div>
               <HorseOwners horseId={horseId} />
             </li>

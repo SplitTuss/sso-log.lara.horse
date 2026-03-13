@@ -13,8 +13,10 @@ export const PRIMARY_KEY = 'id';
 export const DB_OBJECT_TYPE = {
   ACCOUNT: 'account',
   HORSE_OWNER: 'horseOwner',
+  FAVORITES: 'favorites',
 } as const;
 
+//if I add another index, the DB_VERSION needs to be updated (see above)
 export const DB_INDEX = {
   OBJECT_TYPE: {
     name: 'objectTypeIndex',
@@ -49,6 +51,12 @@ export type DBHorseOwner = {
   horseSecondName: string;
   // this is a snapshot and will need to be updated when the associated Account updates to stay fresh
   accountColor: string;
+};
+
+export type DBFavorites = {
+  id: string;
+  objectType: typeof DB_OBJECT_TYPE.FAVORITES;
+  horseIds: Array<string>;
 };
 
 // ====================================
@@ -90,11 +98,12 @@ export const initDB = () => {
 
 export type CreateDBAccount = Omit<DBAccount, typeof PRIMARY_KEY>;
 export type CreateDBHorseOwner = Omit<DBHorseOwner, typeof PRIMARY_KEY>;
+export type CreateDBFavorites = Omit<DBFavorites, typeof PRIMARY_KEY>;
 
 interface createItemArgs {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   db: any;
-  data: CreateDBAccount | CreateDBHorseOwner;
+  data: CreateDBAccount | CreateDBHorseOwner | CreateDBFavorites;
 }
 
 export const createItem = <Type>({ db, data }: createItemArgs): Promise<Type> | undefined => {
@@ -112,14 +121,31 @@ export const createItem = <Type>({ db, data }: createItemArgs): Promise<Type> | 
   });
 };
 
+export type UpdateDBFavorites = Omit<DBFavorites, typeof PRIMARY_KEY> & { id?: string };
+
 interface UpdateItemArgs {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   db: any;
-  data: DBAccount | DBHorseOwner;
+  data: DBAccount | DBHorseOwner | UpdateDBFavorites;
 }
 
-export const updateItem = <Type>({ db, data }: UpdateItemArgs): Promise<Type> | undefined => {
+export const updateItem = async <Type>({ db, data }: UpdateItemArgs): Promise<Type | undefined> => {
   if (!db) return;
+
+  if (data.objectType === DB_OBJECT_TYPE.FAVORITES) {
+    const foundFavorite = await getByIndex<DBFavorites>({
+      db,
+      indexName: DB_INDEX.OBJECT_TYPE.name,
+      value: DB_OBJECT_TYPE.FAVORITES,
+    });
+    const foundId = foundFavorite?.[0]?.id;
+    if (foundId) {
+      data.id = foundId;
+    } else {
+      return createItem({ db, data });
+    }
+  }
+
   const transaction = db.transaction(STORE_NAME, 'readwrite');
   const store = transaction.objectStore(STORE_NAME);
 
