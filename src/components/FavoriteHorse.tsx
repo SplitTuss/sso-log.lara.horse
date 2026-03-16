@@ -19,8 +19,12 @@ export default function FavoriteHorse({ horseId }: FavoriteHorseProps) {
   };
 
   return (
-    <button className="hover:cursor-pointer" onClick={toggleFavorite}>
-      <StarIcon className={isFavorited ? 'fill-white' : 'fill-none'} />
+    <button
+      className="hover:cursor-pointer text-primary"
+      title="favorite horse"
+      onClick={toggleFavorite}
+    >
+      <StarIcon className={isFavorited ? 'fill-primary' : 'fill-none'} size={20} />
     </button>
   );
 }

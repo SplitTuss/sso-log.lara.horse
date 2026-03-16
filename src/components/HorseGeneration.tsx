@@ -59,9 +59,9 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
             >
               <div className="relative flex items-center">
                 <img className="h-25 max-w-[75%] mx-auto py-2" src={color.imageUrl} alt={horseId} />
-                <div className="flex flex-col">
-                  <EditHorse horseId={horseId} />
+                <div className="absolute flex flex-col items-center gap-10 top-4 right-1">
                   <FavoriteHorse horseId={horseId} />
+                  <EditHorse horseId={horseId} />
                 </div>
               </div>
               <HorseOwners horseId={horseId} />
