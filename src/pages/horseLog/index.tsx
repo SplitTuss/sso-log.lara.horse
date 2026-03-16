@@ -14,6 +14,7 @@ export default function HorseLog() {
   const [shouldHideUnavailable, setShouldHideUnavailable] = useState(false);
   const [shouldHideNotOwned, setShouldHideNotOwned] = useState(false);
   const [visibleGenerations, setVisibleGenerationsChange] = useState(AVAILABLE_GENERATIONS);
+  const [shouldShowFavorited, setShouldShowFavorited] = useState(false);
 
   return (
     <>
@@ -31,6 +32,7 @@ export default function HorseLog() {
               onHideNotOwned={setShouldHideNotOwned}
               visibleGenerations={visibleGenerations}
               onVisibleGenerationsChange={setVisibleGenerationsChange}
+              onShowFavorited={setShouldShowFavorited}
             />
           </div>
           <Button className="mb-4" variant="outline">
@@ -44,6 +46,7 @@ export default function HorseLog() {
           hideUnavailable={shouldHideUnavailable}
           hideNotOwned={shouldHideNotOwned}
           selectedGenerations={visibleGenerations}
+          favorited={shouldShowFavorited}
         />
       </div>
     </>

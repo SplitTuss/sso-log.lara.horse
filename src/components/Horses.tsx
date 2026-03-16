@@ -8,6 +8,7 @@ interface HorsesProps {
   hideUnavailable: boolean;
   hideNotOwned: boolean;
   selectedGenerations: number[];
+  favorited: boolean;
 }
 
 export function Horses({
@@ -15,8 +16,9 @@ export function Horses({
   hideUnavailable,
   hideNotOwned,
   selectedGenerations,
+  favorited,
 }: HorsesProps) {
-  const { accounts, horseOwners } = useDb();
+  const { accounts, horseOwners, favorites } = useDb();
 
   const visibleAccounts = (accounts ?? [])
     .filter(({ isVisible }) => isVisible)
@@ -45,7 +47,10 @@ export function Horses({
               colorId: color.colorId,
             });
 
-            return !hideNotOwned || visibleHorseIds.includes(horseId);
+            return (
+              (!hideNotOwned || visibleHorseIds.includes(horseId)) &&
+              (!favorited || favorites?.includes(horseId))
+            );
           }),
         })),
     }));

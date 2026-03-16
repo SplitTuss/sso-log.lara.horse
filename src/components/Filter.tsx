@@ -6,6 +6,7 @@ interface FilterProps {
   onHideNotOwned: (value: boolean) => void;
   visibleGenerations: number[];
   onVisibleGenerationsChange: (value: number[]) => void;
+  onShowFavorited: (value: boolean) => void;
 }
 
 export const Filter = ({
@@ -13,46 +14,60 @@ export const Filter = ({
   onHideNotOwned,
   visibleGenerations,
   onVisibleGenerationsChange,
+  onShowFavorited,
 }: FilterProps) => {
   return (
-    <div className="text-center">
-      <div className="flex sm:flex-row flex-col items-center gap-2">
-        <div className="bg-accent-foreground/40 rounded-md">
-          <GenerationDropdown
-            selectedGens={visibleGenerations}
-            onChange={onVisibleGenerationsChange}
+    <div className="flex flex-col items-center gap-2">
+      <div className="bg-accent-foreground/40 rounded-md">
+        <GenerationDropdown
+          selectedGens={visibleGenerations}
+          onChange={onVisibleGenerationsChange}
+        />
+      </div>
+
+      <div className="bg-accent-foreground/40 rounded-md">
+        <div className="p-1 flex flex-row items-center hover:text-primary">
+          hide unavailable:
+          <Checkbox
+            className="ml-1"
+            onCheckedChange={(value) => {
+              if (value === 'indeterminate') {
+                onHideUnavailable(false);
+              } else {
+                onHideUnavailable(value);
+              }
+            }}
           />
         </div>
-
-        <div className="bg-accent-foreground/40 rounded-md">
-          <div className="p-1 flex flex-row items-center hover:text-primary">
-            hide unavailable
-            <Checkbox
-              className="ml-1"
-              onCheckedChange={(value) => {
-                if (value === 'indeterminate') {
-                  onHideUnavailable(false);
-                } else {
-                  onHideUnavailable(value);
-                }
-              }}
-            />
-          </div>
+      </div>
+      <div className="bg-accent-foreground/40 rounded-md">
+        <div className="p-1 flex flex-row items-center hover:text-primary">
+          show favorites only:
+          <Checkbox
+            className="ml-1"
+            onCheckedChange={(value) => {
+              if (value === 'indeterminate') {
+                onShowFavorited(false);
+              } else {
+                onShowFavorited(value);
+              }
+            }}
+          />
         </div>
-        <div className="bg-accent-foreground/40 rounded-md">
-          <div className="p-1 flex flex-row items-center hover:text-primary">
-            only show owned
-            <Checkbox
-              className="ml-1"
-              onCheckedChange={(value) => {
-                if (value === 'indeterminate') {
-                  onHideNotOwned(false);
-                } else {
-                  onHideNotOwned(value);
-                }
-              }}
-            />
-          </div>
+      </div>
+      <div className="bg-accent-foreground/40 rounded-md">
+        <div className="p-1 flex flex-row items-center hover:text-primary">
+          show owned only:
+          <Checkbox
+            className="ml-1"
+            onCheckedChange={(value) => {
+              if (value === 'indeterminate') {
+                onHideNotOwned(false);
+              } else {
+                onHideNotOwned(value);
+              }
+            }}
+          />
         </div>
       </div>
     </div>
