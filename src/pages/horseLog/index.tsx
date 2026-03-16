@@ -24,9 +24,8 @@ export default function HorseLog() {
         <div className="flex flex-col pb-2 items-center">
           <Accounts />
 
-          <div className="text-accent flex flex-col sm:flex-row sm:gap-2 items-center p-2 mb-4 mt-4 bg-accent-foreground/40 rounded-xl">
+          <div className="w-80 flex flex-col items-center gap-2 p-4 m-4 text-accent bg-accent-foreground/40 rounded-xl">
             <SearchBar onSearchChange={setSearchInput} />
-
             <Filter
               onHideUnavailable={setShouldHideUnavailable}
               onHideNotOwned={setShouldHideNotOwned}

@@ -7,13 +7,13 @@ interface SearchBarProps {
 
 export const SearchBar = ({ onSearchChange }: SearchBarProps) => {
   return (
-    <div className="max-w-md m-2 mx-auto bg-accent-foreground/40 rounded-md">
+    <div className="w-65 sm:w-70 bg-accent-foreground/40 rounded-md">
       <Input
-        className="placeholder:text-accent"
+        className="placeholder:text-accent text-md"
         placeholder="search breed..."
         onChange={(e) => onSearchChange(e.target.value)}
       >
-        <SearchIcon className="text-accent mt-2 mr-2" size={20} />
+        <SearchIcon className="text-accent mt-2 mr-4" size={20} />
       </Input>
     </div>
   );

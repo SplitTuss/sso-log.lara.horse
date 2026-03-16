@@ -17,7 +17,7 @@ export const Filter = ({
   onShowFavorited,
 }: FilterProps) => {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col text-md items-center gap-2">
       <div className="bg-accent-foreground/40 rounded-md">
         <GenerationDropdown
           selectedGens={visibleGenerations}
@@ -26,7 +26,7 @@ export const Filter = ({
       </div>
 
       <div className="bg-accent-foreground/40 rounded-md">
-        <div className="p-1 flex flex-row items-center hover:text-primary">
+        <div className="p-2 w-45 flex flex-row items-center justify-end hover:text-primary">
           hide unavailable:
           <Checkbox
             className="ml-1"
@@ -41,7 +41,7 @@ export const Filter = ({
         </div>
       </div>
       <div className="bg-accent-foreground/40 rounded-md">
-        <div className="p-1 flex flex-row items-center hover:text-primary">
+        <div className="p-2 w-45 flex flex-row items-center justify-end hover:text-primary">
           show favorites only:
           <Checkbox
             className="ml-1"
@@ -56,7 +56,7 @@ export const Filter = ({
         </div>
       </div>
       <div className="bg-accent-foreground/40 rounded-md">
-        <div className="p-1 flex flex-row items-center hover:text-primary">
+        <div className="p-2 w-45 flex flex-row items-center justify-end hover:text-primary">
           show owned only:
           <Checkbox
             className="ml-1"
