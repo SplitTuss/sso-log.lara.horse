@@ -21,7 +21,7 @@ export default function Home() {
             accounts and their horses
           </div>
 
-          <div className="">
+          <div>
             <Button className="mb-4 mt-15 sm:mt-35">
               <Link href="/horseLog" className="flex justify-center">
                 Get started!

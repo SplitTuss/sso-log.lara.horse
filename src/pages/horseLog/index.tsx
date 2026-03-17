@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { RedoIcon } from 'lucide-react';
 
 import Header from '@/components/Header';
 import { Horses } from '@/components/Horses';
@@ -35,7 +36,12 @@ export default function HorseLog() {
             />
           </div>
           <Button className="mb-4" variant="outline">
-            <Link href="/names">see names list</Link>
+            <Link href="/names">
+              <div className="flex flex-row items-center">
+                go to my names list
+                <RedoIcon size={16} className="ml-1" />
+              </div>
+            </Link>
           </Button>
         </div>
       </div>

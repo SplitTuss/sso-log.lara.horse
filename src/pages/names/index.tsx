@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { UserCheckIcon, UserMinusIcon } from 'lucide-react';
+import { UserCheckIcon, UserMinusIcon, UndoIcon } from 'lucide-react';
 import Header from '@/components/Header';
 import { Accounts } from '@/components/Accounts';
 import { Button } from '@/components/shadcn/Button';
@@ -45,7 +45,12 @@ export default function Names() {
           </div>
 
           <Button className="mb-4 mt-4" variant="outline">
-            <Link href="/horseLog">see horses</Link>
+            <Link href="/horseLog">
+              <div className="flex flex-row items-center">
+                <UndoIcon size={16} className="mr-1" />
+                go to my horses
+              </div>
+            </Link>
           </Button>
         </div>
       </div>

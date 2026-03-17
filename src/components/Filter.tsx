@@ -1,5 +1,6 @@
 import { Checkbox } from './shadcn/Checkbox';
 import { GenerationDropdown } from './GenerationDropdown';
+import { MapPinOffIcon, StarIcon, UserCheckIcon } from 'lucide-react';
 
 interface FilterProps {
   onHideUnavailable: (value: boolean) => void;
@@ -26,7 +27,7 @@ export const Filter = ({
       </div>
 
       <div className="bg-accent-foreground/40 rounded-md">
-        <div className="p-2 w-45 flex flex-row items-center justify-end hover:text-primary">
+        <div className="p-2 w-50 flex flex-row items-center justify-end hover:text-primary">
           hide unavailable:
           <Checkbox
             className="ml-1"
@@ -38,10 +39,11 @@ export const Filter = ({
               }
             }}
           />
+          <MapPinOffIcon size={16} className="ml-1" />
         </div>
       </div>
       <div className="bg-accent-foreground/40 rounded-md">
-        <div className="p-2 w-45 flex flex-row items-center justify-end hover:text-primary">
+        <div className="p-2 w-50 flex flex-row items-center justify-end hover:text-primary">
           show favorites only:
           <Checkbox
             className="ml-1"
@@ -53,10 +55,11 @@ export const Filter = ({
               }
             }}
           />
+          <StarIcon size={16} className="ml-1" />
         </div>
       </div>
       <div className="bg-accent-foreground/40 rounded-md">
-        <div className="p-2 w-45 flex flex-row items-center justify-end hover:text-primary">
+        <div className="p-2 w-50 flex flex-row items-center justify-end hover:text-primary">
           show owned only:
           <Checkbox
             className="ml-1"
@@ -68,6 +71,7 @@ export const Filter = ({
               }
             }}
           />
+          <UserCheckIcon size={16} className="ml-1" />
         </div>
       </div>
     </div>

@@ -30,12 +30,12 @@ export function GenerationDropdown({ selectedGens, onChange }: GenerationDropdow
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="flex flex-row w-45 text-md justify-center">
+        <Button variant="outline" className="flex flex-row w-50 text-md justify-center">
           generations <ChevronDown />
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-60">
         {AVAILABLE_GENERATIONS.map((gen) => (
           <DropdownMenuCheckboxItem
             key={gen}
