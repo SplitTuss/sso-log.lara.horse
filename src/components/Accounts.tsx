@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChromePicker } from 'react-color';
-import { Trash2Icon, EyeIcon, EyeOffIcon } from 'lucide-react';
+import { Trash2Icon, EyeIcon, EyeOffIcon, ShieldUserIcon } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -111,16 +111,19 @@ export function Accounts() {
 
               <DialogContent className="sm:max-w-sm">
                 <DialogHeader>
-                  <DialogTitle className="text-center">add new / edit account</DialogTitle>
-                  <DialogDescription className="text-center">
-                    type in the name and pick a color
+                  <DialogTitle className="flex flex-row mt-2 items-center justify-center">
+                    <ShieldUserIcon size={16} className="mr-1" />
+                    add new / edit account
+                  </DialogTitle>
+                  <DialogDescription className="mt-2">
+                    enter your name and choose a color
                   </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleAdd}>
-                  <div className="flex flex-col items-center pb-4 gap-4">
+                  <div className="flex flex-col items-center gap-8">
                     <Input
-                      className="placeholder:text-foreground"
-                      placeholder="Enter name"
+                      className="placeholder:text-foreground mt-2"
+                      placeholder="enter name"
                       value={accountNameInput}
                       onChange={(e) => setAccountNameInput(e.target.value)}
                     />
@@ -130,7 +133,11 @@ export function Accounts() {
                       color={color}
                       onChange={({ hex }) => setColor(hex)}
                     />
-                    <Button type="submit" size="sm" className="bg-green-600 hover:bg-green-400">
+                    <Button
+                      type="submit"
+                      size="sm"
+                      className="bg-green-600 hover:bg-green-400 mb-2"
+                    >
                       +
                     </Button>
                   </div>
@@ -145,7 +152,7 @@ export function Accounts() {
           </div>
           <button
             onClick={() => updateAllAccountVisibility(!areAnyAccountsVisible)}
-            className="cursor-pointer text-accent hover:text-primary"
+            className="cursor-pointer text-accent mr-6 hover:text-primary"
             title="hide all"
           >
             {areAnyAccountsVisible ? <EyeIcon /> : <EyeOffIcon />}
@@ -158,7 +165,10 @@ export function Accounts() {
               key={index}
               className="flex flex-row items-center justify-between bg-accent-foreground/40 rounded-lg py-1 px-4"
             >
-              <span style={{ color: account.color }}>{account.name}</span>
+              <div style={{ color: account.color }} className="flex flex-row items-center">
+                <ShieldUserIcon size={18} className="mr-2" />
+                {account.name}
+              </div>
 
               <div className="flex flex-row text-accent items-center gap-2">
                 <Button
