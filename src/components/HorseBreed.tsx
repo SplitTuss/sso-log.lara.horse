@@ -24,7 +24,7 @@ export function HorseBreed({ breed }: HorseBreedProps) {
   return (
     <li className="bg-accent/40 rounded-xl">
       <div
-        className="flex flex-row items-center text-primary text-xl bg-accent p-2 mb-2 rounded-xl cursor-pointer"
+        className="flex flex-row items-center text-primary hover:text-purple-500 text-xl bg-accent p-2 mb-2 rounded-xl cursor-pointer"
         onClick={toggleExpand}
       >
         <ChevronDown

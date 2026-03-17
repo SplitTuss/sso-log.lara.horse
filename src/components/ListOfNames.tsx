@@ -49,7 +49,7 @@ export function ListOfNames({ namesUsedMap, title, nameList }: ListOfNamesProps)
                 <Badge
                   key={`${account.id}-${name}`}
                   variant="default"
-                  className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+                  className="h-5 min-w-5 mr-2 rounded-full px-1 font-mono tabular-nums"
                   style={{ backgroundColor: account.color }}
                 >
                   {timesUsed}

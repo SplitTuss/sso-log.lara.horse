@@ -26,7 +26,7 @@ export function HorseGeneration({ generation, breed }: HorseGenProps) {
   return (
     <li className="bg-accent/30 rounded-xl">
       <div
-        className="flex flex-row items-center border-primary/40 border-1 rounded-xl text-primary p-1 mb-2 cursor-pointer"
+        className="flex flex-row items-center border-primary/40 border-1 rounded-xl text-primary hover:text-purple-500 p-1 mb-2 cursor-pointer"
         onClick={toggleExpand}
       >
         <ChevronDown

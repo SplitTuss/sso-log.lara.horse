@@ -30,7 +30,11 @@ export default function Names() {
                 setShowNotOwned(false);
               }}
             >
-              <UserCheckIcon className={showOwned ? 'text-primary' : 'text-accent'} />
+              <UserCheckIcon
+                className={
+                  showOwned ? 'text-primary hover:text-primary' : 'text-accent hover:text-primary'
+                }
+              />
             </button>
             <button
               className="cursor-pointer bg-accent-foreground/40 rounded-md p-1"
@@ -40,7 +44,13 @@ export default function Names() {
                 setShowOwned(false);
               }}
             >
-              <UserMinusIcon className={showNotOwned ? 'text-primary' : 'text-accent'} />
+              <UserMinusIcon
+                className={
+                  showNotOwned
+                    ? 'text-primary hover:text-primary'
+                    : 'text-accent hover:text-primary'
+                }
+              />
             </button>
           </div>
 
