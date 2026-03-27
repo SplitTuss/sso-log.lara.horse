@@ -410,6 +410,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'connemara/gen3-12.webp' },
           { imageUrl: 'connemara/gen3-13.webp' },
           { imageUrl: 'connemara/gen3-14.webp' },
+          { imageUrl: 'connemara/gen3-15.png' },
         ],
       },
     ],
