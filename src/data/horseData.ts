@@ -15,7 +15,7 @@ const IMAGE_URL_PREFIX = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara
 
 //next horses to go: gen 1 Jorvik Pony on Jan.07. (last updated oct.22)
 //last horse deleted: gen 1 jorvik pony, removed Jan.07.26/ here somehow already removed
-//last horses added: 5 magic horses, 1 friesian sport horse, 1 andalusian, 8 swedish warmblood, Apr.26.26
+//last horses added: 2 magic horses, 1 andalusian, 1 noriker, 7 brabant, 1 connemara, Jul.03.26
 
 /* eslint-disable prettier/prettier */
 const HORSE_DATA: HorseData = [
@@ -184,6 +184,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'andalusian/gen3-15.png' },
           { imageUrl: 'andalusian/gen3-16.png' },
           { imageUrl: 'andalusian/gen3-17.webp' },
+          { imageUrl: 'andalusian/gen3-18.png' },
         ],
       },
     ],
@@ -346,6 +347,25 @@ const HORSE_DATA: HorseData = [
     ],
   },
   {
+    breed: 'Brabant',
+    generations: [
+      {
+        id: 3,
+        forSale: true,
+        colors: [
+          { imageUrl: 'brabant/gen3-1.png' },
+          { imageUrl: 'brabant/gen3-2.png' },
+          { imageUrl: 'brabant/gen3-3.png' },
+          { imageUrl: 'brabant/gen3-4.png' },
+          { imageUrl: 'brabant/gen3-5.png' },
+          { imageUrl: 'brabant/gen3-6.png' },
+          { imageUrl: 'brabant/gen3-7.png' },
+
+        ],
+      },
+    ],
+  },
+  {
     breed: 'Chincoteague Pony',
     generations: [
       {
@@ -412,6 +432,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'connemara/gen3-13.webp' },
           { imageUrl: 'connemara/gen3-14.webp' },
           { imageUrl: 'connemara/gen3-15.png' },
+          { imageUrl: 'connemara/gen3-16.png' },
         ],
       },
     ],
@@ -1177,6 +1198,10 @@ const HORSE_DATA: HorseData = [
           //year of the fire horse?
           { imageUrl: 'magic-horses/gen3/kyria.webp' },
 
+          //summer festival
+          { imageUrl: 'magic-horses/gen3/perla.webp' },
+          { imageUrl: 'magic-horses/gen3/pelagos.webp' },
+
           //other magic horses:
           { imageUrl: 'magic-horses/gen3/vega.webp' },
           { imageUrl: 'magic-horses/gen3/zony.webp' },
@@ -1340,6 +1365,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'noriker/gen3-7.webp' },
           { imageUrl: 'noriker/gen3-8.webp' },
           { imageUrl: 'noriker/gen3-9.webp' },
+          { imageUrl: 'noriker/gen3-10.png' },
         ],
       },
     ],
