@@ -15,8 +15,13 @@ const IMAGE_URL_PREFIX = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara
 
 //next horses to go: gen 1 Jorvik Pony on Jan.07. (last updated oct.22)
 //last horse deleted: gen 1 jorvik pony, removed Jan.07.26/ here somehow already removed
-//last horses added: 2 magic horses, 1 andalusian, 1 noriker, 7 brabant, 1 connemara, Jul.03.26
-
+//last horses added on: Oct.28.2026
+// Westphalian breed
+// 1 Jorvik Mountain Horse coat
+// 1 Noriker coat
+// 1 Appaloosa coat
+// American Quarter Horse gen R3-R
+// Magic Horses: Lycan, Pharao, Nottsoren (Halloween 2026)
 /* eslint-disable prettier/prettier */
 const HORSE_DATA: HorseData = [
   {
@@ -122,6 +127,14 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'american-quarter-horse/gen3-9.webp' },
           { imageUrl: 'american-quarter-horse/gen3-10.webp' },
           { imageUrl: 'american-quarter-horse/gen3-11.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R1.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R2.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R3.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R4.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R5.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R6.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R7.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R8.webp' },
         ],
       },
     ],
@@ -223,6 +236,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'appaloosa/gen3-9.webp' },
           { imageUrl: 'appaloosa/gen3-10.webp' },
           { imageUrl: 'appaloosa/gen3-11.webp' },
+          { imageUrl: 'appaloosa/gen3-12.webp' },
         ],
       },
     ],
@@ -903,6 +917,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'jorvik-mountain-horse/gen3-5.webp' },
           { imageUrl: 'jorvik-mountain-horse/gen3-6.webp' },
           { imageUrl: 'jorvik-mountain-horse/gen3-7.webp' },
+          { imageUrl: 'jorvik-mountain-horse/gen3-8.webp' },
         ],
       },
     ],
@@ -1189,18 +1204,23 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'magic-horses/gen3/so%CC%81l.webp' },
           { imageUrl: 'magic-horses/gen3/ma%CC%81ni.webp' },
 
-          //marchenghast?
+          //marchenghast? 2026
           { imageUrl: 'magic-horses/gen3/fendwurm1.webp' },
           { imageUrl: 'magic-horses/gen3/fendwurm2.webp' },
           { imageUrl: 'magic-horses/gen3/fendwurm3.webp' },
           { imageUrl: 'magic-horses/gen3/nottsoren.webp' },
 
-          //year of the fire horse?
+          //year of the fire horse? 2026
           { imageUrl: 'magic-horses/gen3/kyria.webp' },
 
-          //summer festival
+          //summer festival 2026
           { imageUrl: 'magic-horses/gen3/perla.webp' },
           { imageUrl: 'magic-horses/gen3/pelagos.webp' },
+
+          //halloween 2026
+          { imageUrl: 'magic-horses/gen3/nottsoren2.webp' },
+          { imageUrl: 'magic-horses/gen3/pharao.webp' },
+          { imageUrl: 'magic-horses/gen3/lycan.webp' },
 
           //other magic horses:
           { imageUrl: 'magic-horses/gen3/vega.webp' },
@@ -1366,6 +1386,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'noriker/gen3-8.webp' },
           { imageUrl: 'noriker/gen3-9.webp' },
           { imageUrl: 'noriker/gen3-10.png' },
+          { imageUrl: 'noriker/gen3-11.webp' },
         ],
       },
     ],
@@ -1674,6 +1695,24 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'welsh-pony/gen3-8.webp' },
           { imageUrl: 'welsh-pony/gen3-9.webp' },
           { imageUrl: 'welsh-pony/gen3-10.webp' },
+        ],
+      },
+    ],
+  },
+  {
+    breed: 'Westphalian',
+    generations: [
+      {
+        id: 3,
+        forSale: true,
+        colors: [
+          { imageUrl: 'westphalian/gen3-1.webp' },
+          { imageUrl: 'westphalian/gen3-2.webp' },
+          { imageUrl: 'westphalian/gen3-3.webp' },
+          { imageUrl: 'westphalian/gen3-4.webp' },
+          { imageUrl: 'westphalian/gen3-5.webp' },
+          { imageUrl: 'westphalian/gen3-6.webp' },
+          { imageUrl: 'westphalian/gen3-7.webp' },
         ],
       },
     ],
