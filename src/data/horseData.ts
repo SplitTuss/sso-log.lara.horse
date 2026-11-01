@@ -16,12 +16,8 @@ const IMAGE_URL_PREFIX = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara
 //next horses to go: gen 1 Jorvik Pony on Jan.07. (last updated oct.22)
 //last horse deleted: gen 1 jorvik pony, removed Jan.07.26/ here somehow already removed
 //last horses added on: Oct.28.2026
-// Westphalian breed
-// 1 Jorvik Mountain Horse coat
-// 1 Noriker coat
-// 1 Appaloosa coat
-// American Quarter Horse gen R3-R
-// Magic Horses: Lycan, Pharao, Nottsoren (Halloween 2026)
+// American Quarter Horse gen R3-R; 2 new coats
+// 1 Swedish Warmblood coat
 /* eslint-disable prettier/prettier */
 const HORSE_DATA: HorseData = [
   {
@@ -135,6 +131,8 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'american-quarter-horse/gen3-R6.webp' },
           { imageUrl: 'american-quarter-horse/gen3-R7.webp' },
           { imageUrl: 'american-quarter-horse/gen3-R8.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R9.webp' },
+          { imageUrl: 'american-quarter-horse/gen3-R10.webp' },
         ],
       },
     ],
@@ -1623,6 +1621,7 @@ const HORSE_DATA: HorseData = [
           { imageUrl: 'swedish-warmblood/gen3-6.webp' },
           { imageUrl: 'swedish-warmblood/gen3-7.webp' },
           { imageUrl: 'swedish-warmblood/gen3-8.webp' },
+          { imageUrl: 'swedish-warmblood/gen3-9.webp' },
         ],
       },
     ],
