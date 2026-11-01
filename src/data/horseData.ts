@@ -15,7 +15,7 @@ const IMAGE_URL_PREFIX = 'https://s3.us-east-1.amazonaws.com/images.sso-log.lara
 
 //next horses to go: gen 1 Jorvik Pony on Jan.07. (last updated oct.22)
 //last horse deleted: gen 1 jorvik pony, removed Jan.07.26/ here somehow already removed
-//last horses added on: Oct.28.2026
+//last horses added on: Nov.01.2026
 // American Quarter Horse gen R3-R; 2 new coats
 // 1 Swedish Warmblood coat
 /* eslint-disable prettier/prettier */
